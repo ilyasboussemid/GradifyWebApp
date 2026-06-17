@@ -1,17 +1,10 @@
 import React from 'react';
 import { SPARQL_TEMPLATES } from '../../utils/constants';
-
-/**
- * Liste des templates SPARQL prédéfinis.
- * Clic sur un template → remplit l'éditeur.
- */
 export default function TemplateList({ onSelect, selectedId }) {
   const selectQueries = SPARQL_TEMPLATES.filter(t => t.type === 'SELECT');
   const constructQueries = SPARQL_TEMPLATES.filter(t => t.type === 'CONSTRUCT');
-
   return (
     <div className="flex flex-col gap-3">
-      {/* SELECT */}
       <div>
         <h4 style={{
           fontSize: '0.75rem',
@@ -50,8 +43,6 @@ export default function TemplateList({ onSelect, selectedId }) {
           ))}
         </div>
       </div>
-
-      {/* CONSTRUCT */}
       <div>
         <h4 style={{
           fontSize: '0.75rem',

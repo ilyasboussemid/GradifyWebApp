@@ -1,8 +1,4 @@
 import React from 'react';
-
-/**
- * Spinner de chargement centré.
- */
 export default function Loader({ text = 'Chargement...' }) {
   return (
     <div className="loader">

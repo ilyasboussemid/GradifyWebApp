@@ -10,16 +10,6 @@ import Pagination from '../components/ui/Pagination';
 import sparqlService from '../services/sparqlService';
 import { SPARQL_PREFIXES, SPARQL_TEMPLATES } from '../utils/constants';
 import { sparqlResultsToCsv, downloadFile } from '../utils/formatters';
-
-/**
- * Explorateur de requêtes SPARQL.
- * - Éditeur de requêtes avec préfixes automatiques
- * - Templates prédéfinis (15 SELECT + 3 CONSTRUCT)
- * - Résultats en table paginée
- * - Export CSV / JSON-LD / Turtle (pour CONSTRUCT)
- */
-
-// Données de démo simulant un résultat SPARQL
 const DEMO_RESULT = {
   columns: ['etudiant_id', 'niveau', 'filiere', 'ville'],
   rows: [
@@ -35,7 +25,6 @@ const DEMO_RESULT = {
     { etudiant_id: 'student-7e2d4f6a8c0b', niveau: '3A', filiere: 'Genie de la Data', ville: 'Marrakech' },
   ],
 };
-
 export default function SparqlExplorer() {
   const [query, setQuery] = useState(SPARQL_TEMPLATES[0].query);
   const [selectedTemplate, setSelectedTemplate] = useState(SPARQL_TEMPLATES[0]);
@@ -47,13 +36,11 @@ export default function SparqlExplorer() {
   const [currentPage, setCurrentPage] = useState(1);
   const [executionTime, setExecutionTime] = useState(null);
   const pageSize = 15;
-
   function handleSelectTemplate(template) {
     setSelectedTemplate(template);
     setQuery(template.query);
     setError('');
   }
-
   async function handleExecute() {
     setLoading(true);
     setError('');
@@ -62,10 +49,8 @@ export default function SparqlExplorer() {
     const startTime = Date.now();
     const fullQuery = SPARQL_PREFIXES + '\n' + query;
     setExecutedQuery(fullQuery);
-
     try {
       const data = await sparqlService.execute(query);
-
       if (data.columns && data.rows) {
         setColumns(data.columns);
         setResults(data.rows);
@@ -78,13 +63,11 @@ export default function SparqlExplorer() {
           setResults([]);
         }
       } else {
-        // CONSTRUCT result (string)
         setColumns(['result']);
         setResults([{ result: typeof data === 'string' ? data : JSON.stringify(data, null, 2) }]);
       }
       setExecutionTime(Date.now() - startTime);
     } catch (err) {
-      // Mode démo
       if (err.message === 'Network Error' || err.code === 'ERR_NETWORK') {
         setColumns(DEMO_RESULT.columns);
         setResults(DEMO_RESULT.rows);
@@ -96,37 +79,28 @@ export default function SparqlExplorer() {
       setLoading(false);
     }
   }
-
   function handleExportCsv() {
     if (!results || results.length === 0) return;
     const csv = sparqlResultsToCsv(results);
     downloadFile(csv, 'sparql-results.csv', 'text/csv');
   }
-
   function handleExportJson() {
     if (!results || results.length === 0) return;
     const json = JSON.stringify(results, null, 2);
     downloadFile(json, 'sparql-results.json', 'application/json');
   }
-
   function handleExportTurtle() {
     if (!results || results.length === 0) return;
-    // For CONSTRUCT queries, export raw result
     const content = results[0]?.result || JSON.stringify(results, null, 2);
     downloadFile(content, 'sparql-results.ttl', 'text/turtle');
   }
-
-  // Pagination
   const totalPages = results ? Math.ceil(results.length / pageSize) : 0;
   const paginatedResults = results ? results.slice((currentPage - 1) * pageSize, currentPage * pageSize) : [];
-
-  // Table columns config
   const tableColumns = columns.map((col) => ({
     key: col,
     label: col.replace(/_/g, ' '),
     render: (value) => {
       if (!value) return '—';
-      // Si c'est une URI, afficher seulement la partie locale
       if (typeof value === 'string' && value.startsWith('http')) {
         const local = value.split('/').pop();
         return (
@@ -140,10 +114,8 @@ export default function SparqlExplorer() {
       return value;
     },
   }));
-
   return (
     <div>
-      {/* Page header */}
       <div className="page-header container">
         <h1>Explorateur SPARQL</h1>
         <p>
@@ -151,10 +123,8 @@ export default function SparqlExplorer() {
           (lod:, schema:, skos:, dcterms:) sont ajoutés automatiquement.
         </p>
       </div>
-
       <div className="container" style={{ paddingBottom: '3rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: '2rem', alignItems: 'start' }}>
-          {/* ═══ Sidebar : Templates ═══ */}
           <div style={{ position: 'sticky', top: '5rem', maxHeight: 'calc(100vh - 6rem)', overflowY: 'auto' }}>
             <div className="flex items-center gap-1" style={{ marginBottom: '1rem' }}>
               <FiList style={{ color: 'var(--accent)' }} />
@@ -162,10 +132,7 @@ export default function SparqlExplorer() {
             </div>
             <TemplateList onSelect={handleSelectTemplate} selectedId={selectedTemplate?.id} />
           </div>
-
-          {/* ═══ Main : Editor + Results ═══ */}
           <div className="flex flex-col gap-3">
-            {/* Query info */}
             {selectedTemplate && (
               <div className="flex items-center gap-2">
                 <Badge>{selectedTemplate.type}</Badge>
@@ -173,8 +140,6 @@ export default function SparqlExplorer() {
                 <span className="text-sm text-muted">— {selectedTemplate.description}</span>
               </div>
             )}
-
-            {/* Editor */}
             <QueryEditor
               query={query}
               onQueryChange={setQuery}
@@ -191,8 +156,6 @@ export default function SparqlExplorer() {
                   : []
               }
             />
-
-            {/* Executed query (transparency) */}
             {executedQuery && (
               <details style={{ fontSize: '0.75rem' }}>
                 <summary className="text-xs text-muted" style={{ cursor: 'pointer', marginBottom: '0.5rem' }}>
@@ -213,8 +176,6 @@ export default function SparqlExplorer() {
                 </pre>
               </details>
             )}
-
-            {/* Error */}
             {error && (
               <div style={{
                 padding: '1rem',
@@ -226,14 +187,9 @@ export default function SparqlExplorer() {
                 <strong>Erreur :</strong> {error}
               </div>
             )}
-
-            {/* Loading */}
             {loading && <Loader text="Exécution de la requête..." />}
-
-            {/* Results */}
             {results && !loading && (
               <div>
-                {/* Results header */}
                 <div className="flex items-center justify-between" style={{ marginBottom: '1rem' }}>
                   <div className="flex items-center gap-2">
                     <span className="text-sm" style={{ fontWeight: 600 }}>
@@ -257,15 +213,11 @@ export default function SparqlExplorer() {
                     )}
                   </div>
                 </div>
-
-                {/* Table */}
                 <Table
                   columns={tableColumns}
                   data={paginatedResults}
                   emptyMessage="La requête n'a retourné aucun résultat."
                 />
-
-                {/* Pagination */}
                 {totalPages > 1 && (
                   <Pagination
                     currentPage={currentPage}

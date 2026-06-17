@@ -1,15 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-/**
- * Footer de la plateforme Gradify.
- */
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
-          {/* Branding */}
           <div>
             <h4 style={{ marginBottom: '0.75rem', fontSize: '1rem' }}>Gradify</h4>
             <p className="text-muted text-sm" style={{ lineHeight: 1.6 }}>
@@ -17,8 +12,6 @@ export default function Footer() {
               Propulsée par les technologies du Web Sémantique.
             </p>
           </div>
-
-          {/* Liens rapides */}
           <div>
             <h4 style={{ marginBottom: '0.75rem', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)' }}>
               Navigation
@@ -29,8 +22,6 @@ export default function Footer() {
               <Link to="/vocabulaires" className="text-sm">Vocabulaires</Link>
             </div>
           </div>
-
-          {/* Technologies */}
           <div>
             <h4 style={{ marginBottom: '0.75rem', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)' }}>
               Technologies
@@ -42,8 +33,6 @@ export default function Footer() {
               <span>SHACL (validation)</span>
             </div>
           </div>
-
-          {/* Contexte */}
           <div>
             <h4 style={{ marginBottom: '0.75rem', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)' }}>
               Projet
@@ -54,7 +43,6 @@ export default function Footer() {
             </p>
           </div>
         </div>
-
         <div style={{ borderTop: '1px solid var(--border)', marginTop: '2rem', paddingTop: '1.5rem', textAlign: 'center' }}>
           <p className="text-xs text-muted">
             © 2025 Gradify — Privacy by design. Les données étudiants sont pseudonymisées.

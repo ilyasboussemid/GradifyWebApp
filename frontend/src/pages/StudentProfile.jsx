@@ -8,14 +8,6 @@ import ProgressBar from '../components/ui/ProgressBar';
 import Loader from '../components/ui/Loader';
 import studentsService from '../services/studentsService';
 import matchingService from '../services/matchingService';
-
-/**
- * Page profil étudiant (pseudonymisé).
- * Affiche uniquement : ID pseudonymisé, programme, compétences (badges SKOS),
- * matching offres. Jamais d'email, nom réel ou notes.
- */
-
-// Données de démo
 const DEMO_STUDENT = {
   id: 'student-0224012b0526',
   level: '3A',
@@ -35,7 +27,6 @@ const DEMO_STUDENT = {
     { name: 'Wireshark', category: 'Réseaux' },
   ],
 };
-
 const DEMO_MATCHING_OFFERS = [
   { id: 'offer-001', title: 'Pentesteur Junior', company: 'TechSecure SA', city: 'Casablanca', score: 5, maxScore: 6 },
   { id: 'offer-003', title: 'Pentesteur Junior', company: 'CyberCorp', city: 'Casablanca', score: 4, maxScore: 8 },
@@ -43,7 +34,6 @@ const DEMO_MATCHING_OFFERS = [
   { id: 'offer-012', title: 'Analyste SOC', company: 'SecureTech', city: 'Casablanca', score: 3, maxScore: 7 },
   { id: 'offer-002', title: 'Ingenieur DevOps', company: 'CloudFirst', city: 'Casablanca', score: 2, maxScore: 7 },
 ];
-
 export default function StudentProfile() {
   const { id } = useParams();
   const [student, setStudent] = useState(null);
@@ -51,24 +41,20 @@ export default function StudentProfile() {
   const [matchingOffers, setMatchingOffers] = useState([]);
   const [matchingLoading, setMatchingLoading] = useState(false);
   const [showMatching, setShowMatching] = useState(false);
-
   useEffect(() => {
     fetchStudent();
   }, [id]);
-
   async function fetchStudent() {
     setLoading(true);
     try {
       const data = await studentsService.getById(id);
       setStudent(data);
     } catch (err) {
-      // Mode démo
       setStudent({ ...DEMO_STUDENT, id });
     } finally {
       setLoading(false);
     }
   }
-
   async function handleShowMatching() {
     setShowMatching(true);
     setMatchingLoading(true);
@@ -76,17 +62,14 @@ export default function StudentProfile() {
       const data = await matchingService.findOffersForStudent(id);
       setMatchingOffers(data.items || data);
     } catch (err) {
-      // Mode démo
       setMatchingOffers(DEMO_MATCHING_OFFERS);
     } finally {
       setMatchingLoading(false);
     }
   }
-
   if (loading) {
     return <Loader text="Chargement du profil..." />;
   }
-
   if (!student) {
     return (
       <div className="container section">
@@ -98,26 +81,19 @@ export default function StudentProfile() {
       </div>
     );
   }
-
-  // Grouper les compétences par catégorie
   const skillsByCategory = (student.skills || []).reduce((acc, skill) => {
     const cat = skill.category || 'Autre';
     if (!acc[cat]) acc[cat] = [];
     acc[cat].push(skill.name || skill);
     return acc;
   }, {});
-
   return (
     <div className="container" style={{ paddingTop: '2rem', paddingBottom: '3rem' }}>
-      {/* Back link */}
       <Link to="/" className="flex items-center gap-1 text-sm" style={{ marginBottom: '1.5rem', color: 'var(--muted)' }}>
         <FiArrowLeft /> Retour
       </Link>
-
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '2rem', alignItems: 'start' }}>
-        {/* ═══ Colonne principale ═══ */}
         <div className="flex flex-col gap-3">
-          {/* Header */}
           <div>
             <div className="flex items-center gap-2" style={{ marginBottom: '0.75rem' }}>
               <Badge>{student.level}</Badge>
@@ -136,8 +112,6 @@ export default function StudentProfile() {
               }}>{student.id}</code>
             </p>
           </div>
-
-          {/* Privacy notice */}
           <div style={{
             background: 'var(--accent-light)',
             border: '1px solid rgba(29, 78, 216, 0.15)',
@@ -155,21 +129,15 @@ export default function StudentProfile() {
               Aucune donnée personnelle identifiable (nom, email, notes) n'est affichée.
             </span>
           </div>
-
-          {/* Compétences */}
           <Card variant="flat">
             <h4 style={{ marginBottom: '1.25rem' }}>
               Compétences ({(student.skills || []).length})
             </h4>
-
-            {/* All badges */}
             <div className="flex flex-wrap gap-1" style={{ marginBottom: '1.5rem' }}>
               {(student.skills || []).map((skill, idx) => (
                 <Badge key={idx}>{typeof skill === 'string' ? skill : skill.name}</Badge>
               ))}
             </div>
-
-            {/* By category */}
             {Object.keys(skillsByCategory).length > 0 && (
               <div>
                 <p className="text-xs text-muted" style={{ marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
@@ -190,8 +158,6 @@ export default function StudentProfile() {
               </div>
             )}
           </Card>
-
-          {/* Matching offres */}
           <Card variant="flat">
             <div className="flex items-center justify-between" style={{ marginBottom: '1rem' }}>
               <h4>Offres compatibles</h4>
@@ -201,7 +167,6 @@ export default function StudentProfile() {
                 </Button>
               )}
             </div>
-
             {showMatching && (
               matchingLoading ? (
                 <Loader text="Calcul du matching en cours..." />
@@ -242,10 +207,7 @@ export default function StudentProfile() {
             )}
           </Card>
         </div>
-
-        {/* ═══ Sidebar ═══ */}
         <div className="flex flex-col gap-2" style={{ position: 'sticky', top: '5rem' }}>
-          {/* Info card */}
           <Card>
             <h4 style={{ marginBottom: '1rem' }}>Informations</h4>
             <div className="flex flex-col gap-2">
@@ -271,8 +233,6 @@ export default function StudentProfile() {
               </div>
             </div>
           </Card>
-
-          {/* Stats mini */}
           <Card>
             <div className="flex flex-col gap-2" style={{ textAlign: 'center' }}>
               <div>
@@ -291,8 +251,6 @@ export default function StudentProfile() {
               )}
             </div>
           </Card>
-
-          {/* URI card */}
           <Card variant="flat" style={{ fontSize: '0.75rem' }}>
             <span className="text-xs text-muted" style={{ display: 'block', marginBottom: '0.25rem' }}>URI RDF</span>
             <code style={{

@@ -11,14 +11,8 @@ import Vocabularies from './pages/Vocabularies';
 import Login from './pages/Login';
 import AdminDashboard from './pages/admin/Dashboard';
 import ShaclReport from './pages/admin/ShaclReport';
-
-/**
- * Route protégée : redirige vers /login si pas authentifié
- * ou si le rôle requis ne correspond pas.
- */
 function ProtectedRoute({ children, requiredRole }) {
   const { user } = useAuth();
-
   if (!user) {
     return <Navigate to="/login" replace />;
   }
@@ -27,11 +21,9 @@ function ProtectedRoute({ children, requiredRole }) {
   }
   return children;
 }
-
 function AppRoutes() {
   return (
     <Routes>
-      {/* Public routes */}
       <Route path="/" element={<PageLayout><Home /></PageLayout>} />
       <Route path="/login" element={<Login />} />
       <Route path="/offres" element={<PageLayout><OfferSearch /></PageLayout>} />
@@ -39,8 +31,6 @@ function AppRoutes() {
       <Route path="/etudiants/:id" element={<PageLayout><StudentProfile /></PageLayout>} />
       <Route path="/sparql" element={<PageLayout><SparqlExplorer /></PageLayout>} />
       <Route path="/vocabulaires" element={<PageLayout><Vocabularies /></PageLayout>} />
-
-      {/* Admin routes */}
       <Route path="/admin" element={
         <ProtectedRoute requiredRole="ADMIN">
           <PageLayout><AdminDashboard /></PageLayout>
@@ -51,13 +41,10 @@ function AppRoutes() {
           <PageLayout><ShaclReport /></PageLayout>
         </ProtectedRoute>
       } />
-
-      {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
-
 export default function App() {
   return (
     <AuthProvider>

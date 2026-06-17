@@ -1,9 +1,4 @@
 import React from 'react';
-
-/**
- * Card de statistique pour la page d'accueil.
- * Affiche une icône, une valeur numérique et un label.
- */
 export default function StatCard({ icon, value, label, className = '' }) {
   return (
     <div className={`stat-card ${className}`}>

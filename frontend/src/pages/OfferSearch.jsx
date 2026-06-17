@@ -8,13 +8,6 @@ import Button from '../components/ui/Button';
 import Loader from '../components/ui/Loader';
 import Pagination from '../components/ui/Pagination';
 import offersService from '../services/offersService';
-
-/**
- * Page de recherche d'offres de stage.
- * Barre de recherche + filtres (compétence, ville, programme, entreprise) + cards résultats.
- */
-
-// Données de démo pour itérer sans backend
 const DEMO_OFFERS = [
   {
     id: 'offer-001',
@@ -89,14 +82,12 @@ const DEMO_OFFERS = [
     program: 'Supply Chain',
   },
 ];
-
 const DEMO_FILTERS = {
   skills: ['Python', 'React', 'Docker', 'Terraform', 'SQL', 'PyTorch', 'Kubernetes', 'Cybersécurité', 'Node.js', 'Power BI'],
   cities: ['Casablanca', 'Rabat', 'Tanger', 'Marrakech', 'Fès'],
   companies: ['TechSecure SA', 'CloudFirst', 'DataMaroc', 'WebAgency', 'AILab Maroc', 'ConsultPro'],
   programs: ['Genie Logiciel', 'Cybersecurite', 'Genie de la Data', 'Supply Chain'],
 };
-
 export default function OfferSearch() {
   const [offers, setOffers] = useState([]);
   const [filters, setFilters] = useState(DEMO_FILTERS);
@@ -108,11 +99,9 @@ export default function OfferSearch() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilters, setShowFilters] = useState(false);
   const pageSize = 6;
-
   useEffect(() => {
     fetchOffers();
   }, [selectedSkill, selectedCity, selectedProgram, currentPage]);
-
   async function fetchOffers() {
     setLoading(true);
     try {
@@ -126,7 +115,6 @@ export default function OfferSearch() {
       setOffers(data.items || data);
       if (data.filters) setFilters(data.filters);
     } catch (err) {
-      // Mode démo — filtre les données locales
       let filtered = [...DEMO_OFFERS];
       if (selectedSkill) {
         filtered = filtered.filter(o => o.skills.some(s => s.toLowerCase().includes(selectedSkill.toLowerCase())));
@@ -142,8 +130,6 @@ export default function OfferSearch() {
       setLoading(false);
     }
   }
-
-  // Filtrage par texte (recherche libre)
   const displayedOffers = searchTerm
     ? offers.filter(o =>
         o.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -151,19 +137,14 @@ export default function OfferSearch() {
         o.skills.some(s => s.toLowerCase().includes(searchTerm.toLowerCase()))
       )
     : offers;
-
   const totalPages = Math.ceil(displayedOffers.length / pageSize);
-
   return (
     <div>
-      {/* Page header */}
       <div className="page-header container">
         <h1>Offres de stage</h1>
         <p>Recherchez des offres par compétences, ville ou programme. Les résultats sont générés via SPARQL.</p>
       </div>
-
       <div className="container" style={{ paddingBottom: '3rem' }}>
-        {/* Search + Filter toggle */}
         <div className="flex items-center gap-2" style={{ marginBottom: '1.5rem' }}>
           <div style={{ flex: 1 }}>
             <SearchBar
@@ -180,12 +161,9 @@ export default function OfferSearch() {
             Filtres
           </Button>
         </div>
-
-        {/* Filters panel */}
         {showFilters && (
           <div className="card-flat" style={{ marginBottom: '1.5rem', padding: '1.25rem' }}>
             <div className="grid grid-3" style={{ gap: '1rem' }}>
-              {/* Skill filter */}
               <div className="form-group">
                 <label>Compétence</label>
                 <select
@@ -198,8 +176,6 @@ export default function OfferSearch() {
                   {filters.skills.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
               </div>
-
-              {/* City filter */}
               <div className="form-group">
                 <label>Ville</label>
                 <select
@@ -212,8 +188,6 @@ export default function OfferSearch() {
                   {filters.cities.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
               </div>
-
-              {/* Program filter */}
               <div className="form-group">
                 <label>Programme / Filière</label>
                 <select
@@ -227,8 +201,6 @@ export default function OfferSearch() {
                 </select>
               </div>
             </div>
-
-            {/* Active filters */}
             {(selectedSkill || selectedCity || selectedProgram) && (
               <div className="flex items-center gap-1 flex-wrap" style={{ marginTop: '1rem' }}>
                 <span className="text-xs text-muted">Filtres actifs :</span>
@@ -248,13 +220,9 @@ export default function OfferSearch() {
             )}
           </div>
         )}
-
-        {/* Results count */}
         <p className="text-sm text-muted" style={{ marginBottom: '1rem' }}>
           {displayedOffers.length} offre{displayedOffers.length > 1 ? 's' : ''} trouvée{displayedOffers.length > 1 ? 's' : ''}
         </p>
-
-        {/* Results */}
         {loading ? (
           <Loader text="Recherche en cours..." />
         ) : displayedOffers.length === 0 ? (
@@ -270,7 +238,6 @@ export default function OfferSearch() {
             {displayedOffers.map((offer) => (
               <Link key={offer.id} to={`/offres/${offer.id}`} style={{ textDecoration: 'none' }}>
                 <Card className="flex flex-col" style={{ height: '100%' }}>
-                  {/* Header */}
                   <div className="flex items-center justify-between" style={{ marginBottom: '0.75rem' }}>
                     <Badge size="sm">{offer.level}</Badge>
                     <span className="pill pill-success" style={{ fontSize: '0.7rem' }}>
@@ -278,24 +245,16 @@ export default function OfferSearch() {
                       {offer.status}
                     </span>
                   </div>
-
-                  {/* Title */}
                   <h4 style={{ marginBottom: '0.35rem', color: 'var(--text)' }}>{offer.title}</h4>
-
-                  {/* Company + City */}
                   <div className="flex items-center gap-2 text-sm text-muted" style={{ marginBottom: '0.75rem' }}>
                     <span className="flex items-center gap-1"><FiBriefcase /> {offer.company}</span>
                     <span className="flex items-center gap-1"><FiMapPin /> {offer.city}</span>
                   </div>
-
-                  {/* Duration + Compensation */}
                   <div className="flex items-center gap-2 text-sm text-muted" style={{ marginBottom: '1rem' }}>
                     <span className="flex items-center gap-1"><FiClock /> {offer.duration} mois</span>
                     <span>•</span>
                     <span>{offer.compensation}</span>
                   </div>
-
-                  {/* Skills */}
                   <div className="flex flex-wrap gap-1" style={{ marginTop: 'auto' }}>
                     {(offer.skills || []).slice(0, 4).map((skill) => (
                       <Badge key={skill} size="sm">{skill}</Badge>
@@ -309,8 +268,6 @@ export default function OfferSearch() {
             ))}
           </div>
         )}
-
-        {/* Pagination */}
         {totalPages > 1 && (
           <Pagination
             currentPage={currentPage}

@@ -3,22 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/ui/Button';
 import { FiUser, FiBriefcase, FiShield, FiArrowRight, FiBookOpen } from 'react-icons/fi';
-
-/**
- * Page de connexion split-screen avec sélection de rôle.
- * Panneau gauche : showcase dégradé bleu
- * Panneau droit : formulaire + sélecteur de rôle (Student / Enterprise / Admin)
- */
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
-
   const [selectedRole, setSelectedRole] = useState('STUDENT');
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
   const roles = [
     {
       value: 'STUDENT',
@@ -42,18 +34,14 @@ export default function Login() {
       placeholder: 'Identifiant administrateur',
     },
   ];
-
   const currentRole = roles.find(r => r.value === selectedRole);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
-
     try {
       const result = await login(identifier, password, selectedRole);
       if (result.success) {
-        // Rediriger selon le rôle
         if (selectedRole === 'ADMIN') {
           navigate('/admin');
         } else if (selectedRole === 'ENTERPRISE') {
@@ -70,13 +58,10 @@ export default function Login() {
       setLoading(false);
     }
   };
-
   return (
     <div className="login-split">
-      {/* ═══ Panneau gauche : Showcase bleu ═══ */}
       <div className="login-showcase">
         <div style={{ maxWidth: '420px' }}>
-          {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '3rem' }}>
             <div style={{
               width: 44,
@@ -102,19 +87,15 @@ export default function Login() {
               Gradify
             </span>
           </div>
-
           <h1 style={{ fontSize: '2.25rem', lineHeight: 1.15, marginBottom: '1.25rem', letterSpacing: '-0.05em' }}>
             Plateforme de
             <br />
             <span style={{ opacity: 0.9 }}>Données Liées</span>
           </h1>
-
           <p style={{ fontSize: '1.05rem', lineHeight: 1.7, opacity: 0.85, marginBottom: '2.5rem' }}>
             Explorez le Knowledge Graph qui connecte étudiants, compétences
             et offres de stage grâce aux technologies du Web Sémantique.
           </p>
-
-          {/* Features list */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {[
               'Matching intelligent par compétences SKOS',
@@ -139,8 +120,6 @@ export default function Login() {
               </div>
             ))}
           </div>
-
-          {/* Decorative element */}
           <div style={{
             marginTop: '3rem',
             padding: '1rem 1.25rem',
@@ -160,16 +139,12 @@ export default function Login() {
           </div>
         </div>
       </div>
-
-      {/* ═══ Panneau droit : Formulaire ═══ */}
       <div className="login-form-side">
         <div style={{ maxWidth: '420px', width: '100%', margin: '0 auto' }}>
           <h2 style={{ marginBottom: '0.5rem' }}>Connexion</h2>
           <p className="text-muted" style={{ marginBottom: '2rem' }}>
             Sélectionnez votre rôle et connectez-vous à la plateforme.
           </p>
-
-          {/* ─── Sélecteur de rôle ─── */}
           <div className="role-selector">
             {roles.map((role) => (
               <div
@@ -185,13 +160,9 @@ export default function Login() {
               </div>
             ))}
           </div>
-
-          {/* Description du rôle sélectionné */}
           <p className="text-sm text-muted" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
             {currentRole.description}
           </p>
-
-          {/* ─── Formulaire ─── */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <div className="form-group">
               <label htmlFor="identifier">Identifiant</label>
@@ -205,7 +176,6 @@ export default function Login() {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="password">Mot de passe</label>
               <input
@@ -218,8 +188,6 @@ export default function Login() {
                 required
               />
             </div>
-
-            {/* Message d'erreur */}
             {error && (
               <div style={{
                 padding: '0.75rem 1rem',
@@ -232,7 +200,6 @@ export default function Login() {
                 {error}
               </div>
             )}
-
             <Button
               type="submit"
               variant="primary"
@@ -244,8 +211,6 @@ export default function Login() {
               {loading ? 'Connexion en cours…' : `Se connecter en tant que ${currentRole.label}`}
             </Button>
           </form>
-
-          {/* Note info */}
           <div style={{
             marginTop: '2rem',
             padding: '1rem',
@@ -261,8 +226,6 @@ export default function Login() {
             <strong style={{ color: 'var(--text)' }}>Privacy :</strong> Les profils étudiants sont pseudonymisés.
             Aucune donnée personnelle identifiable n'est stockée ni affichée.
           </div>
-
-          {/* Retour à l'accueil */}
           <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
             <a href="/" style={{ fontSize: '0.85rem' }}>
               ← Retour à l'accueil

@@ -6,14 +6,6 @@ import StatusPill from '../../components/ui/StatusPill';
 import Badge from '../../components/ui/Badge';
 import Loader from '../../components/ui/Loader';
 import adminService from '../../services/adminService';
-
-/**
- * Page rapport SHACL détaillé.
- * Affiche chaque shape avec son statut (conforme/warning/violation),
- * et le détail des violations si applicable.
- */
-
-// Données de démo basées sur shapes.ttl du repo
 const DEMO_SHAPES = [
   {
     name: 'Étudiant — champs obligatoires',
@@ -106,39 +98,31 @@ const DEMO_SHAPES = [
     ],
   },
 ];
-
 export default function ShaclReport() {
   const [shapes, setShapes] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     fetchReport();
   }, []);
-
   async function fetchReport() {
     setLoading(true);
     try {
       const data = await adminService.getShaclReport();
       setShapes(data.shapes || data);
     } catch (err) {
-      // Mode démo
       setShapes(DEMO_SHAPES);
     } finally {
       setLoading(false);
     }
   }
-
   if (loading) {
     return <Loader text="Chargement du rapport SHACL..." />;
   }
-
   const successCount = shapes.filter(s => s.status === 'success').length;
   const warningCount = shapes.filter(s => s.status === 'warning').length;
   const errorCount = shapes.filter(s => s.status === 'error').length;
-
   return (
     <div>
-      {/* Page header */}
       <div className="page-header container">
         <Link to="/admin" className="flex items-center gap-1 text-sm" style={{ marginBottom: '1rem', color: 'var(--muted)' }}>
           <FiArrowLeft /> Retour au tableau de bord
@@ -151,9 +135,7 @@ export default function ShaclReport() {
           Validation des données RDF contre les 12 shapes SHACL définies dans <code>shapes.ttl</code>.
         </p>
       </div>
-
       <div className="container" style={{ paddingBottom: '3rem' }}>
-        {/* Résumé */}
         <div className="flex items-center gap-3" style={{ marginBottom: '2rem' }}>
           <StatusPill status="success">
             <FiCheckCircle style={{ marginRight: '0.2rem' }} />
@@ -173,8 +155,6 @@ export default function ShaclReport() {
           )}
           <span className="text-sm text-muted">— {shapes.length} shapes évaluées</span>
         </div>
-
-        {/* Liste des shapes */}
         <div className="flex flex-col gap-2">
           {shapes.map((shape, idx) => (
             <Card key={idx} variant="flat" style={{ padding: '1.25rem' }}>
@@ -194,12 +174,9 @@ export default function ShaclReport() {
                   {shape.status === 'success' ? 'Conforme' : shape.status === 'warning' ? 'À vérifier' : 'Violation'}
                 </StatusPill>
               </div>
-
               <p className="text-sm text-muted" style={{ marginTop: '0.5rem', marginLeft: '1.85rem' }}>
                 {shape.message}
               </p>
-
-              {/* Détails des violations */}
               {shape.details && shape.details.length > 0 && (
                 <div style={{
                   marginTop: '0.75rem',
@@ -234,8 +211,6 @@ export default function ShaclReport() {
             </Card>
           ))}
         </div>
-
-        {/* Informations supplémentaires */}
         <Card style={{ marginTop: '2rem' }}>
           <h4 style={{ marginBottom: '0.75rem' }}>À propos de la validation SHACL</h4>
           <p className="text-sm text-muted" style={{ lineHeight: 1.7 }}>

@@ -1,9 +1,4 @@
 import React from 'react';
-
-/**
- * Bouton réutilisable avec variantes : primary, secondary, ghost
- * Tailles : sm, md (défaut), lg
- */
 export default function Button({
   children,
   variant = 'primary',
@@ -17,7 +12,6 @@ export default function Button({
 }) {
   const sizeClass = size === 'sm' ? 'btn-sm' : size === 'lg' ? 'btn-lg' : '';
   const variantClass = `btn-${variant}`;
-
   return (
     <button
       type={type}

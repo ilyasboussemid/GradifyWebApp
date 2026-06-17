@@ -9,14 +9,6 @@ import Loader from '../components/ui/Loader';
 import StatusPill from '../components/ui/StatusPill';
 import offersService from '../services/offersService';
 import matchingService from '../services/matchingService';
-
-/**
- * Page de détail d'une offre de stage.
- * Affiche : entreprise, compétences requises (badges), description,
- * bouton "voir les étudiants compatibles" qui déclenche le matching.
- */
-
-// Données démo
 const DEMO_OFFER = {
   id: 'offer-001',
   title: 'Pentesteur Junior',
@@ -40,14 +32,12 @@ const DEMO_OFFER = {
     { name: 'Cryptographie', category: 'Cybersécurité' },
   ],
 };
-
 const DEMO_MATCHING_STUDENTS = [
   { id: 'student-0224012b0526', score: 5, maxScore: 6, program: 'Cybersecurite', level: '3A' },
   { id: 'student-8a42f1c9d3e7', score: 4, maxScore: 6, program: 'Cybersecurite', level: '3A' },
   { id: 'student-1589b5f85adc', score: 3, maxScore: 6, program: 'Genie Logiciel', level: '2A' },
   { id: 'student-03ceaa3d0094', score: 2, maxScore: 6, program: 'Genie de la Data', level: '3A' },
 ];
-
 export default function OfferDetail() {
   const { id } = useParams();
   const [offer, setOffer] = useState(null);
@@ -55,24 +45,20 @@ export default function OfferDetail() {
   const [matchingStudents, setMatchingStudents] = useState([]);
   const [showMatching, setShowMatching] = useState(false);
   const [matchingLoading, setMatchingLoading] = useState(false);
-
   useEffect(() => {
     fetchOffer();
   }, [id]);
-
   async function fetchOffer() {
     setLoading(true);
     try {
       const data = await offersService.getById(id);
       setOffer(data);
     } catch (err) {
-      // Mode démo
       setOffer({ ...DEMO_OFFER, id });
     } finally {
       setLoading(false);
     }
   }
-
   async function handleShowMatching() {
     setMatchingLoading(true);
     setShowMatching(true);
@@ -80,17 +66,14 @@ export default function OfferDetail() {
       const data = await matchingService.findStudentsForOffer(id);
       setMatchingStudents(data.items || data);
     } catch (err) {
-      // Mode démo
       setMatchingStudents(DEMO_MATCHING_STUDENTS);
     } finally {
       setMatchingLoading(false);
     }
   }
-
   if (loading) {
     return <Loader text="Chargement de l'offre..." />;
   }
-
   if (!offer) {
     return (
       <div className="container section">
@@ -102,24 +85,18 @@ export default function OfferDetail() {
       </div>
     );
   }
-
   const formatDate = (d) => {
     if (!d) return '—';
     try { return new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); }
     catch { return d; }
   };
-
   return (
     <div className="container" style={{ paddingTop: '2rem', paddingBottom: '3rem' }}>
-      {/* Back link */}
       <Link to="/offres" className="flex items-center gap-1 text-sm" style={{ marginBottom: '1.5rem', color: 'var(--muted)' }}>
         <FiArrowLeft /> Retour aux offres
       </Link>
-
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: '2rem', alignItems: 'start' }}>
-        {/* ═══ Colonne principale ═══ */}
         <div className="flex flex-col gap-3">
-          {/* Header */}
           <div>
             <div className="flex items-center gap-2" style={{ marginBottom: '0.75rem' }}>
               <StatusPill status={offer.status === 'Ouverte' ? 'success' : 'error'}>
@@ -128,25 +105,19 @@ export default function OfferDetail() {
               <Badge>{offer.level}</Badge>
               <Badge>{offer.targetPrograms}</Badge>
             </div>
-
             <h1 style={{ marginBottom: '0.5rem' }}>{offer.title}</h1>
-
             <div className="flex items-center gap-3 text-muted">
               <span className="flex items-center gap-1"><FiBriefcase /> {offer.company}</span>
               <span className="flex items-center gap-1"><FiMapPin /> {offer.city}</span>
               <span className="flex items-center gap-1"><FiClock /> {offer.duration} mois</span>
             </div>
           </div>
-
-          {/* Description */}
           <Card variant="flat">
             <h4 style={{ marginBottom: '0.75rem' }}>Description</h4>
             <p style={{ lineHeight: 1.7, color: 'var(--muted)' }}>
               {offer.description || "Pas de description disponible pour cette offre."}
             </p>
           </Card>
-
-          {/* Compétences requises */}
           <Card variant="flat">
             <h4 style={{ marginBottom: '1rem' }}>Compétences requises</h4>
             <div className="flex flex-wrap gap-1">
@@ -179,8 +150,6 @@ export default function OfferDetail() {
               </div>
             )}
           </Card>
-
-          {/* Matching section */}
           <Card variant="flat">
             <div className="flex items-center justify-between" style={{ marginBottom: '1rem' }}>
               <h4>Étudiants compatibles</h4>
@@ -190,7 +159,6 @@ export default function OfferDetail() {
                 </Button>
               )}
             </div>
-
             {showMatching && (
               matchingLoading ? (
                 <Loader text="Calcul du matching..." />
@@ -229,10 +197,7 @@ export default function OfferDetail() {
             )}
           </Card>
         </div>
-
-        {/* ═══ Sidebar ═══ */}
         <div className="flex flex-col gap-2" style={{ position: 'sticky', top: '5rem' }}>
-          {/* Info card */}
           <Card>
             <h4 style={{ marginBottom: '1rem' }}>Informations</h4>
             <div className="flex flex-col gap-2">
@@ -262,7 +227,6 @@ export default function OfferDetail() {
                 <span className="text-sm text-muted">Rémunération</span>
                 <span className="text-sm" style={{ fontWeight: 600 }}>{offer.compensation}</span>
               </div>
-
               <div style={{ borderTop: '1px solid var(--border)', margin: '0.5rem 0', paddingTop: '0.75rem' }}>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted">Début</span>
@@ -275,8 +239,6 @@ export default function OfferDetail() {
               </div>
             </div>
           </Card>
-
-          {/* URI card */}
           <Card variant="flat" style={{ fontSize: '0.75rem' }}>
             <span className="text-xs text-muted" style={{ display: 'block', marginBottom: '0.25rem' }}>URI RDF</span>
             <code style={{

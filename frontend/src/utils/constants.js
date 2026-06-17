@@ -1,9 +1,4 @@
-/**
- * Templates SPARQL prédéfinis pour l'explorateur de requêtes.
- * 15 SELECT + 3 CONSTRUCT conformes au cahier des charges.
- */
 export const SPARQL_TEMPLATES = [
-  // ═══════ SELECT QUERIES ═══════
   {
     id: 'Q1',
     name: 'Liste des étudiants',
@@ -264,8 +259,6 @@ WHERE {
 }
 ORDER BY ?categorie ?competence`,
   },
-
-  // ═══════ CONSTRUCT QUERIES ═══════
   {
     id: 'C1',
     name: 'CONSTRUCT — Graphe profil étudiant',
@@ -348,10 +341,6 @@ WHERE {
 LIMIT 200`,
   },
 ];
-
-/**
- * Préfixes SPARQL standards utilisés dans le projet
- */
 export const SPARQL_PREFIXES = `PREFIX lod:     <https://data.lod-school.ma/ontology#>
 PREFIX base:    <https://data.lod-school.ma/id/>
 PREFIX schema:  <https://schema.org/>
@@ -360,19 +349,11 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 `;
-
-/**
- * Rôles utilisateur
- */
 export const ROLES = {
   STUDENT: 'STUDENT',
   ENTERPRISE: 'ENTERPRISE',
   ADMIN: 'ADMIN',
 };
-
-/**
- * Configuration export formats
- */
 export const EXPORT_FORMATS = {
   CSV: 'csv',
   JSON_LD: 'json-ld',

@@ -2,16 +2,9 @@ import React from 'react';
 import { FiExternalLink, FiBook, FiLayers, FiDatabase, FiPlus } from 'react-icons/fi';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
-
-/**
- * Page Vocabulaires & Documentation.
- * Explique les vocabulaires utilisés (schema.org, SKOS, FOAF, dcterms),
- * les conventions d'URI, et un guide d'ajout de nouvelles données.
- */
 export default function Vocabularies() {
   return (
     <div>
-      {/* Page header */}
       <div className="page-header container">
         <h1>Vocabulaires & Documentation</h1>
         <p>
@@ -19,17 +12,13 @@ export default function Vocabularies() {
           et guide d'intégration de nouvelles données.
         </p>
       </div>
-
       <div className="container" style={{ paddingBottom: '3rem' }}>
-        {/* ═══════════════════ VOCABULAIRES ═══════════════════ */}
         <section style={{ marginBottom: '3rem' }}>
           <div className="flex items-center gap-2" style={{ marginBottom: '1.5rem' }}>
             <FiBook style={{ color: 'var(--accent)', fontSize: '1.25rem' }} />
             <h2 style={{ fontSize: '1.5rem' }}>Vocabulaires utilisés</h2>
           </div>
-
           <div className="grid grid-2" style={{ gap: '1.5rem' }}>
-            {/* Schema.org */}
             <Card>
               <div className="flex items-center gap-2" style={{ marginBottom: '0.75rem' }}>
                 <Badge>schema:</Badge>
@@ -61,8 +50,6 @@ export default function Vocabularies() {
                 <FiExternalLink /> schema.org
               </a>
             </Card>
-
-            {/* SKOS */}
             <Card>
               <div className="flex items-center gap-2" style={{ marginBottom: '0.75rem' }}>
                 <Badge>skos:</Badge>
@@ -94,8 +81,6 @@ export default function Vocabularies() {
                 <FiExternalLink /> W3C SKOS
               </a>
             </Card>
-
-            {/* Dublin Core */}
             <Card>
               <div className="flex items-center gap-2" style={{ marginBottom: '0.75rem' }}>
                 <Badge>dcterms:</Badge>
@@ -119,8 +104,6 @@ export default function Vocabularies() {
                 <FiExternalLink /> Dublin Core
               </a>
             </Card>
-
-            {/* FOAF */}
             <Card>
               <div className="flex items-center gap-2" style={{ marginBottom: '0.75rem' }}>
                 <Badge>foaf:</Badge>
@@ -146,21 +129,17 @@ export default function Vocabularies() {
             </Card>
           </div>
         </section>
-
-        {/* ═══════════════════ ONTOLOGIE LOCALE ═══════════════════ */}
         <section style={{ marginBottom: '3rem' }}>
           <div className="flex items-center gap-2" style={{ marginBottom: '1.5rem' }}>
             <FiLayers style={{ color: 'var(--accent)', fontSize: '1.25rem' }} />
             <h2 style={{ fontSize: '1.5rem' }}>Ontologie locale (lod:)</h2>
           </div>
-
           <Card variant="flat">
             <p className="text-sm text-muted" style={{ lineHeight: 1.7, marginBottom: '1.5rem' }}>
               L'ontologie locale <code style={{ background: 'var(--accent-light)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>lod:</code> étend
               les vocabulaires standards pour modéliser les concepts spécifiques au domaine.
               Namespace : <strong>https://data.lod-school.ma/ontology#</strong>
             </p>
-
             <div className="table-container">
               <table className="table">
                 <thead>
@@ -192,14 +171,11 @@ export default function Vocabularies() {
             </div>
           </Card>
         </section>
-
-        {/* ═══════════════════ CONVENTIONS D'URI ═══════════════════ */}
         <section style={{ marginBottom: '3rem' }}>
           <div className="flex items-center gap-2" style={{ marginBottom: '1.5rem' }}>
             <FiDatabase style={{ color: 'var(--accent)', fontSize: '1.25rem' }} />
             <h2 style={{ fontSize: '1.5rem' }}>Conventions d'URI</h2>
           </div>
-
           <Card variant="flat">
             <p className="text-sm text-muted" style={{ lineHeight: 1.7, marginBottom: '1.5rem' }}>
               Toutes les URIs suivent un pattern stable et prédictible basé sur le namespace
@@ -207,7 +183,6 @@ export default function Vocabularies() {
                 https://data.lod-school.ma/id/
               </code>
             </p>
-
             <div className="table-container">
               <table className="table">
                 <thead>
@@ -256,7 +231,6 @@ export default function Vocabularies() {
                 </tbody>
               </table>
             </div>
-
             <div style={{
               marginTop: '1.5rem',
               padding: '1rem',
@@ -271,16 +245,12 @@ export default function Vocabularies() {
             </div>
           </Card>
         </section>
-
-        {/* ═══════════════════ GUIDE D'AJOUT DE DONNÉES ═══════════════════ */}
         <section>
           <div className="flex items-center gap-2" style={{ marginBottom: '1.5rem' }}>
             <FiPlus style={{ color: 'var(--accent)', fontSize: '1.25rem' }} />
             <h2 style={{ fontSize: '1.5rem' }}>Guide d'ajout de nouvelles données</h2>
           </div>
-
           <div className="grid grid-2" style={{ gap: '1.5rem' }}>
-            {/* Étape 1 */}
             <Card variant="flat">
               <Badge style={{ marginBottom: '0.75rem' }}>Étape 1</Badge>
               <h4 style={{ marginBottom: '0.5rem', fontSize: '1rem' }}>Préparer les données brutes</h4>
@@ -301,8 +271,6 @@ id,title,company_id,city,duration,...
 offer-050,Data Engineer,company-003,Rabat,4,...`}
               </pre>
             </Card>
-
-            {/* Étape 2 */}
             <Card variant="flat">
               <Badge style={{ marginBottom: '0.75rem' }}>Étape 2</Badge>
               <h4 style={{ marginBottom: '0.5rem', fontSize: '1rem' }}>Convertir en RDF (Turtle)</h4>
@@ -326,8 +294,6 @@ offer-050,Data Engineer,company-003,Rabat,4,...`}
     lod:durationMonths 4 .`}
               </pre>
             </Card>
-
-            {/* Étape 3 */}
             <Card variant="flat">
               <Badge style={{ marginBottom: '0.75rem' }}>Étape 3</Badge>
               <h4 style={{ marginBottom: '0.5rem', fontSize: '1rem' }}>Valider avec SHACL</h4>
@@ -348,8 +314,6 @@ offer-050,Data Engineer,company-003,Rabat,4,...`}
 # → Liste des violations si applicable`}
               </pre>
             </Card>
-
-            {/* Étape 4 */}
             <Card variant="flat">
               <Badge style={{ marginBottom: '0.75rem' }}>Étape 4</Badge>
               <h4 style={{ marginBottom: '0.5rem', fontSize: '1rem' }}>Charger dans le Triple Store</h4>
@@ -373,8 +337,6 @@ curl -X POST \\
               </pre>
             </Card>
           </div>
-
-          {/* Liens externes */}
           <Card style={{ marginTop: '1.5rem' }}>
             <h4 style={{ marginBottom: '1rem' }}>Liens externes optionnels (owl:sameAs)</h4>
             <p className="text-sm text-muted" style={{ lineHeight: 1.7, marginBottom: '1rem' }}>

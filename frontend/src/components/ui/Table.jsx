@@ -1,10 +1,4 @@
 import React from 'react';
-
-/**
- * Table pour les résultats SPARQL.
- * Lignes zébrées, en-têtes uppercase discrètes.
- * Supporte la pagination via le composant Pagination.
- */
 export default function Table({ columns, data, emptyMessage = 'Aucun résultat', className = '' }) {
   if (!data || data.length === 0) {
     return (
@@ -14,7 +8,6 @@ export default function Table({ columns, data, emptyMessage = 'Aucun résultat',
       </div>
     );
   }
-
   return (
     <div className={`table-container ${className}`}>
       <table className="table">

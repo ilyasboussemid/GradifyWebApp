@@ -1,21 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
-/**
- * AuthContext — Gestion de l'authentification avec rôles
- * Rôles supportés : STUDENT, ENTERPRISE, ADMIN
- */
 const AuthContext = createContext(null);
-
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
     const stored = localStorage.getItem('gradify_user');
     return stored ? JSON.parse(stored) : null;
   });
-
   const [token, setToken] = useState(() => {
     return localStorage.getItem('gradify_token') || null;
   });
-
   useEffect(() => {
     if (user) {
       localStorage.setItem('gradify_user', JSON.stringify(user));
@@ -23,7 +15,6 @@ export function AuthProvider({ children }) {
       localStorage.removeItem('gradify_user');
     }
   }, [user]);
-
   useEffect(() => {
     if (token) {
       localStorage.setItem('gradify_token', token);
@@ -31,13 +22,6 @@ export function AuthProvider({ children }) {
       localStorage.removeItem('gradify_token');
     }
   }, [token]);
-
-  /**
-   * Login — appelle le backend auth service
-   * @param {string} identifier - ID utilisateur (email pour entreprise, ID pour étudiant)
-   * @param {string} password
-   * @param {string} role - STUDENT | ENTERPRISE | ADMIN
-   */
   const login = async (identifier, password, role) => {
     try {
       const response = await fetch('/api/auth/login', {
@@ -45,20 +29,16 @@ export function AuthProvider({ children }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ identifier, password, role }),
       });
-
       if (!response.ok) {
         const err = await response.json().catch(() => ({}));
         throw new Error(err.message || 'Identifiants invalides');
       }
-
       const data = await response.json();
       setUser({ identifier: data.identifier, role: data.role, name: data.name });
       setToken(data.token);
       return { success: true };
     } catch (error) {
-      // Fallback mode démo si le backend n'est pas disponible
       if (error.message === 'Failed to fetch' || error.name === 'TypeError') {
-        // Mode démo — accepte n'importe quel login
         const demoUser = {
           identifier,
           role,
@@ -73,18 +53,15 @@ export function AuthProvider({ children }) {
       return { success: false, error: error.message };
     }
   };
-
   const logout = () => {
     setUser(null);
     setToken(null);
     localStorage.removeItem('gradify_user');
     localStorage.removeItem('gradify_token');
   };
-
   const isAdmin = () => user?.role === 'ADMIN';
   const isEnterprise = () => user?.role === 'ENTERPRISE';
   const isStudent = () => user?.role === 'STUDENT';
-
   return (
     <AuthContext.Provider value={{
       user,
@@ -99,7 +76,6 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-
 export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) {
@@ -107,5 +83,4 @@ export function useAuth() {
   }
   return context;
 }
-
 export default AuthContext;

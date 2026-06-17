@@ -1,9 +1,5 @@
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
-
-/**
- * Barre de recherche avec icône et placeholder.
- */
 export default function SearchBar({
   value,
   onChange,
@@ -16,7 +12,6 @@ export default function SearchBar({
       onSubmit(value);
     }
   };
-
   return (
     <div className={`flex items-center ${className}`} style={{ position: 'relative' }}>
       <FiSearch

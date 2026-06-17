@@ -1,11 +1,6 @@
 import React from 'react';
 import Button from '../ui/Button';
 import { FiPlay, FiDownload } from 'react-icons/fi';
-
-/**
- * Éditeur de requêtes SPARQL avec bouton d'exécution.
- * Affiche les préfixes automatiques.
- */
 export default function QueryEditor({
   query,
   onQueryChange,
@@ -34,7 +29,6 @@ export default function QueryEditor({
           ))}
         </div>
       </div>
-
       <textarea
         className="textarea"
         value={query}
@@ -42,7 +36,6 @@ export default function QueryEditor({
         rows={12}
         spellCheck={false}
       />
-
       <div className="flex justify-between items-center">
         <p className="text-xs text-muted">
           Les préfixes standard (lod:, schema:, skos:, dcterms:, rdfs:) sont ajoutés automatiquement.
