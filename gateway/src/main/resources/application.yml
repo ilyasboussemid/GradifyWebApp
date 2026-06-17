@@ -1,0 +1,76 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gradify-gateway
+  cloud:
+    gateway:
+      # ═══ Routes vers les microservices ═══
+      routes:
+        # Auth Service
+        - id: auth-service
+          uri: http://${AUTH_SERVICE_HOST:localhost}:8085
+          predicates:
+            - Path=/api/auth/**
+
+        # Offer Service
+        - id: offer-service
+          uri: http://${OFFER_SERVICE_HOST:localhost}:8081
+          predicates:
+            - Path=/api/offers/**
+
+        # Student Service
+        - id: student-service
+          uri: http://${STUDENT_SERVICE_HOST:localhost}:8082
+          predicates:
+            - Path=/api/students/**
+
+        # Matching Service
+        - id: matching-service
+          uri: http://${MATCHING_SERVICE_HOST:localhost}:8083
+          predicates:
+            - Path=/api/matching/**
+
+        # SPARQL Explorer Service
+        - id: sparql-service
+          uri: http://${SPARQL_SERVICE_HOST:localhost}:8084
+          predicates:
+            - Path=/api/sparql/**
+
+        # Admin endpoints (auth-admin-service, protected by JWT filter)
+        - id: admin-service
+          uri: http://${AUTH_SERVICE_HOST:localhost}:8085
+          predicates:
+            - Path=/api/admin/**
+          filters:
+            - JwtAuth
+
+      # CORS global
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"
+              - "http://localhost:80"
+              - "http://localhost"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:gradify-secret-key-change-in-production-2024}
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

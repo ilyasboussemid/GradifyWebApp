@@ -1,15 +1,130 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# Gradify — Docker Compose (Microservices Architecture)
+# ═══════════════════════════════════════════════════════════════════════════════
+# Usage:
+#   docker-compose up -d           # Lancer tous les services
+#   docker-compose up -d fuseki    # Lancer seulement Fuseki
+#   docker-compose logs -f gateway # Suivre les logs du gateway
+# ═══════════════════════════════════════════════════════════════════════════════
+
 services:
+  # ─── Triple Store (Fuseki) ───────────────────────────────────────────────────
   fuseki:
     image: stain/jena-fuseki
-    container_name: lod-fuseki
+    container_name: gradify-fuseki
     ports:
       - "3030:3030"
     environment:
-      - ADMIN_PASSWORD=admin123
+      - ADMIN_PASSWORD=${FUSEKI_ADMIN_PASSWORD:-admin123}
       - FUSEKI_DATASET_1=lod
     volumes:
       - ./data/ttl:/staging
       - fuseki-data:/fuseki
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3030/$/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── Frontend (React + Nginx) ───────────────────────────────────────────────
+  frontend:
+    build: ./frontend
+    container_name: gradify-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      gateway:
+        condition: service_started
+    restart: unless-stopped
+
+  # ─── API Gateway (Spring Cloud Gateway) ────────────────────────────────────
+  gateway:
+    build: ./gateway
+    container_name: gradify-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - JWT_SECRET=${JWT_SECRET:-gradify-secret-key-change-in-production-2024}
+      - AUTH_SERVICE_HOST=auth-admin-service
+      - OFFER_SERVICE_HOST=offer-service
+      - STUDENT_SERVICE_HOST=student-service
+      - MATCHING_SERVICE_HOST=matching-service
+      - SPARQL_SERVICE_HOST=sparql-explorer-service
+    depends_on:
+      - offer-service
+      - student-service
+      - matching-service
+      - sparql-explorer-service
+      - auth-admin-service
+    restart: unless-stopped
+
+  # ─── Auth & Admin Service ──────────────────────────────────────────────────
+  auth-admin-service:
+    build: ./auth-admin-service
+    container_name: gradify-auth
+    ports:
+      - "8085:8085"
+    environment:
+      - JWT_SECRET=${JWT_SECRET:-gradify-secret-key-change-in-production-2024}
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+      - SPARQL_ENDPOINT=${SPARQL_ENDPOINT_URL:-http://fuseki:3030/lod/sparql}
+    depends_on:
+      fuseki:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ─── Offer Service ─────────────────────────────────────────────────────────
+  offer-service:
+    build: ./offer-service
+    container_name: gradify-offers
+    ports:
+      - "8081:8081"
+    environment:
+      - SPARQL_ENDPOINT=${SPARQL_ENDPOINT_URL:-http://fuseki:3030/lod/sparql}
+    depends_on:
+      fuseki:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ─── Student Service ───────────────────────────────────────────────────────
+  student-service:
+    build: ./student-service
+    container_name: gradify-students
+    ports:
+      - "8082:8082"
+    environment:
+      - SPARQL_ENDPOINT=${SPARQL_ENDPOINT_URL:-http://fuseki:3030/lod/sparql}
+    depends_on:
+      fuseki:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ─── Matching Service ──────────────────────────────────────────────────────
+  matching-service:
+    build: ./matching-service
+    container_name: gradify-matching
+    ports:
+      - "8083:8083"
+    environment:
+      - SPARQL_ENDPOINT=${SPARQL_ENDPOINT_URL:-http://fuseki:3030/lod/sparql}
+    depends_on:
+      fuseki:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ─── SPARQL Explorer Service ───────────────────────────────────────────────
+  sparql-explorer-service:
+    build: ./sparql-explorer-service
+    container_name: gradify-sparql
+    ports:
+      - "8084:8084"
+    environment:
+      - SPARQL_ENDPOINT=${SPARQL_ENDPOINT_URL:-http://fuseki:3030/lod/sparql}
+    depends_on:
+      fuseki:
+        condition: service_healthy
     restart: unless-stopped
 
 volumes:

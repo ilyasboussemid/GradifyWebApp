@@ -1,0 +1,28 @@
+import React from 'react';
+
+/**
+ * Barre de progression pour le score de matching.
+ * Affiche un pourcentage à côté de la barre.
+ */
+export default function ProgressBar({ value = 0, max = 100, showLabel = true, className = '' }) {
+  const percentage = Math.min(100, Math.max(0, Math.round((value / max) * 100)));
+
+  return (
+    <div className={`flex items-center gap-2 ${className}`}>
+      <div className="progress-bar" style={{ flex: 1 }}>
+        <div className="progress-fill" style={{ width: `${percentage}%` }} />
+      </div>
+      {showLabel && (
+        <span style={{
+          fontSize: '0.8rem',
+          fontWeight: 600,
+          color: 'var(--accent)',
+          minWidth: '3rem',
+          textAlign: 'right',
+        }}>
+          {percentage}%
+        </span>
+      )}
+    </div>
+  );
+}
