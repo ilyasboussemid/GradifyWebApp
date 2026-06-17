@@ -1,0 +1,1143 @@
+@prefix base: <https://data.lod-school.ma/id/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lod: <https://data.lod-school.ma/ontology#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+base:offer-001 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-001" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-20f3bd11a056,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8e2848d04afe,
+        base:skill-94f1c7c0ec6d ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Casablanca."@fr ;
+    schema:jobEndDate "2026-02-14"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-20"^^xsd:date ;
+    schema:title "Pentesteur Junior"@fr .
+
+base:offer-002 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-002" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-0ab89cabbdad,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-a37d07fe3004,
+        base:skill-b37bda2ccfc5,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Genie de la Data"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-07-27"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-06-01"^^xsd:date ;
+    schema:title "Ingenieur DevOps"@fr .
+
+base:offer-003 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-003" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-002 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-1fc0c785332e,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8e2848d04afe,
+        base:skill-94d8a734ab66,
+        base:skill-94f1c7c0ec6d,
+        base:skill-b27ad06d123c ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Industrie."@fr ;
+    schema:jobEndDate "2025-07-25"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-05-30"^^xsd:date ;
+    schema:title "Pentesteur Junior"@fr .
+
+base:offer-004 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-004" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-011 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-4445d918dfcf,
+        base:skill-89dccd9f7379,
+        base:skill-a7056a455639,
+        base:skill-b949c922b6ef,
+        base:skill-c0862201e27e,
+        base:skill-cc52d03280b7 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Casablanca."@fr ;
+    schema:jobEndDate "2025-04-21"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-01-27"^^xsd:date ;
+    schema:title "Developpeur Backend Python/Django"@fr .
+
+base:offer-005 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-005" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-005 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-8ff7b29c130d,
+        base:skill-a7056a455639,
+        base:skill-d58222c0b47f,
+        base:skill-e4a5f92fd340 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie de la Data | Data Science & Software Engineering"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Finance."@fr ;
+    schema:jobEndDate "2026-01-08"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-10-16"^^xsd:date ;
+    schema:title "Ingenieur Data Engineer"@fr .
+
+base:offer-006 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-006" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-3140d22d8cb3,
+        base:skill-32fd72a0e074,
+        base:skill-5ad7efb21006,
+        base:skill-6cab6d272b4d,
+        base:skill-a7056a455639,
+        base:skill-b1fa104b9bf0,
+        base:skill-d4347223667f ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Business Intelligence & Analytics | Genie de la Data"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2026-01-08"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-13"^^xsd:date ;
+    schema:title "Analyste Tableaux de bord"@fr .
+
+base:offer-007 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-007" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-07783d014345,
+        base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-bde483d06e32,
+        base:skill-cd590f6d28ae,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Informatique."@fr ;
+    schema:jobEndDate "2025-06-12"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-04-17"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-008 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-008" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-006 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-040228846ead,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-b1fa104b9bf0,
+        base:skill-b949c922b6ef,
+        base:skill-c44362bf3425,
+        base:skill-e6169e958b37 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Informatique."@fr ;
+    schema:jobEndDate "2025-11-18"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-29"^^xsd:date ;
+    schema:title "Developpeur Full Stack"@fr .
+
+base:offer-009 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-009" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-003 ;
+    lod:requiresSkill base:skill-05642da1523d,
+        base:skill-494a953d8b1c,
+        base:skill-94d8a734ab66,
+        base:skill-a7f6415749a3,
+        base:skill-c58f5de0911c ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Smart Supply Chain & Logistics"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-10-31"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-05-16"^^xsd:date ;
+    schema:title "Analyste Supply Chain"@fr .
+
+base:offer-010 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-010" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-009 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-353f838b4b39,
+        base:skill-8ff7b29c130d,
+        base:skill-a7056a455639,
+        base:skill-d58222c0b47f,
+        base:skill-e4a5f92fd340 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie de la Data | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Informatique."@fr ;
+    schema:jobEndDate "2025-03-06"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-02-06"^^xsd:date ;
+    schema:title "Ingenieur Data Engineer"@fr .
+
+base:offer-011 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-011" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-015 ;
+    lod:requiresSkill base:skill-0073e8c7fe96,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-625da44e4eaf,
+        base:skill-a7056a455639,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Rabat."@fr ;
+    schema:jobEndDate "2026-04-16"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-12-25"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-012 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-012" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-014 ;
+    lod:requiresSkill base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-5b11a40ce7ac,
+        base:skill-8c2574892063,
+        base:skill-e148d591f1e2 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-01-29"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-06"^^xsd:date ;
+    schema:title "Analyste Risque Financier"@fr .
+
+base:offer-013 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-013" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-009 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-26f2faf23e18,
+        base:skill-32fd72a0e074,
+        base:skill-3c26e7a5b744,
+        base:skill-625da44e4eaf,
+        base:skill-a37d07fe3004,
+        base:skill-c8d75cb07591,
+        base:skill-e6169e958b37 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA | Genie de la Data"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Informatique."@fr ;
+    schema:jobEndDate "2025-03-18"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-01-21"^^xsd:date ;
+    schema:title "Ingenieur MLOps"@fr .
+
+base:offer-014 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-014" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-016 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-49566270eff6,
+        base:skill-90cf7bd8432d,
+        base:skill-9316cd4d881e,
+        base:skill-9efab62721cf,
+        base:skill-c4e0ecf5b345,
+        base:skill-c8d75cb07591,
+        base:skill-e4a5f92fd340 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA | Data Science & Software Engineering"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Rabat."@fr ;
+    schema:jobEndDate "2025-11-21"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-08-29"^^xsd:date ;
+    schema:title "Ingenieur Machine Learning"@fr .
+
+base:offer-015 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-015" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-016 ;
+    lod:requiresSkill base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-625da44e4eaf,
+        base:skill-a7056a455639 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Rabat."@fr ;
+    schema:jobEndDate "2026-03-28"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-12-06"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-016 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-016" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-011 ;
+    lod:requiresSkill base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2026-01-10"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-26"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-017 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-017" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-007 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-32fd72a0e074,
+        base:skill-41a52587276c,
+        base:skill-5171ce3048d3,
+        base:skill-53ee99ac6e3c,
+        base:skill-cc52d03280b7,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-12-20"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-05"^^xsd:date ;
+    schema:title "Developpeur API & Microservices"@fr .
+
+base:offer-018 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-018" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-010 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-32fd72a0e074,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie de la Data | Genie Logiciel"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-04-15"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-24"^^xsd:date ;
+    schema:title "Ingenieur Cloud AWS"@fr .
+
+base:offer-019 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-019" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-010 ;
+    lod:requiresSkill base:skill-098bda83a6fa,
+        base:skill-18885f27b5af,
+        base:skill-274b0f34ea9f,
+        base:skill-598821f540fe,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8e2848d04afe,
+        base:skill-94f1c7c0ec6d ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-06-25"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-01-08"^^xsd:date ;
+    schema:title "Pentesteur Junior"@fr .
+
+base:offer-020 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-020" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-016 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-31e3cbd5c7bd,
+        base:skill-41a52587276c,
+        base:skill-625da44e4eaf,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-a7056a455639 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Logistique."@fr ;
+    schema:jobEndDate "2025-12-11"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-09-18"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-021 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-021" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-013 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-a37d07fe3004,
+        base:skill-d1e9567da9a8,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Genie de la Data"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Transport."@fr ;
+    schema:jobEndDate "2026-04-20"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-03"^^xsd:date ;
+    schema:title "Ingenieur DevOps"@fr .
+
+base:offer-022 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-022" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-001 ;
+    lod:requiresSkill base:skill-0ab89cabbdad,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-26f2faf23e18,
+        base:skill-41a52587276c,
+        base:skill-4828e60247c1,
+        base:skill-625da44e4eaf,
+        base:skill-a7056a455639 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Rabat."@fr ;
+    schema:jobEndDate "2025-11-17"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-06-02"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-023 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-023" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-015 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-3dfaa5639173,
+        base:skill-5b11a40ce7ac,
+        base:skill-8c2574892063,
+        base:skill-8cdf6dd5be3b,
+        base:skill-e148d591f1e2 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Rabat."@fr ;
+    schema:jobEndDate "2025-06-02"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-04-07"^^xsd:date ;
+    schema:title "Analyste Risque Financier"@fr .
+
+base:offer-024 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-024" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-013 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-41a52587276c,
+        base:skill-553ea337c893,
+        base:skill-8c2574892063,
+        base:skill-b27ad06d123c,
+        base:skill-b949c922b6ef,
+        base:skill-cc9e70625970,
+        base:skill-ed0504f70a48 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie Logiciel"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2026-01-31"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-06"^^xsd:date ;
+    schema:title "Developpeur Frontend React"@fr .
+
+base:offer-025 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-025" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-41a52587276c,
+        base:skill-a37d07fe3004,
+        base:skill-cc52d03280b7,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Finance."@fr ;
+    schema:jobEndDate "2025-09-19"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-08-22"^^xsd:date ;
+    schema:title "Developpeur API & Microservices"@fr .
+
+base:offer-026 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-026" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-011 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-5ad7efb21006,
+        base:skill-a7056a455639,
+        base:skill-b1fa104b9bf0,
+        base:skill-d4347223667f ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Business Intelligence & Analytics | Genie de la Data"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur FinTech."@fr ;
+    schema:jobEndDate "2026-04-12"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-21"^^xsd:date ;
+    schema:title "Analyste Tableaux de bord"@fr .
+
+base:offer-027 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-027" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-018 ;
+    lod:requiresSkill base:skill-5ad7efb21006,
+        base:skill-6cab6d272b4d,
+        base:skill-a7056a455639,
+        base:skill-c58f5de0911c,
+        base:skill-d4347223667f ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Business Intelligence & Analytics | Genie de la Data"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Industrie."@fr ;
+    schema:jobEndDate "2025-12-11"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-11-13"^^xsd:date ;
+    schema:title "Data Analyst BI"@fr .
+
+base:offer-028 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-028" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-014 ;
+    lod:requiresSkill base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-b37bda2ccfc5,
+        base:skill-bde483d06e32,
+        base:skill-e148d591f1e2,
+        base:skill-ee27322554e4,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-12-19"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-21"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-029 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-029" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-010 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-90cf7bd8432d,
+        base:skill-b3782288b3dd,
+        base:skill-e86755d376aa ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2025-10-31"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-11"^^xsd:date ;
+    schema:title "Ingenieur NLP"@fr .
+
+base:offer-030 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-030" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-006 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-4445d918dfcf,
+        base:skill-5b11a40ce7ac,
+        base:skill-b949c922b6ef,
+        base:skill-c58f5de0911c,
+        base:skill-c8d75cb07591,
+        base:skill-cc52d03280b7 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Casablanca."@fr ;
+    schema:jobEndDate "2025-07-28"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-02-10"^^xsd:date ;
+    schema:title "Developpeur Backend Python/Django"@fr .
+
+base:offer-031 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-031" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-009 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-32fd72a0e074,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-538372d293e8,
+        base:skill-94f1c7c0ec6d,
+        base:skill-e6169e958b37,
+        base:skill-e86755d376aa ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie de la Data | Genie Logiciel"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Informatique."@fr ;
+    schema:jobEndDate "2025-06-08"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-05-11"^^xsd:date ;
+    schema:title "Ingenieur Cloud AWS"@fr .
+
+base:offer-032 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-032" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-019 ;
+    lod:requiresSkill base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-32fd72a0e074,
+        base:skill-41a52587276c,
+        base:skill-625da44e4eaf,
+        base:skill-a7056a455639,
+        base:skill-ec75f79040af ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Industrie."@fr ;
+    schema:jobEndDate "2026-03-16"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-11-24"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-033 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-033" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-05642da1523d,
+        base:skill-494a953d8b1c,
+        base:skill-5ad7efb21006,
+        base:skill-72ebd499f293,
+        base:skill-94d8a734ab66,
+        base:skill-c58f5de0911c ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Smart Supply Chain & Logistics"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Finance."@fr ;
+    schema:jobEndDate "2025-12-30"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-15"^^xsd:date ;
+    schema:title "Analyste Supply Chain"@fr .
+
+base:offer-034 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-034" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-009 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-18885f27b5af,
+        base:skill-1de78d79ea8e,
+        base:skill-3dfaa5639173,
+        base:skill-41a52587276c,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-b949c922b6ef,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Informatique."@fr ;
+    schema:jobEndDate "2025-11-14"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-10-17"^^xsd:date ;
+    schema:title "Developpeur Full Stack"@fr .
+
+base:offer-035 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-035" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-598821f540fe,
+        base:skill-9316cd4d881e,
+        base:skill-a7056a455639,
+        base:skill-c4e0ecf5b345 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA | Data Science & Software Engineering"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-02-08"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-14"^^xsd:date ;
+    schema:title "Data Scientist Junior"@fr .
+
+base:offer-036 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-036" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-019 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-6df2e91a0b30,
+        base:skill-90cf7bd8432d,
+        base:skill-9efab62721cf,
+        base:skill-b3782288b3dd ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Tanger."@fr ;
+    schema:jobEndDate "2025-04-06"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-03-09"^^xsd:date ;
+    schema:title "Ingenieur NLP"@fr .
+
+base:offer-037 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-037" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-018 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-0ab89cabbdad,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-90cf7bd8432d,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-b3782288b3dd ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Industrie."@fr ;
+    schema:jobEndDate "2026-03-16"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-09-29"^^xsd:date ;
+    schema:title "Ingenieur NLP"@fr .
+
+base:offer-038 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-038" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-32fd72a0e074,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-538372d293e8,
+        base:skill-e6169e958b37 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie de la Data | Genie Logiciel"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Casablanca."@fr ;
+    schema:jobEndDate "2025-04-05"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-02-08"^^xsd:date ;
+    schema:title "Ingenieur Cloud AWS"@fr .
+
+base:offer-039 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-039" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-001 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-538372d293e8,
+        base:skill-598821f540fe,
+        base:skill-6df2e91a0b30,
+        base:skill-91231ff9ab66,
+        base:skill-9316cd4d881e,
+        base:skill-a7056a455639,
+        base:skill-c4e0ecf5b345 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Télécoms."@fr ;
+    schema:jobEndDate "2025-10-30"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-10-02"^^xsd:date ;
+    schema:title "Data Scientist Junior"@fr .
+
+base:offer-040 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-040" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-05642da1523d,
+        base:skill-20f3bd11a056,
+        base:skill-494a953d8b1c,
+        base:skill-94d8a734ab66,
+        base:skill-c58f5de0911c,
+        base:skill-cc63137a281a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Smart Supply Chain & Logistics"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-09-27"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-08-30"^^xsd:date ;
+    schema:title "Analyste Supply Chain"@fr .
+
+base:offer-041 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-041" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-014 ;
+    lod:requiresSkill base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Energie."@fr ;
+    schema:jobEndDate "2025-04-10"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-03-13"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-042 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-042" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-008 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-49566270eff6,
+        base:skill-6df2e91a0b30,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8e2848d04afe,
+        base:skill-94f1c7c0ec6d,
+        base:skill-d58222c0b47f ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2025-07-01"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-03-11"^^xsd:date ;
+    schema:title "Pentesteur Junior"@fr .
+
+base:offer-043 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-043" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-014 ;
+    lod:requiresSkill base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-bde483d06e32,
+        base:skill-d4347223667f,
+        base:skill-e148d591f1e2,
+        base:skill-ef0f41c9727a,
+        base:skill-f1deb75fa21d ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Energie."@fr ;
+    schema:jobEndDate "2026-02-23"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-09-08"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-044 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-044" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-008 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-31c819b24cf3,
+        base:skill-90cf7bd8432d,
+        base:skill-b3782288b3dd,
+        base:skill-d1e9567da9a8 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Conseil IT."@fr ;
+    schema:jobEndDate "2025-05-15"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-02-20"^^xsd:date ;
+    schema:title "Ingenieur NLP"@fr .
+
+base:offer-045 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-045" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-003 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-a37d07fe3004,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Genie de la Data"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-05-12"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-25"^^xsd:date ;
+    schema:title "Ingenieur DevOps"@fr .
+
+base:offer-046 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-046" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-019 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-a37d07fe3004,
+        base:skill-cc63137a281a,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Genie de la Data"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Industrie."@fr ;
+    schema:jobEndDate "2025-07-23"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-02-05"^^xsd:date ;
+    schema:title "Ingenieur DevOps"@fr .
+
+base:offer-047 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-047" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-94f1c7c0ec6d,
+        base:skill-b949c922b6ef,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Informatique."@fr ;
+    schema:jobEndDate "2025-07-17"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-05-22"^^xsd:date ;
+    schema:title "Developpeur Full Stack"@fr .
+
+base:offer-048 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-048" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-005 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-b3782288b3dd,
+        base:skill-b949c922b6ef,
+        base:skill-e6169e958b37,
+        base:skill-ed0504f70a48 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Finance."@fr ;
+    schema:jobEndDate "2025-08-28"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-03"^^xsd:date ;
+    schema:title "Developpeur Full Stack"@fr .
+
+base:offer-049 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-049" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-017 ;
+    lod:requiresSkill base:skill-3dfaa5639173,
+        base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-9a4d10e69361,
+        base:skill-9efab62721cf,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Ben Guerir."@fr ;
+    schema:jobEndDate "2025-05-25"^^xsd:date ;
+    schema:jobLocation "Ben Guerir" ;
+    schema:jobStartDate "2025-02-02"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-050 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-050" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-3140d22d8cb3,
+        base:skill-5ad7efb21006,
+        base:skill-6cab6d272b4d,
+        base:skill-a7056a455639,
+        base:skill-a79bfb3e5086,
+        base:skill-d4347223667f ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Business Intelligence & Analytics | Genie de la Data"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-05-21"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-04"^^xsd:date ;
+    schema:title "Data Analyst BI"@fr .
+

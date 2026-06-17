@@ -1,0 +1,637 @@
+@prefix base: <https://data.lod-school.ma/id/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+base:skill-0073e8c7fe96 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Cryptographie"@fr .
+
+base:skill-009feb88ac14 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Data Warehouse"@fr .
+
+base:skill-01fad993ff61 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "React"@fr .
+
+base:skill-03312bee2e65 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "PyTorch"@fr .
+
+base:skill-040228846ead a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "C#"@fr .
+
+base:skill-05642da1523d a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "ERP"@fr .
+
+base:skill-05b073bd5e46 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Terraform"@fr .
+
+base:skill-07783d014345 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Risque financier"@fr .
+
+base:skill-098bda83a6fa a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Agile/Scrum"@fr .
+
+base:skill-0ab89cabbdad a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "PHP/Laravel"@fr .
+
+base:skill-1232362fd209 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Modélisation financière"@fr .
+
+base:skill-18885f27b5af a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Python"@fr .
+
+base:skill-1b817f9efc97 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Hugging Face"@fr .
+
+base:skill-1dbd59f661d6 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Snowflake"@fr .
+
+base:skill-1de78d79ea8e a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "OLAP"@fr .
+
+base:skill-1f4a4ded0bba a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Gestion de projet"@fr .
+
+base:skill-1fc0c785332e a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Node.js"@fr .
+
+base:skill-20f3bd11a056 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "NumPy"@fr .
+
+base:skill-26f2faf23e18 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SIEM"@fr .
+
+base:skill-274b0f34ea9f a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Vue.js"@fr .
+
+base:skill-2dd9eb7d9f0c a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "FastAPI"@fr .
+
+base:skill-3140d22d8cb3 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Azure"@fr .
+
+base:skill-31c819b24cf3 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Elasticsearch"@fr .
+
+base:skill-31e3cbd5c7bd a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "GCP"@fr .
+
+base:skill-32fd72a0e074 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "AWS"@fr .
+
+base:skill-353f838b4b39 a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Travail en équipe"@fr .
+
+base:skill-3981a2b9c1ef a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Communication"@fr .
+
+base:skill-39dd7cffe498 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "OWL"@fr .
+
+base:skill-3bc8408be5e7 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Pare-feu"@fr .
+
+base:skill-3c26e7a5b744 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "CI/CD"@fr .
+
+base:skill-3dfaa5639173 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Ontologie"@fr .
+
+base:skill-41a52587276c a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "REST API"@fr .
+
+base:skill-4445d918dfcf a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Django"@fr .
+
+base:skill-45314e97b0c2 a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Simulation"@fr .
+
+base:skill-47e4996e13cd a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "JSON-LD"@fr .
+
+base:skill-4828e60247c1 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Linux"@fr .
+
+base:skill-494a953d8b1c a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Optimisation logistique"@fr .
+
+base:skill-49566270eff6 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Bloomberg"@fr .
+
+base:skill-4f1b2483e777 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SHACL"@fr .
+
+base:skill-5171ce3048d3 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Turtle"@fr .
+
+base:skill-538372d293e8 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "FinTech"@fr .
+
+base:skill-53ee99ac6e3c a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Planification de la demande"@fr .
+
+base:skill-553ea337c893 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Wireshark"@fr .
+
+base:skill-5736197f0d19 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "RDF"@fr .
+
+base:skill-598821f540fe a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Scikit-learn"@fr .
+
+base:skill-5aa5a4a0e913 a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "IoT"@fr .
+
+base:skill-5ad7efb21006 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "DAX"@fr .
+
+base:skill-5b11a40ce7ac a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Régression"@fr .
+
+base:skill-5d18b8699a17 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Gestion de portefeuille"@fr .
+
+base:skill-625da44e4eaf a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Blockchain"@fr .
+
+base:skill-69dbf44b3d90 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Computer Vision"@fr .
+
+base:skill-6cab6d272b4d a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "ETL"@fr .
+
+base:skill-6d5cac6925f2 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Talend"@fr .
+
+base:skill-6df2e91a0b30 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Linked Data"@fr .
+
+base:skill-6e776c5041e9 a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Autonomie"@fr .
+
+base:skill-724f40bbb5cf a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Kali Linux"@fr .
+
+base:skill-72ebd499f293 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "OWASP"@fr .
+
+base:skill-74eae95fdba4 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Data Lake"@fr .
+
+base:skill-89dccd9f7379 a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Adaptabilité"@fr .
+
+base:skill-8c2574892063 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "R"@fr .
+
+base:skill-8cdf6dd5be3b a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "UML"@fr .
+
+base:skill-8d9a80fb1dc3 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Spring Boot"@fr .
+
+base:skill-8e194cdc9d6f a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Analyse quantitative"@fr .
+
+base:skill-8e2848d04afe a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Pentest"@fr .
+
+base:skill-8fcd1836eba8 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Scala"@fr .
+
+base:skill-8ff7b29c130d a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Apache Spark"@fr .
+
+base:skill-90cf7bd8432d a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "TensorFlow"@fr .
+
+base:skill-91231ff9ab66 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "MongoDB"@fr .
+
+base:skill-9316cd4d881e a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Machine Learning"@fr .
+
+base:skill-94d8a734ab66 a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SAP SCM"@fr .
+
+base:skill-94f1c7c0ec6d a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Analyse des vulnérabilités"@fr .
+
+base:skill-9a4d10e69361 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Jenkins"@fr .
+
+base:skill-9e8bf4c5c3cb a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Présentation"@fr .
+
+base:skill-9efab62721cf a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Hadoop"@fr .
+
+base:skill-a37d07fe3004 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Kubernetes"@fr .
+
+base:skill-a62c0fcffd4e a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SKOS"@fr .
+
+base:skill-a7056a455639 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SQL"@fr .
+
+base:skill-a79bfb3e5086 a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Transport Management System"@fr .
+
+base:skill-a7f6415749a3 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Redis"@fr .
+
+base:skill-ae1d41261666 a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Résolution de problèmes"@fr .
+
+base:skill-b1fa104b9bf0 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Reporting"@fr .
+
+base:skill-b27ad06d123c a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "JavaScript"@fr .
+
+base:skill-b3782288b3dd a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "NLP"@fr .
+
+base:skill-b37bda2ccfc5 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Excel avancé"@fr .
+
+base:skill-b949c922b6ef a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Git"@fr .
+
+base:skill-bcd41373249e a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Deep Learning"@fr .
+
+base:skill-bde483d06e32 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "ISO 27001"@fr .
+
+base:skill-c0862201e27e a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Flask"@fr .
+
+base:skill-c1ba60ce1358 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Java"@fr .
+
+base:skill-c44362bf3425 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Jupyter"@fr .
+
+base:skill-c4e0ecf5b345 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Pandas"@fr .
+
+base:skill-c58f5de0911c a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Lean Management"@fr .
+
+base:skill-c8d75cb07591 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "MLflow"@fr .
+
+base:skill-cc52d03280b7 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "PostgreSQL"@fr .
+
+base:skill-cc63137a281a a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Gestion des stocks"@fr .
+
+base:skill-cc9e70625970 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "HTML/CSS"@fr .
+
+base:skill-cd590f6d28ae a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "MATLAB"@fr .
+
+base:skill-d1e9567da9a8 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Bash"@fr .
+
+base:skill-d4347223667f a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Power BI"@fr .
+
+base:skill-d58222c0b47f a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Airflow"@fr .
+
+base:skill-d66e14828ca4 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Active Directory"@fr .
+
+base:skill-de371adefe4d a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "dbt"@fr .
+
+base:skill-e148d591f1e2 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Scoring crédit"@fr .
+
+base:skill-e4a5f92fd340 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Kafka"@fr .
+
+base:skill-e6169e958b37 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Docker"@fr .
+
+base:skill-e790528b3879 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Angular"@fr .
+
+base:skill-e86755d376aa a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Tableau"@fr .
+
+base:skill-e876abbe46ea a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Ansible"@fr .
+
+base:skill-ebf9a09143ee a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SPARQL"@fr .
+
+base:skill-ec75f79040af a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Leadership"@fr .
+
+base:skill-ed0504f70a48 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "TypeScript"@fr .
+
+base:skill-ed79ae0c3a8a a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SSIS"@fr .
+
+base:skill-ee27322554e4 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "GraphQL"@fr .
+
+base:skill-ef0f41c9727a a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Ethical Hacking"@fr .
+
+base:skill-f1deb75fa21d a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "C++"@fr .
+
+base:skill-cat-finance_digitale a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Finance Digitale"@fr .
+
+base:skill-cat-supply_chain a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Supply Chain"@fr .
+
+base:skill-cat-web_semantique a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Web Semantique"@fr .
+
+base:skill-cat-business_intelligence a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Business Intelligence"@fr .
+
+base:skill-cat-soft_skills a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Soft Skills"@fr .
+
+base:skill-cat-cybersecurite a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Cybersecurite"@fr .
+
+base:skill-cat-data_engineering a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Data Engineering"@fr .
+
+base:skill-cat-devops_cloud a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "DevOps & Cloud"@fr .
+
+base:skill-cat-programmation a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Programmation"@fr .
+
+base:skill-cat-data_et_ia a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Data & IA"@fr .
+
+base:skill-cat-developpement_web a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Developpement Web"@fr .
+
+base:skill-scheme a skos:ConceptScheme ;
+    dcterms:title "Referentiel de competences — Ingenierie Maroc"@fr ;
+    skos:hasTopConcept base:skill-cat-business_intelligence,
+        base:skill-cat-cybersecurite,
+        base:skill-cat-data_engineering,
+        base:skill-cat-data_et_ia,
+        base:skill-cat-developpement_web,
+        base:skill-cat-devops_cloud,
+        base:skill-cat-finance_digitale,
+        base:skill-cat-programmation,
+        base:skill-cat-soft_skills,
+        base:skill-cat-supply_chain,
+        base:skill-cat-web_semantique .
+

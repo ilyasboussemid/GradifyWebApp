@@ -1,0 +1,55 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lod: <https://data.lod-school.ma/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+lod:enrolledIn a owl:ObjectProperty ;
+    rdfs:label "inscrit dans"@fr ;
+    rdfs:domain lod:Student ;
+    rdfs:range lod:Program .
+
+lod:hasSkill a owl:ObjectProperty ;
+    rdfs:label "a la competence"@fr ;
+    rdfs:domain lod:Student ;
+    rdfs:range skos:Concept .
+
+lod:postedBy a owl:ObjectProperty ;
+    rdfs:label "publiee par"@fr ;
+    rdfs:domain lod:InternshipOffer ;
+    rdfs:range lod:Company .
+
+lod:requiresSkill a owl:ObjectProperty ;
+    rdfs:label "requiert"@fr ;
+    rdfs:domain lod:InternshipOffer ;
+    rdfs:range skos:Concept .
+
+lod:Company a owl:Class ;
+    rdfs:label "Entreprise"@fr ;
+    rdfs:comment "Organisation marocaine proposant des stages"@fr ;
+    rdfs:isDefinedBy <https://data.lod-school.ma/ontology> ;
+    rdfs:subClassOf schema:Organization .
+
+lod:Program a owl:Class ;
+    rdfs:label "Filiere"@fr ;
+    rdfs:comment "Formation d'ingenieur specialisee"@fr ;
+    rdfs:isDefinedBy <https://data.lod-school.ma/ontology> .
+
+lod:InternshipOffer a owl:Class ;
+    rdfs:label "Offre de stage"@fr ;
+    rdfs:comment "Offre publiee par une entreprise marocaine"@fr ;
+    rdfs:isDefinedBy <https://data.lod-school.ma/ontology> ;
+    rdfs:subClassOf schema:JobPosting .
+
+lod:Student a owl:Class ;
+    rdfs:label "Etudiant"@fr ;
+    rdfs:comment "Etudiant ingenieur pseudonymise"@fr ;
+    rdfs:isDefinedBy <https://data.lod-school.ma/ontology> ;
+    rdfs:subClassOf schema:Person .
+
+<https://data.lod-school.ma/ontology> a owl:Ontology ;
+    dcterms:description "Ontologie pour la plateforme etudiants/stages/competences — contexte marocain"@fr ;
+    dcterms:title "LOD School Ontology — Maroc"@fr ;
+    owl:versionInfo "1.0.0" .
+

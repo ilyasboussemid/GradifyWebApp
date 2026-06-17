@@ -1,0 +1,450 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# REQUÊTES SPARQL — MVP LOD Étudiants/Stages/Compétences
+# Triple store : Apache Jena Fuseki — http://localhost:3030/lod/sparql
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Préfixes communs à toutes les requêtes
+# PREFIX lod:    <https://data.lod-school.ma/ontology#>
+# PREFIX base:   <https://data.lod-school.ma/id/>
+# PREFIX schema: <https://schema.org/>
+# PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+# PREFIX dcterms:<http://purl.org/dc/terms/>
+# PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+# PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q1 — Liste tous les étudiants avec filière et niveau
+# Cas d'usage : tableau de bord administrateur
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?etudiant ?niveau ?filiere ?ville ?mention
+WHERE {
+    ?etudiant a lod:Student ;
+              lod:level ?niveau ;
+              lod:enrolledIn ?prog ;
+              schema:addressLocality ?ville ;
+              lod:mention ?mention .
+    ?prog rdfs:label ?filiere .
+}
+ORDER BY ?filiere ?niveau
+LIMIT 50
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q2 — Compétences d'un étudiant donné
+# Cas d'usage : page profil étudiant
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:  <https://data.lod-school.ma/ontology#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?etudiant ?competence ?categorie
+WHERE {
+    ?etudiant a lod:Student ;
+              lod:hasSkill ?skill .
+    ?skill skos:prefLabel ?competence ;
+           skos:broader ?cat .
+    ?cat skos:prefLabel ?categorie .
+}
+ORDER BY ?etudiant ?categorie
+LIMIT 100
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q3 — Toutes les offres ouvertes avec entreprise et ville
+# Cas d'usage : page liste des offres
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?offre ?titre ?entreprise ?ville ?duree ?compensation ?niveau
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:postedBy ?comp ;
+           schema:jobLocation ?ville ;
+           lod:durationMonths ?duree ;
+           lod:compensation ?compensation ;
+           lod:levelRequired ?niveau ;
+           lod:status "Ouverte"@fr .
+    ?comp schema:name ?entreprise .
+}
+ORDER BY ?ville ?titre
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q4 — Offres filtrées par compétence (matching)
+# Cas d'usage : recherche offres par compétence
+# Remplacer "Python" par la compétence cherchée
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:  <https://data.lod-school.ma/ontology#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?offre ?titre ?entreprise ?ville ?niveau
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:requiresSkill ?skill ;
+           lod:postedBy ?comp ;
+           schema:jobLocation ?ville ;
+           lod:levelRequired ?niveau ;
+           lod:status "Ouverte"@fr .
+    ?skill skos:prefLabel "Python"@fr .
+    ?comp schema:name ?entreprise .
+}
+ORDER BY ?ville
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q5 — Matching étudiant ↔ offres (compétences communes)
+# Cas d'usage : recommandation de stages pour un étudiant
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:  <https://data.lod-school.ma/ontology#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?etudiant ?offre ?titre ?entreprise
+       (COUNT(?skillCommun) AS ?nb_competences_communes)
+WHERE {
+    ?etudiant a lod:Student ;
+              lod:hasSkill ?skillCommun .
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:requiresSkill ?skillCommun ;
+           lod:postedBy ?comp ;
+           lod:status "Ouverte"@fr .
+    ?comp schema:name ?entreprise .
+}
+GROUP BY ?etudiant ?offre ?titre ?entreprise
+ORDER BY DESC(?nb_competences_communes)
+LIMIT 20
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q6 — Compétences les plus demandées par les offres
+# Cas d'usage : statistiques / tableau de bord
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:  <https://data.lod-school.ma/ontology#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?competence (COUNT(?offre) AS ?nb_offres)
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           lod:requiresSkill ?skill .
+    ?skill skos:prefLabel ?competence .
+}
+GROUP BY ?competence
+ORDER BY DESC(?nb_offres)
+LIMIT 15
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q7 — Étudiants par filière (statistiques)
+# Cas d'usage : tableau de bord administrateur
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:  <https://data.lod-school.ma/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?filiere (COUNT(?etudiant) AS ?nb_etudiants)
+WHERE {
+    ?etudiant a lod:Student ;
+              lod:enrolledIn ?prog .
+    ?prog rdfs:label ?filiere .
+}
+GROUP BY ?filiere
+ORDER BY DESC(?nb_etudiants)
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q8 — Offres par entreprise
+# Cas d'usage : page entreprise
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?entreprise ?secteur ?ville (COUNT(?offre) AS ?nb_offres)
+WHERE {
+    ?comp a lod:Company ;
+          schema:name ?entreprise ;
+          lod:sector ?secteur ;
+          schema:addressLocality ?ville .
+    ?offre a lod:InternshipOffer ;
+           lod:postedBy ?comp .
+}
+GROUP BY ?entreprise ?secteur ?ville
+ORDER BY DESC(?nb_offres)
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q9 — Offres filtrées par ville
+# Cas d'usage : recherche géographique
+# Remplacer "Casablanca" par la ville cherchée
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?offre ?titre ?entreprise ?duree ?niveau ?compensation
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           schema:jobLocation "Casablanca" ;
+           lod:postedBy ?comp ;
+           lod:durationMonths ?duree ;
+           lod:levelRequired ?niveau ;
+           lod:compensation ?compensation ;
+           lod:status "Ouverte"@fr .
+    ?comp schema:name ?entreprise .
+}
+ORDER BY ?titre
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q10 — Étudiants ayant une compétence spécifique
+# Cas d'usage : recherche d'étudiants par compétence
+# Remplacer "Machine Learning" par la compétence cherchée
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:  <https://data.lod-school.ma/ontology#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?etudiant ?niveau ?filiere ?ville
+WHERE {
+    ?etudiant a lod:Student ;
+              lod:hasSkill ?skill ;
+              lod:level ?niveau ;
+              lod:enrolledIn ?prog ;
+              schema:addressLocality ?ville .
+    ?skill skos:prefLabel "Machine Learning"@fr .
+    ?prog rdfs:label ?filiere .
+}
+ORDER BY ?niveau
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q11 — Toutes les compétences par catégorie SKOS
+# Cas d'usage : afficher le référentiel de compétences
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?categorie ?competence
+WHERE {
+    ?skill a skos:Concept ;
+           skos:prefLabel ?competence ;
+           skos:broader ?cat .
+    ?cat skos:prefLabel ?categorie .
+    FILTER (lang(?competence) = "fr")
+    FILTER (lang(?categorie) = "fr")
+}
+ORDER BY ?categorie ?competence
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q12 — Offres par niveau requis
+# Cas d'usage : filtrer les offres adaptées à son niveau
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?niveau (COUNT(?offre) AS ?nb_offres)
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           lod:levelRequired ?niveau ;
+           lod:status "Ouverte"@fr .
+}
+GROUP BY ?niveau
+ORDER BY ?niveau
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q13 — Détail complet d'une offre
+# Cas d'usage : page détail d'une offre
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms:<http://purl.org/dc/terms/>
+
+SELECT ?titre ?entreprise ?secteur ?ville ?debut ?fin
+       ?duree ?niveau ?compensation ?statut ?competence
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:postedBy ?comp ;
+           schema:jobLocation ?ville ;
+           schema:jobStartDate ?debut ;
+           schema:jobEndDate ?fin ;
+           lod:durationMonths ?duree ;
+           lod:levelRequired ?niveau ;
+           lod:compensation ?compensation ;
+           lod:status ?statut ;
+           lod:requiresSkill ?skill .
+    ?comp schema:name ?entreprise ;
+          lod:sector ?secteur .
+    ?skill skos:prefLabel ?competence .
+    FILTER (lang(?competence) = "fr")
+}
+ORDER BY ?competence
+LIMIT 1
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q14 — Étudiants par niveau avec nombre de compétences
+# Cas d'usage : statistiques par niveau
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod: <https://data.lod-school.ma/ontology#>
+
+SELECT ?niveau (COUNT(DISTINCT ?etudiant) AS ?nb_etudiants)
+              (AVG(?nb_skills) AS ?moy_competences)
+WHERE {
+    {
+        SELECT ?etudiant ?niveau (COUNT(?skill) AS ?nb_skills)
+        WHERE {
+            ?etudiant a lod:Student ;
+                      lod:level ?niveau ;
+                      lod:hasSkill ?skill .
+        }
+        GROUP BY ?etudiant ?niveau
+    }
+}
+GROUP BY ?niveau
+ORDER BY ?niveau
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECT Q15 — Entreprises avec leurs offres et compétences requises
+# Cas d'usage : page entreprise complète
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?entreprise ?secteur ?ville ?titre_offre ?competence
+WHERE {
+    ?comp a lod:Company ;
+          schema:name ?entreprise ;
+          lod:sector ?secteur ;
+          schema:addressLocality ?ville .
+    ?offre lod:postedBy ?comp ;
+           schema:title ?titre_offre ;
+           lod:requiresSkill ?skill .
+    ?skill skos:prefLabel ?competence .
+    FILTER (lang(?competence) = "fr")
+}
+ORDER BY ?entreprise ?titre_offre
+LIMIT 50
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CONSTRUCT C1 — Profil complet d'un étudiant (sous-graphe RDF)
+# Cas d'usage : export RDF d'un profil étudiant
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT {
+    ?etudiant a lod:Student ;
+              lod:level ?niveau ;
+              lod:enrolledIn ?prog ;
+              schema:addressLocality ?ville ;
+              lod:mention ?mention ;
+              lod:hasSkill ?skill .
+    ?prog rdfs:label ?filiere .
+    ?skill skos:prefLabel ?competence .
+}
+WHERE {
+    ?etudiant a lod:Student ;
+              lod:level ?niveau ;
+              lod:enrolledIn ?prog ;
+              schema:addressLocality ?ville ;
+              lod:mention ?mention ;
+              lod:hasSkill ?skill .
+    ?prog rdfs:label ?filiere .
+    ?skill skos:prefLabel ?competence .
+    FILTER (lang(?competence) = "fr")
+}
+LIMIT 50
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CONSTRUCT C2 — Sous-graphe d'une offre de stage
+# Cas d'usage : export RDF d'une offre
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+
+CONSTRUCT {
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:postedBy ?comp ;
+           schema:jobLocation ?ville ;
+           lod:durationMonths ?duree ;
+           lod:levelRequired ?niveau ;
+           lod:compensation ?compensation ;
+           lod:status ?statut ;
+           lod:requiresSkill ?skill .
+    ?comp schema:name ?entreprise .
+    ?skill skos:prefLabel ?competence .
+}
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:postedBy ?comp ;
+           schema:jobLocation ?ville ;
+           lod:durationMonths ?duree ;
+           lod:levelRequired ?niveau ;
+           lod:compensation ?compensation ;
+           lod:status ?statut ;
+           lod:requiresSkill ?skill .
+    ?comp schema:name ?entreprise .
+    ?skill skos:prefLabel ?competence .
+    FILTER (lang(?competence) = "fr")
+}
+LIMIT 50
+
+---
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CONSTRUCT C3 — Export graphe matching étudiant ↔ offres
+# Cas d'usage : visualiser les connexions étudiant-offres
+# ══════════════════════════════════════════════════════════════════════════════
+PREFIX lod:  <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+
+CONSTRUCT {
+    ?etudiant lod:matchesOffer ?offre .
+    ?offre schema:title ?titre .
+    ?etudiant lod:level ?niveau .
+}
+WHERE {
+    ?etudiant a lod:Student ;
+              lod:level ?niveau ;
+              lod:hasSkill ?skillCommun .
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:requiresSkill ?skillCommun ;
+           lod:status "Ouverte"@fr .
+}
+LIMIT 100

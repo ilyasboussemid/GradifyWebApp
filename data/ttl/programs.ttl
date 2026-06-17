@@ -1,0 +1,55 @@
+@prefix base: <https://data.lod-school.ma/id/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lod: <https://data.lod-school.ma/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+base:program-03e96b78856b a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Data Science & Software Engineering"@fr ;
+    dcterms:identifier "program-03e96b78856b" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-3768cc1c3f72 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Génie de la Data"@fr ;
+    dcterms:identifier "program-3768cc1c3f72" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-7e9d148fab94 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Ingénierie de l'IA"@fr ;
+    dcterms:identifier "program-7e9d148fab94" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-84c600d852ba a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Génie Logiciel"@fr ;
+    dcterms:identifier "program-84c600d852ba" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-a463d9f598a7 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Business Intelligence & Analytics"@fr ;
+    dcterms:identifier "program-a463d9f598a7" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-c2d6c1425e9c a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Cybersécurité"@fr ;
+    dcterms:identifier "program-c2d6c1425e9c" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-d626f2e89fa3 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Smart Supply Chain & Logistics"@fr ;
+    dcterms:identifier "program-d626f2e89fa3" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-ff4ccbb2c676 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Ingénierie Digitale pour la Finance"@fr ;
+    dcterms:identifier "program-ff4ccbb2c676" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+

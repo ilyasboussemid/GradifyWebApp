@@ -1,0 +1,2899 @@
+@prefix base: <https://data.lod-school.ma/id/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lod: <https://data.lod-school.ma/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+base:company-012 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-012" ;
+    lod:sector "Informatique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Rabat" ;
+    schema:description "Editeur et intégrateur de solutions informatiques pour les entreprises."@fr ;
+    schema:name "IntelliSys" ;
+    schema:url <https://www.intellisys.ma> .
+
+base:offer-001 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-001" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-20f3bd11a056,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8e2848d04afe,
+        base:skill-94f1c7c0ec6d ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Casablanca."@fr ;
+    schema:jobEndDate "2026-02-14"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-20"^^xsd:date ;
+    schema:title "Pentesteur Junior"@fr .
+
+base:offer-002 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-002" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-0ab89cabbdad,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-a37d07fe3004,
+        base:skill-b37bda2ccfc5,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Genie de la Data"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-07-27"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-06-01"^^xsd:date ;
+    schema:title "Ingenieur DevOps"@fr .
+
+base:offer-003 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-003" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-002 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-1fc0c785332e,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8e2848d04afe,
+        base:skill-94d8a734ab66,
+        base:skill-94f1c7c0ec6d,
+        base:skill-b27ad06d123c ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Industrie."@fr ;
+    schema:jobEndDate "2025-07-25"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-05-30"^^xsd:date ;
+    schema:title "Pentesteur Junior"@fr .
+
+base:offer-004 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-004" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-011 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-4445d918dfcf,
+        base:skill-89dccd9f7379,
+        base:skill-a7056a455639,
+        base:skill-b949c922b6ef,
+        base:skill-c0862201e27e,
+        base:skill-cc52d03280b7 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Casablanca."@fr ;
+    schema:jobEndDate "2025-04-21"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-01-27"^^xsd:date ;
+    schema:title "Developpeur Backend Python/Django"@fr .
+
+base:offer-005 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-005" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-005 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-8ff7b29c130d,
+        base:skill-a7056a455639,
+        base:skill-d58222c0b47f,
+        base:skill-e4a5f92fd340 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie de la Data | Data Science & Software Engineering"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Finance."@fr ;
+    schema:jobEndDate "2026-01-08"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-10-16"^^xsd:date ;
+    schema:title "Ingenieur Data Engineer"@fr .
+
+base:offer-006 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-006" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-3140d22d8cb3,
+        base:skill-32fd72a0e074,
+        base:skill-5ad7efb21006,
+        base:skill-6cab6d272b4d,
+        base:skill-a7056a455639,
+        base:skill-b1fa104b9bf0,
+        base:skill-d4347223667f ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Business Intelligence & Analytics | Genie de la Data"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2026-01-08"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-13"^^xsd:date ;
+    schema:title "Analyste Tableaux de bord"@fr .
+
+base:offer-007 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-007" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-07783d014345,
+        base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-bde483d06e32,
+        base:skill-cd590f6d28ae,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Informatique."@fr ;
+    schema:jobEndDate "2025-06-12"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-04-17"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-008 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-008" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-006 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-040228846ead,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-b1fa104b9bf0,
+        base:skill-b949c922b6ef,
+        base:skill-c44362bf3425,
+        base:skill-e6169e958b37 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Informatique."@fr ;
+    schema:jobEndDate "2025-11-18"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-29"^^xsd:date ;
+    schema:title "Developpeur Full Stack"@fr .
+
+base:offer-009 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-009" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-003 ;
+    lod:requiresSkill base:skill-05642da1523d,
+        base:skill-494a953d8b1c,
+        base:skill-94d8a734ab66,
+        base:skill-a7f6415749a3,
+        base:skill-c58f5de0911c ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Smart Supply Chain & Logistics"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-10-31"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-05-16"^^xsd:date ;
+    schema:title "Analyste Supply Chain"@fr .
+
+base:offer-010 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-010" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-009 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-353f838b4b39,
+        base:skill-8ff7b29c130d,
+        base:skill-a7056a455639,
+        base:skill-d58222c0b47f,
+        base:skill-e4a5f92fd340 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie de la Data | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Informatique."@fr ;
+    schema:jobEndDate "2025-03-06"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-02-06"^^xsd:date ;
+    schema:title "Ingenieur Data Engineer"@fr .
+
+base:offer-011 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-011" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-015 ;
+    lod:requiresSkill base:skill-0073e8c7fe96,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-625da44e4eaf,
+        base:skill-a7056a455639,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Rabat."@fr ;
+    schema:jobEndDate "2026-04-16"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-12-25"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-012 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-012" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-014 ;
+    lod:requiresSkill base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-5b11a40ce7ac,
+        base:skill-8c2574892063,
+        base:skill-e148d591f1e2 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-01-29"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-06"^^xsd:date ;
+    schema:title "Analyste Risque Financier"@fr .
+
+base:offer-013 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-013" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-009 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-26f2faf23e18,
+        base:skill-32fd72a0e074,
+        base:skill-3c26e7a5b744,
+        base:skill-625da44e4eaf,
+        base:skill-a37d07fe3004,
+        base:skill-c8d75cb07591,
+        base:skill-e6169e958b37 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA | Genie de la Data"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Informatique."@fr ;
+    schema:jobEndDate "2025-03-18"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-01-21"^^xsd:date ;
+    schema:title "Ingenieur MLOps"@fr .
+
+base:offer-014 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-014" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-016 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-49566270eff6,
+        base:skill-90cf7bd8432d,
+        base:skill-9316cd4d881e,
+        base:skill-9efab62721cf,
+        base:skill-c4e0ecf5b345,
+        base:skill-c8d75cb07591,
+        base:skill-e4a5f92fd340 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA | Data Science & Software Engineering"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Rabat."@fr ;
+    schema:jobEndDate "2025-11-21"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-08-29"^^xsd:date ;
+    schema:title "Ingenieur Machine Learning"@fr .
+
+base:offer-015 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-015" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-016 ;
+    lod:requiresSkill base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-625da44e4eaf,
+        base:skill-a7056a455639 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Rabat."@fr ;
+    schema:jobEndDate "2026-03-28"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-12-06"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-016 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-016" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-011 ;
+    lod:requiresSkill base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2026-01-10"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-26"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-017 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-017" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-007 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-32fd72a0e074,
+        base:skill-41a52587276c,
+        base:skill-5171ce3048d3,
+        base:skill-53ee99ac6e3c,
+        base:skill-cc52d03280b7,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-12-20"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-05"^^xsd:date ;
+    schema:title "Developpeur API & Microservices"@fr .
+
+base:offer-018 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-018" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-010 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-32fd72a0e074,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie de la Data | Genie Logiciel"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-04-15"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-24"^^xsd:date ;
+    schema:title "Ingenieur Cloud AWS"@fr .
+
+base:offer-019 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-019" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-010 ;
+    lod:requiresSkill base:skill-098bda83a6fa,
+        base:skill-18885f27b5af,
+        base:skill-274b0f34ea9f,
+        base:skill-598821f540fe,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8e2848d04afe,
+        base:skill-94f1c7c0ec6d ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-06-25"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-01-08"^^xsd:date ;
+    schema:title "Pentesteur Junior"@fr .
+
+base:offer-020 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-020" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-016 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-31e3cbd5c7bd,
+        base:skill-41a52587276c,
+        base:skill-625da44e4eaf,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-a7056a455639 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Logistique."@fr ;
+    schema:jobEndDate "2025-12-11"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-09-18"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-021 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-021" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-013 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-a37d07fe3004,
+        base:skill-d1e9567da9a8,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Genie de la Data"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Transport."@fr ;
+    schema:jobEndDate "2026-04-20"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-03"^^xsd:date ;
+    schema:title "Ingenieur DevOps"@fr .
+
+base:offer-022 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-022" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-001 ;
+    lod:requiresSkill base:skill-0ab89cabbdad,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-26f2faf23e18,
+        base:skill-41a52587276c,
+        base:skill-4828e60247c1,
+        base:skill-625da44e4eaf,
+        base:skill-a7056a455639 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Rabat."@fr ;
+    schema:jobEndDate "2025-11-17"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-06-02"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-023 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-023" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-015 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-3dfaa5639173,
+        base:skill-5b11a40ce7ac,
+        base:skill-8c2574892063,
+        base:skill-8cdf6dd5be3b,
+        base:skill-e148d591f1e2 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Rabat."@fr ;
+    schema:jobEndDate "2025-06-02"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-04-07"^^xsd:date ;
+    schema:title "Analyste Risque Financier"@fr .
+
+base:offer-024 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-024" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-013 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-41a52587276c,
+        base:skill-553ea337c893,
+        base:skill-8c2574892063,
+        base:skill-b27ad06d123c,
+        base:skill-b949c922b6ef,
+        base:skill-cc9e70625970,
+        base:skill-ed0504f70a48 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie Logiciel"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2026-01-31"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-06"^^xsd:date ;
+    schema:title "Developpeur Frontend React"@fr .
+
+base:offer-025 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-025" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-41a52587276c,
+        base:skill-a37d07fe3004,
+        base:skill-cc52d03280b7,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Finance."@fr ;
+    schema:jobEndDate "2025-09-19"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-08-22"^^xsd:date ;
+    schema:title "Developpeur API & Microservices"@fr .
+
+base:offer-026 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-026" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-011 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-5ad7efb21006,
+        base:skill-a7056a455639,
+        base:skill-b1fa104b9bf0,
+        base:skill-d4347223667f ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Business Intelligence & Analytics | Genie de la Data"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur FinTech."@fr ;
+    schema:jobEndDate "2026-04-12"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-21"^^xsd:date ;
+    schema:title "Analyste Tableaux de bord"@fr .
+
+base:offer-027 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-027" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-018 ;
+    lod:requiresSkill base:skill-5ad7efb21006,
+        base:skill-6cab6d272b4d,
+        base:skill-a7056a455639,
+        base:skill-c58f5de0911c,
+        base:skill-d4347223667f ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Business Intelligence & Analytics | Genie de la Data"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Industrie."@fr ;
+    schema:jobEndDate "2025-12-11"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-11-13"^^xsd:date ;
+    schema:title "Data Analyst BI"@fr .
+
+base:offer-028 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-028" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-014 ;
+    lod:requiresSkill base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-b37bda2ccfc5,
+        base:skill-bde483d06e32,
+        base:skill-e148d591f1e2,
+        base:skill-ee27322554e4,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-12-19"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-21"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-029 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-029" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-010 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-90cf7bd8432d,
+        base:skill-b3782288b3dd,
+        base:skill-e86755d376aa ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2025-10-31"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-11"^^xsd:date ;
+    schema:title "Ingenieur NLP"@fr .
+
+base:offer-030 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-030" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-006 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-4445d918dfcf,
+        base:skill-5b11a40ce7ac,
+        base:skill-b949c922b6ef,
+        base:skill-c58f5de0911c,
+        base:skill-c8d75cb07591,
+        base:skill-cc52d03280b7 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Casablanca."@fr ;
+    schema:jobEndDate "2025-07-28"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-02-10"^^xsd:date ;
+    schema:title "Developpeur Backend Python/Django"@fr .
+
+base:offer-031 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-031" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-009 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-32fd72a0e074,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-538372d293e8,
+        base:skill-94f1c7c0ec6d,
+        base:skill-e6169e958b37,
+        base:skill-e86755d376aa ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie de la Data | Genie Logiciel"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Informatique."@fr ;
+    schema:jobEndDate "2025-06-08"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-05-11"^^xsd:date ;
+    schema:title "Ingenieur Cloud AWS"@fr .
+
+base:offer-032 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-032" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-019 ;
+    lod:requiresSkill base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-32fd72a0e074,
+        base:skill-41a52587276c,
+        base:skill-625da44e4eaf,
+        base:skill-a7056a455639,
+        base:skill-ec75f79040af ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie Digitale pour la Finance"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Industrie."@fr ;
+    schema:jobEndDate "2026-03-16"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-11-24"^^xsd:date ;
+    schema:title "Developpeur FinTech"@fr .
+
+base:offer-033 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-033" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-05642da1523d,
+        base:skill-494a953d8b1c,
+        base:skill-5ad7efb21006,
+        base:skill-72ebd499f293,
+        base:skill-94d8a734ab66,
+        base:skill-c58f5de0911c ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Smart Supply Chain & Logistics"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Finance."@fr ;
+    schema:jobEndDate "2025-12-30"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-15"^^xsd:date ;
+    schema:title "Analyste Supply Chain"@fr .
+
+base:offer-034 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-034" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-009 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-18885f27b5af,
+        base:skill-1de78d79ea8e,
+        base:skill-3dfaa5639173,
+        base:skill-41a52587276c,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-b949c922b6ef,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Informatique."@fr ;
+    schema:jobEndDate "2025-11-14"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-10-17"^^xsd:date ;
+    schema:title "Developpeur Full Stack"@fr .
+
+base:offer-035 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-035" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-598821f540fe,
+        base:skill-9316cd4d881e,
+        base:skill-a7056a455639,
+        base:skill-c4e0ecf5b345 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA | Data Science & Software Engineering"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-02-08"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-14"^^xsd:date ;
+    schema:title "Data Scientist Junior"@fr .
+
+base:offer-036 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-036" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-019 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-6df2e91a0b30,
+        base:skill-90cf7bd8432d,
+        base:skill-9efab62721cf,
+        base:skill-b3782288b3dd ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Tanger."@fr ;
+    schema:jobEndDate "2025-04-06"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-03-09"^^xsd:date ;
+    schema:title "Ingenieur NLP"@fr .
+
+base:offer-037 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-037" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-018 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-0ab89cabbdad,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-90cf7bd8432d,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-b3782288b3dd ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Industrie."@fr ;
+    schema:jobEndDate "2026-03-16"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-09-29"^^xsd:date ;
+    schema:title "Ingenieur NLP"@fr .
+
+base:offer-038 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-038" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-32fd72a0e074,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-538372d293e8,
+        base:skill-e6169e958b37 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie de la Data | Genie Logiciel"@fr ;
+    schema:description "Opportunite de stage enrichissante au sein d'une structure en pleine croissance basee a Casablanca."@fr ;
+    schema:jobEndDate "2025-04-05"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-02-08"^^xsd:date ;
+    schema:title "Ingenieur Cloud AWS"@fr .
+
+base:offer-039 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-039" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-001 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-538372d293e8,
+        base:skill-598821f540fe,
+        base:skill-6df2e91a0b30,
+        base:skill-91231ff9ab66,
+        base:skill-9316cd4d881e,
+        base:skill-a7056a455639,
+        base:skill-c4e0ecf5b345 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Télécoms."@fr ;
+    schema:jobEndDate "2025-10-30"^^xsd:date ;
+    schema:jobLocation "Rabat" ;
+    schema:jobStartDate "2025-10-02"^^xsd:date ;
+    schema:title "Data Scientist Junior"@fr .
+
+base:offer-040 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-040" ;
+    lod:compensation "5 000 MAD/mois"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-004 ;
+    lod:requiresSkill base:skill-05642da1523d,
+        base:skill-20f3bd11a056,
+        base:skill-494a953d8b1c,
+        base:skill-94d8a734ab66,
+        base:skill-c58f5de0911c,
+        base:skill-cc63137a281a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Smart Supply Chain & Logistics"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2025-09-27"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-08-30"^^xsd:date ;
+    schema:title "Analyste Supply Chain"@fr .
+
+base:offer-041 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-041" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 1 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-014 ;
+    lod:requiresSkill base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Energie."@fr ;
+    schema:jobEndDate "2025-04-10"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-03-13"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-042 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-042" ;
+    lod:compensation "4 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-008 ;
+    lod:requiresSkill base:skill-18885f27b5af,
+        base:skill-49566270eff6,
+        base:skill-6df2e91a0b30,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8e2848d04afe,
+        base:skill-94f1c7c0ec6d,
+        base:skill-d58222c0b47f ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Casablanca."@fr ;
+    schema:jobEndDate "2025-07-01"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-03-11"^^xsd:date ;
+    schema:title "Pentesteur Junior"@fr .
+
+base:offer-043 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-043" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-014 ;
+    lod:requiresSkill base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-bde483d06e32,
+        base:skill-d4347223667f,
+        base:skill-e148d591f1e2,
+        base:skill-ef0f41c9727a,
+        base:skill-f1deb75fa21d ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Energie."@fr ;
+    schema:jobEndDate "2026-02-23"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-09-08"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-044 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-044" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 3 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-008 ;
+    lod:requiresSkill base:skill-03312bee2e65,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-31c819b24cf3,
+        base:skill-90cf7bd8432d,
+        base:skill-b3782288b3dd,
+        base:skill-d1e9567da9a8 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Ingenierie de l'IA"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Conseil IT."@fr ;
+    schema:jobEndDate "2025-05-15"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-02-20"^^xsd:date ;
+    schema:title "Ingenieur NLP"@fr .
+
+base:offer-045 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-045" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "3A" ;
+    lod:postedBy base:company-003 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-a37d07fe3004,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Genie de la Data"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-05-12"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-11-25"^^xsd:date ;
+    schema:title "Ingenieur DevOps"@fr .
+
+base:offer-046 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-046" ;
+    lod:compensation "2 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-019 ;
+    lod:requiresSkill base:skill-05b073bd5e46,
+        base:skill-3c26e7a5b744,
+        base:skill-4828e60247c1,
+        base:skill-a37d07fe3004,
+        base:skill-cc63137a281a,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Genie de la Data"@fr ;
+    schema:description "Vous integrerez une equipe dynamique et participerez activement aux projets innovants de notre departement Industrie."@fr ;
+    schema:jobEndDate "2025-07-23"^^xsd:date ;
+    schema:jobLocation "Tanger" ;
+    schema:jobStartDate "2025-02-05"^^xsd:date ;
+    schema:title "Ingenieur DevOps"@fr .
+
+base:offer-047 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-047" ;
+    lod:compensation "Non remunere"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-94f1c7c0ec6d,
+        base:skill-b949c922b6ef,
+        base:skill-e6169e958b37 ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Informatique."@fr ;
+    schema:jobEndDate "2025-07-17"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-05-22"^^xsd:date ;
+    schema:title "Developpeur Full Stack"@fr .
+
+base:offer-048 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-048" ;
+    lod:compensation "1 000 MAD/mois"@fr ;
+    lod:durationMonths 2 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-005 ;
+    lod:requiresSkill base:skill-01fad993ff61,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-b3782288b3dd,
+        base:skill-b949c922b6ef,
+        base:skill-e6169e958b37,
+        base:skill-ed0504f70a48 ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Genie Logiciel | Data Science & Software Engineering"@fr ;
+    schema:description "Stage de fin d'etudes dans une entreprise leader au Maroc. Contribution a des projets a fort impact dans le secteur Finance."@fr ;
+    schema:jobEndDate "2025-08-28"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-07-03"^^xsd:date ;
+    schema:title "Developpeur Full Stack"@fr .
+
+base:offer-049 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-049" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 4 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-017 ;
+    lod:requiresSkill base:skill-3dfaa5639173,
+        base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-9a4d10e69361,
+        base:skill-9efab62721cf,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:status "Ouverte"@fr ;
+    lod:targetPrograms "Cybersecurite"@fr ;
+    schema:description "Rejoignez notre equipe et mettez en pratique vos competences dans un environnement professionnel stimulant a Ben Guerir."@fr ;
+    schema:jobEndDate "2025-05-25"^^xsd:date ;
+    schema:jobLocation "Ben Guerir" ;
+    schema:jobStartDate "2025-02-02"^^xsd:date ;
+    schema:title "Analyste Cybersecurite"@fr .
+
+base:offer-050 a lod:InternshipOffer,
+        schema:JobPosting ;
+    dcterms:created "2026-05-09"^^xsd:date ;
+    dcterms:identifier "offer-050" ;
+    lod:compensation "3 000 MAD/mois"@fr ;
+    lod:durationMonths 6 ;
+    lod:levelRequired "2A" ;
+    lod:postedBy base:company-020 ;
+    lod:requiresSkill base:skill-3140d22d8cb3,
+        base:skill-5ad7efb21006,
+        base:skill-6cab6d272b4d,
+        base:skill-a7056a455639,
+        base:skill-a79bfb3e5086,
+        base:skill-d4347223667f ;
+    lod:status "Fermee"@fr ;
+    lod:targetPrograms "Business Intelligence & Analytics | Genie de la Data"@fr ;
+    schema:description "Dans le cadre de notre transformation digitale, nous recrutons un stagiaire motive pour rejoindre notre equipe technique a Casablanca."@fr ;
+    schema:jobEndDate "2026-05-21"^^xsd:date ;
+    schema:jobLocation "Casablanca" ;
+    schema:jobStartDate "2025-12-04"^^xsd:date ;
+    schema:title "Data Analyst BI"@fr .
+
+base:skill-4f1b2483e777 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SHACL"@fr .
+
+base:skill-5736197f0d19 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "RDF"@fr .
+
+base:skill-5d18b8699a17 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Gestion de portefeuille"@fr .
+
+base:skill-e790528b3879 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Angular"@fr .
+
+base:skill-ed79ae0c3a8a a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SSIS"@fr .
+
+base:student-0224012b0526 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-0224012b0526" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-05b073bd5e46,
+        base:skill-274b0f34ea9f,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8d9a80fb1dc3,
+        base:skill-bde483d06e32,
+        base:skill-d66e14828ca4,
+        base:skill-e876abbe46ea ;
+    lod:level "3A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Beni Mellal" .
+
+base:student-03ceaa3d0094 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-03ceaa3d0094" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-3dfaa5639173,
+        base:skill-8ff7b29c130d,
+        base:skill-a7056a455639,
+        base:skill-cc52d03280b7,
+        base:skill-d4347223667f,
+        base:skill-de371adefe4d,
+        base:skill-e4a5f92fd340 ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Kenitra" .
+
+base:student-0c1cd280ac88 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-0c1cd280ac88" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-1dbd59f661d6,
+        base:skill-74eae95fdba4,
+        base:skill-91231ff9ab66,
+        base:skill-94f1c7c0ec6d,
+        base:skill-9efab62721cf,
+        base:skill-cc52d03280b7,
+        base:skill-d58222c0b47f,
+        base:skill-e86755d376aa,
+        base:skill-ef0f41c9727a,
+        base:skill-f1deb75fa21d ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Oujda" .
+
+base:student-1589b5f85adc a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1589b5f85adc" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-03312bee2e65,
+        base:skill-05642da1523d,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-5aa5a4a0e913,
+        base:skill-6cab6d272b4d,
+        base:skill-b37bda2ccfc5,
+        base:skill-c58f5de0911c ;
+    lod:level "2A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Rabat" .
+
+base:student-1861d794d8b7 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1861d794d8b7" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-20f3bd11a056,
+        base:skill-3981a2b9c1ef,
+        base:skill-90cf7bd8432d,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-bcd41373249e,
+        base:skill-c44362bf3425,
+        base:skill-c4e0ecf5b345,
+        base:skill-c8d75cb07591,
+        base:skill-cc52d03280b7 ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-19f023ce35cc a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-19f023ce35cc" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-1dbd59f661d6,
+        base:skill-20f3bd11a056,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-494a953d8b1c,
+        base:skill-b949c922b6ef,
+        base:skill-c4e0ecf5b345,
+        base:skill-e6169e958b37 ;
+    lod:level "2A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Casablanca" .
+
+base:student-1b9b4255c789 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1b9b4255c789" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05642da1523d,
+        base:skill-18885f27b5af,
+        base:skill-4445d918dfcf,
+        base:skill-45314e97b0c2,
+        base:skill-494a953d8b1c,
+        base:skill-8c2574892063,
+        base:skill-94d8a734ab66,
+        base:skill-c8d75cb07591,
+        base:skill-ec75f79040af ;
+    lod:level "2A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-1e2c32df1b6f a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1e2c32df1b6f" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-05642da1523d,
+        base:skill-18885f27b5af,
+        base:skill-1de78d79ea8e,
+        base:skill-26f2faf23e18,
+        base:skill-94f1c7c0ec6d,
+        base:skill-ef0f41c9727a ;
+    lod:level "2A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-1fc79562ffed a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1fc79562ffed" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-a463d9f598a7 ;
+    lod:hasSkill base:skill-009feb88ac14,
+        base:skill-01fad993ff61,
+        base:skill-18885f27b5af,
+        base:skill-1fc0c785332e,
+        base:skill-5aa5a4a0e913,
+        base:skill-6cab6d272b4d,
+        base:skill-d4347223667f,
+        base:skill-e86755d376aa ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Kenitra" .
+
+base:student-223c25db8829 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-223c25db8829" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-03312bee2e65,
+        base:skill-040228846ead,
+        base:skill-098bda83a6fa,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-8cdf6dd5be3b,
+        base:skill-b3782288b3dd,
+        base:skill-c1ba60ce1358 ;
+    lod:level "2A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-320f070ec47d a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-320f070ec47d" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-03312bee2e65,
+        base:skill-18885f27b5af,
+        base:skill-20f3bd11a056,
+        base:skill-31c819b24cf3,
+        base:skill-494a953d8b1c,
+        base:skill-9316cd4d881e ;
+    lod:level "3A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Oujda" .
+
+base:student-35136c722e04 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-35136c722e04" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-31c819b24cf3,
+        base:skill-3bc8408be5e7,
+        base:skill-553ea337c893,
+        base:skill-598821f540fe,
+        base:skill-72ebd499f293,
+        base:skill-89dccd9f7379,
+        base:skill-94f1c7c0ec6d,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Marrakech" .
+
+base:student-36102d4b2182 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-36102d4b2182" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-32fd72a0e074,
+        base:skill-3bc8408be5e7,
+        base:skill-8cdf6dd5be3b,
+        base:skill-94f1c7c0ec6d,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-bde483d06e32,
+        base:skill-cc52d03280b7,
+        base:skill-d66e14828ca4 ;
+    lod:level "3A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-432afa65f9e6 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-432afa65f9e6" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-45314e97b0c2,
+        base:skill-5aa5a4a0e913,
+        base:skill-6df2e91a0b30,
+        base:skill-94d8a734ab66,
+        base:skill-ae1d41261666,
+        base:skill-b37bda2ccfc5,
+        base:skill-cc63137a281a,
+        base:skill-d4347223667f,
+        base:skill-ed0504f70a48 ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-43dd407f6b97 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-43dd407f6b97" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-07783d014345,
+        base:skill-538372d293e8,
+        base:skill-625da44e4eaf,
+        base:skill-94d8a734ab66,
+        base:skill-9a4d10e69361,
+        base:skill-a7056a455639,
+        base:skill-ae1d41261666,
+        base:skill-d4347223667f ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-464112774049 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-464112774049" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-05b073bd5e46,
+        base:skill-098bda83a6fa,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-49566270eff6,
+        base:skill-5b11a40ce7ac,
+        base:skill-625da44e4eaf,
+        base:skill-9316cd4d881e ;
+    lod:level "1A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Tanger" .
+
+base:student-4bfe0c652ecf a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-4bfe0c652ecf" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-05b073bd5e46,
+        base:skill-098bda83a6fa,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-5171ce3048d3,
+        base:skill-69dbf44b3d90,
+        base:skill-8d9a80fb1dc3,
+        base:skill-b27ad06d123c,
+        base:skill-c1ba60ce1358 ;
+    lod:level "1A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Kenitra" .
+
+base:student-53c967369b9c a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-53c967369b9c" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-009feb88ac14,
+        base:skill-05b073bd5e46,
+        base:skill-1f4a4ded0bba,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-b949c922b6ef,
+        base:skill-c8d75cb07591,
+        base:skill-e6169e958b37 ;
+    lod:level "2A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-54df2efde62d a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-54df2efde62d" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-1f4a4ded0bba,
+        base:skill-49566270eff6,
+        base:skill-8c2574892063,
+        base:skill-9efab62721cf,
+        base:skill-cd590f6d28ae,
+        base:skill-d4347223667f ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Casablanca" .
+
+base:student-5afff9711979 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-5afff9711979" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-45314e97b0c2,
+        base:skill-a62c0fcffd4e,
+        base:skill-d4347223667f,
+        base:skill-ee27322554e4 ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Safi" .
+
+base:student-5bf57e9190ad a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-5bf57e9190ad" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-3bc8408be5e7,
+        base:skill-598821f540fe,
+        base:skill-72ebd499f293,
+        base:skill-a79bfb3e5086,
+        base:skill-b949c922b6ef,
+        base:skill-e86755d376aa ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Beni Mellal" .
+
+base:student-60b8634fcdae a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-60b8634fcdae" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-a463d9f598a7 ;
+    lod:hasSkill base:skill-1de78d79ea8e,
+        base:skill-6d5cac6925f2,
+        base:skill-c44362bf3425,
+        base:skill-e86755d376aa,
+        base:skill-ebf9a09143ee ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Oujda" .
+
+base:student-64cfd97277a2 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-64cfd97277a2" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-49566270eff6,
+        base:skill-53ee99ac6e3c,
+        base:skill-625da44e4eaf,
+        base:skill-91231ff9ab66,
+        base:skill-a7056a455639,
+        base:skill-a79bfb3e5086 ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-65b582c82f11 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-65b582c82f11" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-3bc8408be5e7,
+        base:skill-4828e60247c1,
+        base:skill-553ea337c893,
+        base:skill-5b11a40ce7ac,
+        base:skill-724f40bbb5cf,
+        base:skill-bde483d06e32,
+        base:skill-d4347223667f,
+        base:skill-d66e14828ca4,
+        base:skill-de371adefe4d ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Safi" .
+
+base:student-6945c6281fcb a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-6945c6281fcb" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-07783d014345,
+        base:skill-1fc0c785332e,
+        base:skill-538372d293e8,
+        base:skill-5b11a40ce7ac,
+        base:skill-6cab6d272b4d,
+        base:skill-8c2574892063,
+        base:skill-ec75f79040af,
+        base:skill-ed0504f70a48 ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-712abb030227 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-712abb030227" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-05b073bd5e46,
+        base:skill-1dbd59f661d6,
+        base:skill-26f2faf23e18,
+        base:skill-3bc8408be5e7,
+        base:skill-724f40bbb5cf,
+        base:skill-8e194cdc9d6f,
+        base:skill-d66e14828ca4 ;
+    lod:level "1A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-748d64740dd1 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-748d64740dd1" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05b073bd5e46,
+        base:skill-18885f27b5af,
+        base:skill-8fcd1836eba8,
+        base:skill-c58f5de0911c,
+        base:skill-c8d75cb07591,
+        base:skill-cc63137a281a,
+        base:skill-d4347223667f,
+        base:skill-f1deb75fa21d ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-75612cb7ad59 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-75612cb7ad59" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-098bda83a6fa,
+        base:skill-1de78d79ea8e,
+        base:skill-41a52587276c,
+        base:skill-8cdf6dd5be3b,
+        base:skill-c44362bf3425,
+        base:skill-e148d591f1e2 ;
+    lod:level "3A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Safi" .
+
+base:student-7758dfd3c76b a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-7758dfd3c76b" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-07783d014345,
+        base:skill-1f4a4ded0bba,
+        base:skill-20f3bd11a056,
+        base:skill-598821f540fe,
+        base:skill-c44362bf3425,
+        base:skill-c4e0ecf5b345,
+        base:skill-ef0f41c9727a ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-7b6fab509720 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-7b6fab509720" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-3bc8408be5e7,
+        base:skill-8ff7b29c130d,
+        base:skill-c4e0ecf5b345,
+        base:skill-cc52d03280b7,
+        base:skill-d58222c0b47f,
+        base:skill-e6169e958b37 ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Tanger" .
+
+base:student-7c1666ca54ab a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-7c1666ca54ab" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05642da1523d,
+        base:skill-1de78d79ea8e,
+        base:skill-5aa5a4a0e913,
+        base:skill-8c2574892063,
+        base:skill-b37bda2ccfc5,
+        base:skill-c58f5de0911c,
+        base:skill-cc63137a281a,
+        base:skill-d66e14828ca4 ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Casablanca" .
+
+base:student-8256d10d246c a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-8256d10d246c" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-a463d9f598a7 ;
+    lod:hasSkill base:skill-1de78d79ea8e,
+        base:skill-274b0f34ea9f,
+        base:skill-5ad7efb21006,
+        base:skill-9a4d10e69361,
+        base:skill-b1fa104b9bf0,
+        base:skill-cc9e70625970,
+        base:skill-d4347223667f,
+        base:skill-e148d591f1e2 ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-826e5a0d15c3 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-826e5a0d15c3" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-41a52587276c,
+        base:skill-5b11a40ce7ac,
+        base:skill-8d9a80fb1dc3,
+        base:skill-9efab62721cf,
+        base:skill-c1ba60ce1358,
+        base:skill-e6169e958b37,
+        base:skill-ee27322554e4 ;
+    lod:level "3A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Safi" .
+
+base:student-8342316eac59 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-8342316eac59" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-2dd9eb7d9f0c,
+        base:skill-598821f540fe,
+        base:skill-724f40bbb5cf,
+        base:skill-8e2848d04afe,
+        base:skill-b1fa104b9bf0,
+        base:skill-b949c922b6ef,
+        base:skill-cc9e70625970,
+        base:skill-e6169e958b37 ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-84897cf262d1 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-84897cf262d1" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-07783d014345,
+        base:skill-18885f27b5af,
+        base:skill-6cab6d272b4d,
+        base:skill-8e2848d04afe,
+        base:skill-a7056a455639,
+        base:skill-c0862201e27e,
+        base:skill-ef0f41c9727a ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Oujda" .
+
+base:student-95cde0f0dd4c a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-95cde0f0dd4c" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-009feb88ac14,
+        base:skill-07783d014345,
+        base:skill-3140d22d8cb3,
+        base:skill-49566270eff6,
+        base:skill-5b11a40ce7ac,
+        base:skill-625da44e4eaf,
+        base:skill-d4347223667f ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Rabat" .
+
+base:student-99a033c6672f a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-99a033c6672f" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-6e776c5041e9,
+        base:skill-724f40bbb5cf,
+        base:skill-94f1c7c0ec6d ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Marrakech" .
+
+base:student-b49c84581a51 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-b49c84581a51" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-18885f27b5af,
+        base:skill-3bc8408be5e7,
+        base:skill-4445d918dfcf,
+        base:skill-bde483d06e32,
+        base:skill-ed0504f70a48,
+        base:skill-ef0f41c9727a ;
+    lod:level "1A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-b6e482146e41 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-b6e482146e41" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-040228846ead,
+        base:skill-3bc8408be5e7,
+        base:skill-6cab6d272b4d,
+        base:skill-724f40bbb5cf,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Rabat" .
+
+base:student-bd88676e8d83 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-bd88676e8d83" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-26f2faf23e18,
+        base:skill-3c26e7a5b744,
+        base:skill-5b11a40ce7ac,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293 ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-c1176ea4da56 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-c1176ea4da56" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-01fad993ff61,
+        base:skill-20f3bd11a056,
+        base:skill-41a52587276c,
+        base:skill-47e4996e13cd,
+        base:skill-8cdf6dd5be3b,
+        base:skill-8d9a80fb1dc3,
+        base:skill-b949c922b6ef,
+        base:skill-c1ba60ce1358 ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Kenitra" .
+
+base:student-ca640fd34fa2 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-ca640fd34fa2" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05642da1523d,
+        base:skill-1fc0c785332e,
+        base:skill-45314e97b0c2,
+        base:skill-494a953d8b1c,
+        base:skill-c58f5de0911c,
+        base:skill-de371adefe4d ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-cb49e657493f a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-cb49e657493f" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-03312bee2e65,
+        base:skill-20f3bd11a056,
+        base:skill-39dd7cffe498,
+        base:skill-598821f540fe,
+        base:skill-5ad7efb21006,
+        base:skill-5b11a40ce7ac,
+        base:skill-90cf7bd8432d ;
+    lod:level "3A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-e4350bbef33f a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-e4350bbef33f" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-20f3bd11a056,
+        base:skill-598821f540fe,
+        base:skill-8c2574892063,
+        base:skill-8e194cdc9d6f,
+        base:skill-a7056a455639,
+        base:skill-b27ad06d123c,
+        base:skill-cc63137a281a ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Rabat" .
+
+base:student-e532c1bb17c1 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-e532c1bb17c1" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-41a52587276c,
+        base:skill-4445d918dfcf,
+        base:skill-8d9a80fb1dc3,
+        base:skill-8e2848d04afe,
+        base:skill-b27ad06d123c,
+        base:skill-b949c922b6ef,
+        base:skill-c1ba60ce1358 ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-ecf69caded74 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-ecf69caded74" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-009feb88ac14,
+        base:skill-05642da1523d,
+        base:skill-20f3bd11a056,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-598821f540fe,
+        base:skill-94d8a734ab66 ;
+    lod:level "3A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-f017c8b84811 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-f017c8b84811" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-598821f540fe,
+        base:skill-74eae95fdba4,
+        base:skill-8c2574892063,
+        base:skill-bcd41373249e,
+        base:skill-c4e0ecf5b345,
+        base:skill-e876abbe46ea ;
+    lod:level "3A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Agadir" .
+
+base:student-f3ef35b4baa4 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-f3ef35b4baa4" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-1fc0c785332e,
+        base:skill-53ee99ac6e3c,
+        base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-94f1c7c0ec6d,
+        base:skill-bde483d06e32,
+        base:skill-d66e14828ca4,
+        base:skill-f1deb75fa21d ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-f56f18bba2ca a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-f56f18bba2ca" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-18885f27b5af,
+        base:skill-39dd7cffe498,
+        base:skill-598821f540fe,
+        base:skill-6cab6d272b4d,
+        base:skill-74eae95fdba4,
+        base:skill-8e2848d04afe,
+        base:skill-91231ff9ab66,
+        base:skill-cc52d03280b7,
+        base:skill-d58222c0b47f ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Beni Mellal" .
+
+base:student-fbc3256f693c a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-fbc3256f693c" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05642da1523d,
+        base:skill-07783d014345,
+        base:skill-18885f27b5af,
+        base:skill-353f838b4b39,
+        base:skill-45314e97b0c2,
+        base:skill-b37bda2ccfc5,
+        base:skill-bcd41373249e,
+        base:skill-bde483d06e32,
+        base:skill-d4347223667f ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Tanger" .
+
+lod:enrolledIn a owl:ObjectProperty ;
+    rdfs:label "inscrit dans"@fr ;
+    rdfs:domain lod:Student ;
+    rdfs:range lod:Program .
+
+lod:hasSkill a owl:ObjectProperty ;
+    rdfs:label "a la competence"@fr ;
+    rdfs:domain lod:Student ;
+    rdfs:range skos:Concept .
+
+lod:postedBy a owl:ObjectProperty ;
+    rdfs:label "publiee par"@fr ;
+    rdfs:domain lod:InternshipOffer ;
+    rdfs:range lod:Company .
+
+lod:requiresSkill a owl:ObjectProperty ;
+    rdfs:label "requiert"@fr ;
+    rdfs:domain lod:InternshipOffer ;
+    rdfs:range skos:Concept .
+
+base:company-002 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-002" ;
+    lod:sector "Industrie"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Groupe industriel de référence avec des opérations au niveau national."@fr ;
+    schema:name "OCP Group" ;
+    schema:url <https://www.ocp-group.ma> .
+
+base:company-007 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-007" ;
+    lod:sector "Conseil IT"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Cabinet de conseil en transformation digitale et systèmes d'information."@fr ;
+    schema:name "CGI Maroc" ;
+    schema:url <https://www.cgi-maroc.ma> .
+
+base:company-017 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-017" ;
+    lod:sector "Innovation"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Ben Guerir" ;
+    schema:description "Fonds d'investissement dédié à l'innovation et aux startups deeptech."@fr ;
+    schema:name "UM6P Ventures" ;
+    schema:url <https://www.um6p-ventures.ma> .
+
+base:skill-31e3cbd5c7bd a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "GCP"@fr .
+
+base:skill-3981a2b9c1ef a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Communication"@fr .
+
+base:skill-47e4996e13cd a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "JSON-LD"@fr .
+
+base:skill-69dbf44b3d90 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Computer Vision"@fr .
+
+base:skill-6d5cac6925f2 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Talend"@fr .
+
+base:skill-6e776c5041e9 a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Autonomie"@fr .
+
+base:skill-8fcd1836eba8 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Scala"@fr .
+
+base:skill-a62c0fcffd4e a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SKOS"@fr .
+
+base:skill-a7f6415749a3 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Redis"@fr .
+
+base:skill-ebf9a09143ee a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SPARQL"@fr .
+
+base:company-001 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-001" ;
+    lod:sector "Télécoms"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Rabat" ;
+    schema:description "Leader des télécommunications au Maroc, services mobile, fixe et internet."@fr ;
+    schema:name "Maroc Telecom" ;
+    schema:url <https://www.maroc-telecom.ma> .
+
+base:company-003 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-003" ;
+    lod:sector "Finance"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Banque de référence au Maroc avec un réseau national étendu."@fr ;
+    schema:name "Attijariwafa Bank" ;
+    schema:url <https://www.attijariwafa-bank.ma> .
+
+base:company-005 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-005" ;
+    lod:sector "Finance"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Banque de référence au Maroc avec un réseau national étendu."@fr ;
+    schema:name "BMCE Bank" ;
+    schema:url <https://www.bmce-bank.ma> .
+
+base:company-006 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-006" ;
+    lod:sector "Informatique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Editeur et intégrateur de solutions informatiques pour les entreprises."@fr ;
+    schema:name "CBI Maroc" ;
+    schema:url <https://www.cbi-maroc.ma> .
+
+base:company-008 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-008" ;
+    lod:sector "Conseil IT"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Cabinet de conseil en transformation digitale et systèmes d'information."@fr ;
+    schema:name "Capgemini Maroc" ;
+    schema:url <https://www.capgemini-maroc.ma> .
+
+base:company-013 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-013" ;
+    lod:sector "Transport"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Compagnie nationale de transport aérien du Maroc."@fr ;
+    schema:name "Royal Air Maroc" ;
+    schema:url <https://www.royal-air-maroc.ma> .
+
+base:company-015 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-015" ;
+    lod:sector "Logistique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Rabat" ;
+    schema:description "Acteur majeur de la logistique et du transport au Maroc."@fr ;
+    schema:name "ONCF" ;
+    schema:url <https://www.oncf.ma> .
+
+base:company-018 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-018" ;
+    lod:sector "Industrie"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Tanger" ;
+    schema:description "Groupe industriel de référence avec des opérations au niveau national."@fr ;
+    schema:name "Leoni Maroc" ;
+    schema:url <https://www.leoni-maroc.ma> .
+
+base:skill-353f838b4b39 a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Travail en équipe"@fr .
+
+base:skill-39dd7cffe498 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "OWL"@fr .
+
+base:skill-5171ce3048d3 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Turtle"@fr .
+
+base:skill-89dccd9f7379 a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Adaptabilité"@fr .
+
+base:skill-8e194cdc9d6f a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Analyse quantitative"@fr .
+
+base:skill-ae1d41261666 a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Résolution de problèmes"@fr .
+
+base:skill-c0862201e27e a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Flask"@fr .
+
+base:skill-cd590f6d28ae a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "MATLAB"@fr .
+
+base:skill-d1e9567da9a8 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Bash"@fr .
+
+base:skill-e876abbe46ea a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Ansible"@fr .
+
+base:company-010 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-010" ;
+    lod:sector "Logiciels RH"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Spécialiste en solutions logicielles de gestion des ressources humaines."@fr ;
+    schema:name "Sopra HR Software" ;
+    schema:url <https://www.sopra-hr-software.ma> .
+
+base:company-011 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-011" ;
+    lod:sector "FinTech"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Leader en solutions de paiement électronique et monétique."@fr ;
+    schema:name "HPS Payment" ;
+    schema:url <https://www.hps-payment.ma> .
+
+base:company-016 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-016" ;
+    lod:sector "Logistique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Rabat" ;
+    schema:description "Acteur majeur de la logistique et du transport au Maroc."@fr ;
+    schema:name "Barid Al-Maghrib" ;
+    schema:url <https://www.barid-al-maghrib.ma> .
+
+base:company-019 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-019" ;
+    lod:sector "Industrie"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Tanger" ;
+    schema:description "Groupe industriel de référence avec des opérations au niveau national."@fr ;
+    schema:name "Renault Tanger" ;
+    schema:url <https://www.renault-tanger.ma> .
+
+base:program-a463d9f598a7 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Business Intelligence & Analytics"@fr ;
+    dcterms:identifier "program-a463d9f598a7" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:skill-040228846ead a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "C#"@fr .
+
+base:skill-0ab89cabbdad a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "PHP/Laravel"@fr .
+
+base:skill-1dbd59f661d6 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Snowflake"@fr .
+
+base:skill-1f4a4ded0bba a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Gestion de projet"@fr .
+
+base:skill-274b0f34ea9f a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Vue.js"@fr .
+
+base:skill-3140d22d8cb3 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Azure"@fr .
+
+base:skill-31c819b24cf3 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Elasticsearch"@fr .
+
+base:skill-53ee99ac6e3c a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Planification de la demande"@fr .
+
+base:skill-74eae95fdba4 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Data Lake"@fr .
+
+base:skill-9a4d10e69361 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Jenkins"@fr .
+
+base:skill-a79bfb3e5086 a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Transport Management System"@fr .
+
+base:skill-bcd41373249e a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Deep Learning"@fr .
+
+base:skill-cc9e70625970 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "HTML/CSS"@fr .
+
+base:skill-de371adefe4d a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "dbt"@fr .
+
+base:skill-ec75f79040af a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Leadership"@fr .
+
+base:skill-ee27322554e4 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "GraphQL"@fr .
+
+base:company-009 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-009" ;
+    lod:sector "Informatique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Editeur et intégrateur de solutions informatiques pour les entreprises."@fr ;
+    schema:name "IBM Maroc" ;
+    schema:url <https://www.ibm-maroc.ma> .
+
+base:company-014 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-014" ;
+    lod:sector "Energie"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Opérateur de distribution d'eau, d'électricité et d'assainissement."@fr ;
+    schema:name "Lydec" ;
+    schema:url <https://www.lydec.ma> .
+
+base:skill-009feb88ac14 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Data Warehouse"@fr .
+
+base:skill-3dfaa5639173 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Ontologie"@fr .
+
+base:skill-5aa5a4a0e913 a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "IoT"@fr .
+
+base:skill-6df2e91a0b30 a skos:Concept ;
+    skos:broader base:skill-cat-web_semantique ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Linked Data"@fr .
+
+base:skill-8ff7b29c130d a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Apache Spark"@fr .
+
+base:skill-91231ff9ab66 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "MongoDB"@fr .
+
+base:skill-e4a5f92fd340 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Kafka"@fr .
+
+base:skill-f1deb75fa21d a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "C++"@fr .
+
+<https://data.lod-school.ma/ontology> a owl:Ontology ;
+    dcterms:description "Ontologie pour la plateforme etudiants/stages/competences — contexte marocain"@fr ;
+    dcterms:title "LOD School Ontology — Maroc"@fr ;
+    owl:versionInfo "1.0.0" .
+
+base:company-020 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-020" ;
+    lod:sector "Informatique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Editeur et intégrateur de solutions informatiques pour les entreprises."@fr ;
+    schema:name "Dell Technologies MA" ;
+    schema:url <https://www.dell-technologies-ma.ma> .
+
+base:program-03e96b78856b a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Data Science & Software Engineering"@fr ;
+    dcterms:identifier "program-03e96b78856b" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-3768cc1c3f72 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Génie de la Data"@fr ;
+    dcterms:identifier "program-3768cc1c3f72" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-7e9d148fab94 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Ingénierie de l'IA"@fr ;
+    dcterms:identifier "program-7e9d148fab94" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:skill-098bda83a6fa a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Agile/Scrum"@fr .
+
+base:skill-1b817f9efc97 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Hugging Face"@fr .
+
+base:skill-1fc0c785332e a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Node.js"@fr .
+
+base:skill-26f2faf23e18 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SIEM"@fr .
+
+base:skill-4445d918dfcf a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Django"@fr .
+
+base:skill-45314e97b0c2 a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Simulation"@fr .
+
+base:skill-538372d293e8 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "FinTech"@fr .
+
+base:skill-8cdf6dd5be3b a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "UML"@fr .
+
+base:skill-8d9a80fb1dc3 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Spring Boot"@fr .
+
+base:skill-9316cd4d881e a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Machine Learning"@fr .
+
+base:skill-9e8bf4c5c3cb a skos:Concept ;
+    skos:broader base:skill-cat-soft_skills ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Présentation"@fr .
+
+base:skill-b1fa104b9bf0 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Reporting"@fr .
+
+base:skill-b27ad06d123c a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "JavaScript"@fr .
+
+base:skill-c1ba60ce1358 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Java"@fr .
+
+base:skill-c44362bf3425 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Jupyter"@fr .
+
+base:skill-ed0504f70a48 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "TypeScript"@fr .
+
+base:company-004 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-004" ;
+    lod:sector "Finance"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Banque de référence au Maroc avec un réseau national étendu."@fr ;
+    schema:name "Banque Populaire" ;
+    schema:url <https://www.banque-populaire.ma> .
+
+base:program-84c600d852ba a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Génie Logiciel"@fr ;
+    dcterms:identifier "program-84c600d852ba" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:program-ff4ccbb2c676 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Ingénierie Digitale pour la Finance"@fr ;
+    dcterms:identifier "program-ff4ccbb2c676" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:skill-0073e8c7fe96 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Cryptographie"@fr .
+
+base:skill-1de78d79ea8e a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "OLAP"@fr .
+
+base:skill-49566270eff6 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Bloomberg"@fr .
+
+base:skill-9efab62721cf a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Hadoop"@fr .
+
+base:skill-a37d07fe3004 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Kubernetes"@fr .
+
+base:skill-b3782288b3dd a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "NLP"@fr .
+
+base:skill-b37bda2ccfc5 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Excel avancé"@fr .
+
+base:skill-cc63137a281a a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Gestion des stocks"@fr .
+
+base:skill-d58222c0b47f a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Airflow"@fr .
+
+base:skill-d66e14828ca4 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Active Directory"@fr .
+
+base:skill-e148d591f1e2 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Scoring crédit"@fr .
+
+base:skill-e86755d376aa a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Tableau"@fr .
+
+base:skill-01fad993ff61 a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "React"@fr .
+
+base:skill-07783d014345 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Risque financier"@fr .
+
+base:skill-494a953d8b1c a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Optimisation logistique"@fr .
+
+base:skill-5ad7efb21006 a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "DAX"@fr .
+
+base:skill-90cf7bd8432d a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "TensorFlow"@fr .
+
+base:skill-c8d75cb07591 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "MLflow"@fr .
+
+base:program-d626f2e89fa3 a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Smart Supply Chain & Logistics"@fr ;
+    dcterms:identifier "program-d626f2e89fa3" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:skill-2dd9eb7d9f0c a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "FastAPI"@fr .
+
+base:skill-32fd72a0e074 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "AWS"@fr .
+
+base:skill-3bc8408be5e7 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Pare-feu"@fr .
+
+base:skill-8e2848d04afe a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Pentest"@fr .
+
+base:skill-94d8a734ab66 a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SAP SCM"@fr .
+
+base:skill-c4e0ecf5b345 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Pandas"@fr .
+
+base:skill-03312bee2e65 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "PyTorch"@fr .
+
+base:skill-1232362fd209 a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Modélisation financière"@fr .
+
+base:skill-3c26e7a5b744 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "CI/CD"@fr .
+
+base:skill-4828e60247c1 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Linux"@fr .
+
+base:skill-6cab6d272b4d a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "ETL"@fr .
+
+base:skill-8c2574892063 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "R"@fr .
+
+base:skill-c58f5de0911c a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Lean Management"@fr .
+
+lod:Program a owl:Class ;
+    rdfs:label "Filiere"@fr ;
+    rdfs:comment "Formation d'ingenieur specialisee"@fr ;
+    rdfs:isDefinedBy <https://data.lod-school.ma/ontology> .
+
+base:skill-05642da1523d a skos:Concept ;
+    skos:broader base:skill-cat-supply_chain ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "ERP"@fr .
+
+base:skill-20f3bd11a056 a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "NumPy"@fr .
+
+base:skill-553ea337c893 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Wireshark"@fr .
+
+base:skill-5b11a40ce7ac a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Régression"@fr .
+
+base:skill-625da44e4eaf a skos:Concept ;
+    skos:broader base:skill-cat-finance_digitale ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Blockchain"@fr .
+
+base:skill-cat-finance_digitale a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Finance Digitale"@fr .
+
+base:skill-cat-supply_chain a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Supply Chain"@fr .
+
+base:skill-cat-web_semantique a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Web Semantique"@fr .
+
+base:skill-cc52d03280b7 a skos:Concept ;
+    skos:broader base:skill-cat-data_engineering ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "PostgreSQL"@fr .
+
+base:skill-cat-business_intelligence a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Business Intelligence"@fr .
+
+base:skill-cat-soft_skills a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Soft Skills"@fr .
+
+base:program-c2d6c1425e9c a owl:NamedIndividual,
+        lod:Program ;
+    rdfs:label "Cybersécurité"@fr ;
+    dcterms:identifier "program-c2d6c1425e9c" ;
+    schema:educationalLevel "Ingenieur d'Etat"@fr .
+
+base:skill-598821f540fe a skos:Concept ;
+    skos:broader base:skill-cat-data_et_ia ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Scikit-learn"@fr .
+
+base:skill-94f1c7c0ec6d a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Analyse des vulnérabilités"@fr .
+
+base:skill-cat-cybersecurite a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Cybersecurite"@fr .
+
+base:skill-cat-data_engineering a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Data Engineering"@fr .
+
+base:skill-cat-devops_cloud a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "DevOps & Cloud"@fr .
+
+base:skill-cat-programmation a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Programmation"@fr .
+
+base:skill-b949c922b6ef a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Git"@fr .
+
+base:skill-cat-data_et_ia a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Data & IA"@fr .
+
+base:skill-cat-developpement_web a skos:Concept ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Developpement Web"@fr .
+
+base:skill-05b073bd5e46 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Terraform"@fr .
+
+base:skill-bde483d06e32 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "ISO 27001"@fr .
+
+base:skill-ef0f41c9727a a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Ethical Hacking"@fr .
+
+base:skill-72ebd499f293 a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "OWASP"@fr .
+
+base:skill-d4347223667f a skos:Concept ;
+    skos:broader base:skill-cat-business_intelligence ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Power BI"@fr .
+
+base:skill-724f40bbb5cf a skos:Concept ;
+    skos:broader base:skill-cat-cybersecurite ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Kali Linux"@fr .
+
+base:skill-41a52587276c a skos:Concept ;
+    skos:broader base:skill-cat-developpement_web ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "REST API"@fr .
+
+base:skill-a7056a455639 a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "SQL"@fr .
+
+base:skill-e6169e958b37 a skos:Concept ;
+    skos:broader base:skill-cat-devops_cloud ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Docker"@fr .
+
+lod:Company a owl:Class ;
+    rdfs:label "Entreprise"@fr ;
+    rdfs:comment "Organisation marocaine proposant des stages"@fr ;
+    rdfs:isDefinedBy <https://data.lod-school.ma/ontology> ;
+    rdfs:subClassOf schema:Organization .
+
+base:skill-18885f27b5af a skos:Concept ;
+    skos:broader base:skill-cat-programmation ;
+    skos:inScheme base:skill-scheme ;
+    skos:prefLabel "Python"@fr .
+
+lod:InternshipOffer a owl:Class ;
+    rdfs:label "Offre de stage"@fr ;
+    rdfs:comment "Offre publiee par une entreprise marocaine"@fr ;
+    rdfs:isDefinedBy <https://data.lod-school.ma/ontology> ;
+    rdfs:subClassOf schema:JobPosting .
+
+lod:Student a owl:Class ;
+    rdfs:label "Etudiant"@fr ;
+    rdfs:comment "Etudiant ingenieur pseudonymise"@fr ;
+    rdfs:isDefinedBy <https://data.lod-school.ma/ontology> ;
+    rdfs:subClassOf schema:Person .
+
+base:skill-scheme a skos:ConceptScheme ;
+    dcterms:title "Referentiel de competences — Ingenierie Maroc"@fr ;
+    skos:hasTopConcept base:skill-cat-business_intelligence,
+        base:skill-cat-cybersecurite,
+        base:skill-cat-data_engineering,
+        base:skill-cat-data_et_ia,
+        base:skill-cat-developpement_web,
+        base:skill-cat-devops_cloud,
+        base:skill-cat-finance_digitale,
+        base:skill-cat-programmation,
+        base:skill-cat-soft_skills,
+        base:skill-cat-supply_chain,
+        base:skill-cat-web_semantique .
+

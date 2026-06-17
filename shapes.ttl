@@ -1,0 +1,328 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# SHACL Shapes — MVP LOD Étudiants/Stages/Compétences
+# Fichier : shapes.ttl
+# Valide  : Students, InternshipOffers, Companies, Skills, Programs
+# Usage   : pip install pyshacl
+#           python validate_shacl.py
+# ══════════════════════════════════════════════════════════════════════════════
+
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix lod:     <https://data.lod-school.ma/ontology#> .
+@prefix base:    <https://data.lod-school.ma/id/> .
+@prefix schema:  <https://schema.org/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 1 — Étudiant : champs obligatoires
+# Règle : tout étudiant doit avoir un identifiant, un niveau, une filière,
+#         une ville, une mention et une année académique
+# ══════════════════════════════════════════════════════════════════════════════
+base:StudentShape
+    a sh:NodeShape ;
+    sh:targetClass lod:Student ;
+    sh:name "Étudiant — champs obligatoires" ;
+    sh:description "Vérifie que chaque étudiant a tous les champs requis" ;
+
+    # identifiant obligatoire
+    sh:property [
+        sh:path dcterms:identifier ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Un étudiant doit avoir exactement un identifiant (dcterms:identifier)" ;
+    ] ;
+
+    # niveau obligatoire
+    sh:property [
+        sh:path lod:level ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Un étudiant doit avoir exactement un niveau (lod:level)" ;
+    ] ;
+
+    # filière obligatoire
+    sh:property [
+        sh:path lod:enrolledIn ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class lod:Program ;
+        sh:message "Un étudiant doit être inscrit dans exactement une filière (lod:enrolledIn)" ;
+    ] ;
+
+    # ville obligatoire
+    sh:property [
+        sh:path schema:addressLocality ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Un étudiant doit avoir une ville (schema:addressLocality)" ;
+    ] ;
+
+    # mention obligatoire
+    sh:property [
+        sh:path lod:mention ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Un étudiant doit avoir une mention (lod:mention)" ;
+    ] ;
+
+    # année académique obligatoire
+    sh:property [
+        sh:path lod:academicYear ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Un étudiant doit avoir une année académique (lod:academicYear)" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 2 — Étudiant : niveau valide (1A, 2A ou 3A uniquement)
+# Règle : le niveau ne peut être que 1A, 2A ou 3A
+# ══════════════════════════════════════════════════════════════════════════════
+base:StudentLevelShape
+    a sh:NodeShape ;
+    sh:targetClass lod:Student ;
+    sh:name "Étudiant — niveau valide" ;
+    sh:property [
+        sh:path lod:level ;
+        sh:in ( "1A" "2A" "3A" ) ;
+        sh:message "Le niveau doit être 1A, 2A ou 3A" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 3 — Étudiant : au moins une compétence
+# Règle : chaque étudiant doit avoir au moins une compétence SKOS
+# ══════════════════════════════════════════════════════════════════════════════
+base:StudentSkillShape
+    a sh:NodeShape ;
+    sh:targetClass lod:Student ;
+    sh:name "Étudiant — compétences obligatoires" ;
+    sh:property [
+        sh:path lod:hasSkill ;
+        sh:minCount 1 ;
+        sh:class skos:Concept ;
+        sh:message "Un étudiant doit avoir au moins une compétence (lod:hasSkill → skos:Concept)" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 4 — Étudiant : URI pattern
+# Règle : l'URI d'un étudiant doit commencer par le bon préfixe
+# ══════════════════════════════════════════════════════════════════════════════
+base:StudentURIShape
+    a sh:NodeShape ;
+    sh:targetClass lod:Student ;
+    sh:name "Étudiant — pattern URI" ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://data\\.lod-school\\.ma/id/student-" ;
+    sh:message "L'URI d'un étudiant doit commencer par https://data.lod-school.ma/id/student-" .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 5 — Offre de stage : champs obligatoires
+# Règle : toute offre doit avoir titre, entreprise, ville, dates, niveau, statut
+# ══════════════════════════════════════════════════════════════════════════════
+base:OfferShape
+    a sh:NodeShape ;
+    sh:targetClass lod:InternshipOffer ;
+    sh:name "Offre — champs obligatoires" ;
+
+    # titre obligatoire
+    sh:property [
+        sh:path schema:title ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Une offre doit avoir un titre (schema:title)" ;
+    ] ;
+
+    # entreprise obligatoire
+    sh:property [
+        sh:path lod:postedBy ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class lod:Company ;
+        sh:message "Une offre doit être publiée par une entreprise (lod:postedBy)" ;
+    ] ;
+
+    # ville obligatoire
+    sh:property [
+        sh:path schema:jobLocation ;
+        sh:minCount 1 ;
+        sh:message "Une offre doit avoir une localisation (schema:jobLocation)" ;
+    ] ;
+
+    # date début obligatoire
+    sh:property [
+        sh:path schema:jobStartDate ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:date ;
+        sh:message "Une offre doit avoir une date de début (schema:jobStartDate)" ;
+    ] ;
+
+    # date fin obligatoire
+    sh:property [
+        sh:path schema:jobEndDate ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:date ;
+        sh:message "Une offre doit avoir une date de fin (schema:jobEndDate)" ;
+    ] ;
+
+    # niveau requis obligatoire
+    sh:property [
+        sh:path lod:levelRequired ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Une offre doit spécifier le niveau requis (lod:levelRequired)" ;
+    ] ;
+
+    # statut obligatoire
+    sh:property [
+        sh:path lod:status ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Une offre doit avoir un statut (lod:status)" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 6 — Offre : niveau requis valide
+# Règle : le niveau requis doit être 2A ou 3A
+# ══════════════════════════════════════════════════════════════════════════════
+base:OfferLevelShape
+    a sh:NodeShape ;
+    sh:targetClass lod:InternshipOffer ;
+    sh:name "Offre — niveau requis valide" ;
+    sh:property [
+        sh:path lod:levelRequired ;
+        sh:in ( "2A" "3A" ) ;
+        sh:message "Le niveau requis d'une offre doit être 2A ou 3A" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 7 — Offre : au moins une compétence requise
+# Règle : chaque offre doit demander au moins une compétence
+# ══════════════════════════════════════════════════════════════════════════════
+base:OfferSkillShape
+    a sh:NodeShape ;
+    sh:targetClass lod:InternshipOffer ;
+    sh:name "Offre — compétences requises" ;
+    sh:property [
+        sh:path lod:requiresSkill ;
+        sh:minCount 1 ;
+        sh:class skos:Concept ;
+        sh:message "Une offre doit requérir au moins une compétence (lod:requiresSkill)" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 8 — Offre : statut valide
+# Règle : le statut ne peut être que Ouverte ou Fermée
+# ══════════════════════════════════════════════════════════════════════════════
+base:OfferStatusShape
+    a sh:NodeShape ;
+    sh:targetClass lod:InternshipOffer ;
+    sh:name "Offre — statut valide" ;
+    sh:property [
+        sh:path lod:status ;
+        sh:in ( "Ouverte"@fr "Fermee"@fr ) ;
+        sh:message "Le statut d'une offre doit être Ouverte ou Fermee" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 9 — Entreprise : champs obligatoires
+# Règle : toute entreprise doit avoir un nom, secteur, ville, pays
+# ══════════════════════════════════════════════════════════════════════════════
+base:CompanyShape
+    a sh:NodeShape ;
+    sh:targetClass lod:Company ;
+    sh:name "Entreprise — champs obligatoires" ;
+
+    # nom obligatoire
+    sh:property [
+        sh:path schema:name ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Une entreprise doit avoir un nom (schema:name)" ;
+    ] ;
+
+    # secteur obligatoire
+    sh:property [
+        sh:path lod:sector ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Une entreprise doit avoir un secteur (lod:sector)" ;
+    ] ;
+
+    # ville obligatoire
+    sh:property [
+        sh:path schema:addressLocality ;
+        sh:minCount 1 ;
+        sh:message "Une entreprise doit avoir une ville (schema:addressLocality)" ;
+    ] ;
+
+    # pays obligatoire
+    sh:property [
+        sh:path schema:addressCountry ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Une entreprise doit avoir un pays (schema:addressCountry)" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 10 — Compétence SKOS : champs obligatoires
+# Règle : tout concept SKOS doit avoir un prefLabel et appartenir à un scheme
+# ══════════════════════════════════════════════════════════════════════════════
+base:SkillShape
+    a sh:NodeShape ;
+    sh:targetClass skos:Concept ;
+    sh:name "Compétence SKOS — champs obligatoires" ;
+
+    # prefLabel obligatoire
+    sh:property [
+        sh:path skos:prefLabel ;
+        sh:minCount 1 ;
+        sh:message "Une compétence doit avoir un libellé (skos:prefLabel)" ;
+    ] ;
+
+    # inScheme obligatoire
+    sh:property [
+        sh:path skos:inScheme ;
+        sh:minCount 1 ;
+        sh:message "Une compétence doit appartenir à un scheme (skos:inScheme)" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 11 — Filière : champs obligatoires
+# Règle : toute filière doit avoir un label
+# ══════════════════════════════════════════════════════════════════════════════
+base:ProgramShape
+    a sh:NodeShape ;
+    sh:targetClass lod:Program ;
+    sh:name "Filière — champs obligatoires" ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Une filière doit avoir un label (rdfs:label)" ;
+    ] ;
+
+    sh:property [
+        sh:path schema:educationalLevel ;
+        sh:minCount 1 ;
+        sh:message "Une filière doit avoir un niveau éducatif (schema:educationalLevel)" ;
+    ] .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SHAPE 12 — Entreprise : URI pattern
+# Règle : l'URI d'une entreprise doit commencer par le bon préfixe
+# ══════════════════════════════════════════════════════════════════════════════
+base:CompanyURIShape
+    a sh:NodeShape ;
+    sh:targetClass lod:Company ;
+    sh:name "Entreprise — pattern URI" ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://data\\.lod-school\\.ma/id/company-" ;
+    sh:message "L'URI d'une entreprise doit commencer par https://data.lod-school.ma/id/company-" .

@@ -1,0 +1,19 @@
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+
+# Q5 — Matching étudiant ↔ offres par compétences communes
+SELECT ?etudiant ?offre ?titre ?entreprise
+       (COUNT(?skillCommun) AS ?nb_competences_communes)
+WHERE {
+    ?etudiant a lod:Student ;
+              lod:hasSkill ?skillCommun .
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:requiresSkill ?skillCommun ;
+           lod:postedBy ?comp ;
+           lod:status "Ouverte"@fr .
+    ?comp schema:name ?entreprise .
+}
+GROUP BY ?etudiant ?offre ?titre ?entreprise
+ORDER BY DESC(?nb_competences_communes)
+LIMIT 20

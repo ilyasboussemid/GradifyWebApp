@@ -1,0 +1,21 @@
+company_id,name,sector,city,country,website,description
+company-001,Maroc Telecom,Télécoms,Rabat,Maroc,https://www.maroc-telecom.ma,"Leader des télécommunications au Maroc, services mobile, fixe et internet."
+company-002,OCP Group,Industrie,Casablanca,Maroc,https://www.ocp-group.ma,Groupe industriel de référence avec des opérations au niveau national.
+company-003,Attijariwafa Bank,Finance,Casablanca,Maroc,https://www.attijariwafa-bank.ma,Banque de référence au Maroc avec un réseau national étendu.
+company-004,Banque Populaire,Finance,Casablanca,Maroc,https://www.banque-populaire.ma,Banque de référence au Maroc avec un réseau national étendu.
+company-005,BMCE Bank,Finance,Casablanca,Maroc,https://www.bmce-bank.ma,Banque de référence au Maroc avec un réseau national étendu.
+company-006,CBI Maroc,Informatique,Casablanca,Maroc,https://www.cbi-maroc.ma,Editeur et intégrateur de solutions informatiques pour les entreprises.
+company-007,CGI Maroc,Conseil IT,Casablanca,Maroc,https://www.cgi-maroc.ma,Cabinet de conseil en transformation digitale et systèmes d'information.
+company-008,Capgemini Maroc,Conseil IT,Casablanca,Maroc,https://www.capgemini-maroc.ma,Cabinet de conseil en transformation digitale et systèmes d'information.
+company-009,IBM Maroc,Informatique,Casablanca,Maroc,https://www.ibm-maroc.ma,Editeur et intégrateur de solutions informatiques pour les entreprises.
+company-010,Sopra HR Software,Logiciels RH,Casablanca,Maroc,https://www.sopra-hr-software.ma,Spécialiste en solutions logicielles de gestion des ressources humaines.
+company-011,HPS Payment,FinTech,Casablanca,Maroc,https://www.hps-payment.ma,Leader en solutions de paiement électronique et monétique.
+company-012,IntelliSys,Informatique,Rabat,Maroc,https://www.intellisys.ma,Editeur et intégrateur de solutions informatiques pour les entreprises.
+company-013,Royal Air Maroc,Transport,Casablanca,Maroc,https://www.royal-air-maroc.ma,Compagnie nationale de transport aérien du Maroc.
+company-014,Lydec,Energie,Casablanca,Maroc,https://www.lydec.ma,"Opérateur de distribution d'eau, d'électricité et d'assainissement."
+company-015,ONCF,Logistique,Rabat,Maroc,https://www.oncf.ma,Acteur majeur de la logistique et du transport au Maroc.
+company-016,Barid Al-Maghrib,Logistique,Rabat,Maroc,https://www.barid-al-maghrib.ma,Acteur majeur de la logistique et du transport au Maroc.
+company-017,UM6P Ventures,Innovation,Ben Guerir,Maroc,https://www.um6p-ventures.ma,Fonds d'investissement dédié à l'innovation et aux startups deeptech.
+company-018,Leoni Maroc,Industrie,Tanger,Maroc,https://www.leoni-maroc.ma,Groupe industriel de référence avec des opérations au niveau national.
+company-019,Renault Tanger,Industrie,Tanger,Maroc,https://www.renault-tanger.ma,Groupe industriel de référence avec des opérations au niveau national.
+company-020,Dell Technologies MA,Informatique,Casablanca,Maroc,https://www.dell-technologies-ma.ma,Editeur et intégrateur de solutions informatiques pour les entreprises.

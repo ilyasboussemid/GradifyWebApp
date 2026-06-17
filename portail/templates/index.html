@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<h1>Tableau de bord</h1>
+
+<!-- Statistiques globales -->
+<div class="grid grid-4" style="margin-bottom:2rem;">
+    <div class="stat-card">
+        <div class="nombre">{{ stats.etudiants }}</div>
+        <div class="label">Étudiants</div>
+    </div>
+    <div class="stat-card">
+        <div class="nombre">{{ stats.offres }}</div>
+        <div class="label">Offres ouvertes</div>
+    </div>
+    <div class="stat-card">
+        <div class="nombre">{{ stats.entreprises }}</div>
+        <div class="label">Entreprises</div>
+    </div>
+    <div class="stat-card">
+        <div class="nombre">{{ stats.competences }}</div>
+        <div class="label">Compétences SKOS</div>
+    </div>
+</div>
+
+<div class="grid grid-2">
+
+    <!-- Top compétences demandées -->
+    <div class="card">
+        <h2>Top compétences demandées</h2>
+        {% for c in top_competences %}
+        <div style="display:flex; justify-content:space-between; align-items:center;
+                    padding:0.6rem 0; border-bottom:1px solid #f0f0f0;">
+            <span>{{ c.competence }}</span>
+            <span class="badge badge-bleu">{{ c.nb }} offres</span>
+        </div>
+        {% endfor %}
+        <div style="margin-top:1rem;">
+            <a href="/offres" class="btn btn-primaire">Voir toutes les offres</a>
+        </div>
+    </div>
+
+    <!-- Étudiants par filière -->
+    <div class="card">
+        <h2>Étudiants par filière</h2>
+        {% for f in par_filiere %}
+        <div style="display:flex; justify-content:space-between; align-items:center;
+                    padding:0.6rem 0; border-bottom:1px solid #f0f0f0;">
+            <span style="font-size:0.9rem;">{{ f.filiere }}</span>
+            <span class="badge badge-vert">{{ f.nb }}</span>
+        </div>
+        {% endfor %}
+        <div style="margin-top:1rem;">
+            <a href="/etudiants" class="btn btn-primaire">Voir les étudiants</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- Actions rapides -->
+<div class="card" style="margin-top:1rem;">
+    <h2>Actions rapides</h2>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
+        <a href="/offres" class="btn btn-primaire">🔍 Rechercher une offre</a>
+        <a href="/matching" class="btn btn-vert">🎯 Voir le matching</a>
+        <a href="/etudiants" class="btn btn-secondaire">👤 Parcourir les étudiants</a>
+        <a href="http://localhost:3030" target="_blank" class="btn btn-secondaire">⚙️ Fuseki SPARQL</a>
+    </div>
+</div>
+{% endblock %}

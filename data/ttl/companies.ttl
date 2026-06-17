@@ -1,0 +1,205 @@
+@prefix base: <https://data.lod-school.ma/id/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lod: <https://data.lod-school.ma/ontology#> .
+@prefix schema: <https://schema.org/> .
+
+base:company-001 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-001" ;
+    lod:sector "Télécoms"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Rabat" ;
+    schema:description "Leader des télécommunications au Maroc, services mobile, fixe et internet."@fr ;
+    schema:name "Maroc Telecom" ;
+    schema:url <https://www.maroc-telecom.ma> .
+
+base:company-002 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-002" ;
+    lod:sector "Industrie"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Groupe industriel de référence avec des opérations au niveau national."@fr ;
+    schema:name "OCP Group" ;
+    schema:url <https://www.ocp-group.ma> .
+
+base:company-003 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-003" ;
+    lod:sector "Finance"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Banque de référence au Maroc avec un réseau national étendu."@fr ;
+    schema:name "Attijariwafa Bank" ;
+    schema:url <https://www.attijariwafa-bank.ma> .
+
+base:company-004 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-004" ;
+    lod:sector "Finance"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Banque de référence au Maroc avec un réseau national étendu."@fr ;
+    schema:name "Banque Populaire" ;
+    schema:url <https://www.banque-populaire.ma> .
+
+base:company-005 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-005" ;
+    lod:sector "Finance"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Banque de référence au Maroc avec un réseau national étendu."@fr ;
+    schema:name "BMCE Bank" ;
+    schema:url <https://www.bmce-bank.ma> .
+
+base:company-006 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-006" ;
+    lod:sector "Informatique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Editeur et intégrateur de solutions informatiques pour les entreprises."@fr ;
+    schema:name "CBI Maroc" ;
+    schema:url <https://www.cbi-maroc.ma> .
+
+base:company-007 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-007" ;
+    lod:sector "Conseil IT"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Cabinet de conseil en transformation digitale et systèmes d'information."@fr ;
+    schema:name "CGI Maroc" ;
+    schema:url <https://www.cgi-maroc.ma> .
+
+base:company-008 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-008" ;
+    lod:sector "Conseil IT"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Cabinet de conseil en transformation digitale et systèmes d'information."@fr ;
+    schema:name "Capgemini Maroc" ;
+    schema:url <https://www.capgemini-maroc.ma> .
+
+base:company-009 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-009" ;
+    lod:sector "Informatique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Editeur et intégrateur de solutions informatiques pour les entreprises."@fr ;
+    schema:name "IBM Maroc" ;
+    schema:url <https://www.ibm-maroc.ma> .
+
+base:company-010 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-010" ;
+    lod:sector "Logiciels RH"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Spécialiste en solutions logicielles de gestion des ressources humaines."@fr ;
+    schema:name "Sopra HR Software" ;
+    schema:url <https://www.sopra-hr-software.ma> .
+
+base:company-011 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-011" ;
+    lod:sector "FinTech"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Leader en solutions de paiement électronique et monétique."@fr ;
+    schema:name "HPS Payment" ;
+    schema:url <https://www.hps-payment.ma> .
+
+base:company-012 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-012" ;
+    lod:sector "Informatique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Rabat" ;
+    schema:description "Editeur et intégrateur de solutions informatiques pour les entreprises."@fr ;
+    schema:name "IntelliSys" ;
+    schema:url <https://www.intellisys.ma> .
+
+base:company-013 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-013" ;
+    lod:sector "Transport"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Compagnie nationale de transport aérien du Maroc."@fr ;
+    schema:name "Royal Air Maroc" ;
+    schema:url <https://www.royal-air-maroc.ma> .
+
+base:company-014 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-014" ;
+    lod:sector "Energie"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Opérateur de distribution d'eau, d'électricité et d'assainissement."@fr ;
+    schema:name "Lydec" ;
+    schema:url <https://www.lydec.ma> .
+
+base:company-015 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-015" ;
+    lod:sector "Logistique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Rabat" ;
+    schema:description "Acteur majeur de la logistique et du transport au Maroc."@fr ;
+    schema:name "ONCF" ;
+    schema:url <https://www.oncf.ma> .
+
+base:company-016 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-016" ;
+    lod:sector "Logistique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Rabat" ;
+    schema:description "Acteur majeur de la logistique et du transport au Maroc."@fr ;
+    schema:name "Barid Al-Maghrib" ;
+    schema:url <https://www.barid-al-maghrib.ma> .
+
+base:company-017 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-017" ;
+    lod:sector "Innovation"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Ben Guerir" ;
+    schema:description "Fonds d'investissement dédié à l'innovation et aux startups deeptech."@fr ;
+    schema:name "UM6P Ventures" ;
+    schema:url <https://www.um6p-ventures.ma> .
+
+base:company-018 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-018" ;
+    lod:sector "Industrie"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Tanger" ;
+    schema:description "Groupe industriel de référence avec des opérations au niveau national."@fr ;
+    schema:name "Leoni Maroc" ;
+    schema:url <https://www.leoni-maroc.ma> .
+
+base:company-019 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-019" ;
+    lod:sector "Industrie"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Tanger" ;
+    schema:description "Groupe industriel de référence avec des opérations au niveau national."@fr ;
+    schema:name "Renault Tanger" ;
+    schema:url <https://www.renault-tanger.ma> .
+
+base:company-020 a lod:Company,
+        schema:Organization ;
+    dcterms:identifier "company-020" ;
+    lod:sector "Informatique"@fr ;
+    schema:addressCountry "MA" ;
+    schema:addressLocality "Casablanca" ;
+    schema:description "Editeur et intégrateur de solutions informatiques pour les entreprises."@fr ;
+    schema:name "Dell Technologies MA" ;
+    schema:url <https://www.dell-technologies-ma.ma> .
+

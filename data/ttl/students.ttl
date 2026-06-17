@@ -1,0 +1,830 @@
+@prefix base: <https://data.lod-school.ma/id/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lod: <https://data.lod-school.ma/ontology#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+base:student-0224012b0526 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-0224012b0526" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-05b073bd5e46,
+        base:skill-274b0f34ea9f,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293,
+        base:skill-8d9a80fb1dc3,
+        base:skill-bde483d06e32,
+        base:skill-d66e14828ca4,
+        base:skill-e876abbe46ea ;
+    lod:level "3A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Beni Mellal" .
+
+base:student-03ceaa3d0094 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-03ceaa3d0094" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-3dfaa5639173,
+        base:skill-8ff7b29c130d,
+        base:skill-a7056a455639,
+        base:skill-cc52d03280b7,
+        base:skill-d4347223667f,
+        base:skill-de371adefe4d,
+        base:skill-e4a5f92fd340 ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Kenitra" .
+
+base:student-0c1cd280ac88 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-0c1cd280ac88" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-1dbd59f661d6,
+        base:skill-74eae95fdba4,
+        base:skill-91231ff9ab66,
+        base:skill-94f1c7c0ec6d,
+        base:skill-9efab62721cf,
+        base:skill-cc52d03280b7,
+        base:skill-d58222c0b47f,
+        base:skill-e86755d376aa,
+        base:skill-ef0f41c9727a,
+        base:skill-f1deb75fa21d ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Oujda" .
+
+base:student-1589b5f85adc a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1589b5f85adc" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-03312bee2e65,
+        base:skill-05642da1523d,
+        base:skill-18885f27b5af,
+        base:skill-1b817f9efc97,
+        base:skill-5aa5a4a0e913,
+        base:skill-6cab6d272b4d,
+        base:skill-b37bda2ccfc5,
+        base:skill-c58f5de0911c ;
+    lod:level "2A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Rabat" .
+
+base:student-1861d794d8b7 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1861d794d8b7" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-20f3bd11a056,
+        base:skill-3981a2b9c1ef,
+        base:skill-90cf7bd8432d,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-bcd41373249e,
+        base:skill-c44362bf3425,
+        base:skill-c4e0ecf5b345,
+        base:skill-c8d75cb07591,
+        base:skill-cc52d03280b7 ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-19f023ce35cc a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-19f023ce35cc" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-1dbd59f661d6,
+        base:skill-20f3bd11a056,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-494a953d8b1c,
+        base:skill-b949c922b6ef,
+        base:skill-c4e0ecf5b345,
+        base:skill-e6169e958b37 ;
+    lod:level "2A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Casablanca" .
+
+base:student-1b9b4255c789 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1b9b4255c789" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05642da1523d,
+        base:skill-18885f27b5af,
+        base:skill-4445d918dfcf,
+        base:skill-45314e97b0c2,
+        base:skill-494a953d8b1c,
+        base:skill-8c2574892063,
+        base:skill-94d8a734ab66,
+        base:skill-c8d75cb07591,
+        base:skill-ec75f79040af ;
+    lod:level "2A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-1e2c32df1b6f a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1e2c32df1b6f" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-05642da1523d,
+        base:skill-18885f27b5af,
+        base:skill-1de78d79ea8e,
+        base:skill-26f2faf23e18,
+        base:skill-94f1c7c0ec6d,
+        base:skill-ef0f41c9727a ;
+    lod:level "2A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-1fc79562ffed a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-1fc79562ffed" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-a463d9f598a7 ;
+    lod:hasSkill base:skill-009feb88ac14,
+        base:skill-01fad993ff61,
+        base:skill-18885f27b5af,
+        base:skill-1fc0c785332e,
+        base:skill-5aa5a4a0e913,
+        base:skill-6cab6d272b4d,
+        base:skill-d4347223667f,
+        base:skill-e86755d376aa ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Kenitra" .
+
+base:student-223c25db8829 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-223c25db8829" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-03312bee2e65,
+        base:skill-040228846ead,
+        base:skill-098bda83a6fa,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-8cdf6dd5be3b,
+        base:skill-b3782288b3dd,
+        base:skill-c1ba60ce1358 ;
+    lod:level "2A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-320f070ec47d a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-320f070ec47d" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-03312bee2e65,
+        base:skill-18885f27b5af,
+        base:skill-20f3bd11a056,
+        base:skill-31c819b24cf3,
+        base:skill-494a953d8b1c,
+        base:skill-9316cd4d881e ;
+    lod:level "3A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Oujda" .
+
+base:student-35136c722e04 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-35136c722e04" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-31c819b24cf3,
+        base:skill-3bc8408be5e7,
+        base:skill-553ea337c893,
+        base:skill-598821f540fe,
+        base:skill-72ebd499f293,
+        base:skill-89dccd9f7379,
+        base:skill-94f1c7c0ec6d,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Marrakech" .
+
+base:student-36102d4b2182 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-36102d4b2182" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-32fd72a0e074,
+        base:skill-3bc8408be5e7,
+        base:skill-8cdf6dd5be3b,
+        base:skill-94f1c7c0ec6d,
+        base:skill-9e8bf4c5c3cb,
+        base:skill-bde483d06e32,
+        base:skill-cc52d03280b7,
+        base:skill-d66e14828ca4 ;
+    lod:level "3A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-432afa65f9e6 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-432afa65f9e6" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-45314e97b0c2,
+        base:skill-5aa5a4a0e913,
+        base:skill-6df2e91a0b30,
+        base:skill-94d8a734ab66,
+        base:skill-ae1d41261666,
+        base:skill-b37bda2ccfc5,
+        base:skill-cc63137a281a,
+        base:skill-d4347223667f,
+        base:skill-ed0504f70a48 ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-43dd407f6b97 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-43dd407f6b97" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-07783d014345,
+        base:skill-538372d293e8,
+        base:skill-625da44e4eaf,
+        base:skill-94d8a734ab66,
+        base:skill-9a4d10e69361,
+        base:skill-a7056a455639,
+        base:skill-ae1d41261666,
+        base:skill-d4347223667f ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-464112774049 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-464112774049" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-05b073bd5e46,
+        base:skill-098bda83a6fa,
+        base:skill-1232362fd209,
+        base:skill-18885f27b5af,
+        base:skill-49566270eff6,
+        base:skill-5b11a40ce7ac,
+        base:skill-625da44e4eaf,
+        base:skill-9316cd4d881e ;
+    lod:level "1A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Tanger" .
+
+base:student-4bfe0c652ecf a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-4bfe0c652ecf" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-05b073bd5e46,
+        base:skill-098bda83a6fa,
+        base:skill-18885f27b5af,
+        base:skill-41a52587276c,
+        base:skill-5171ce3048d3,
+        base:skill-69dbf44b3d90,
+        base:skill-8d9a80fb1dc3,
+        base:skill-b27ad06d123c,
+        base:skill-c1ba60ce1358 ;
+    lod:level "1A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Kenitra" .
+
+base:student-53c967369b9c a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-53c967369b9c" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-009feb88ac14,
+        base:skill-05b073bd5e46,
+        base:skill-1f4a4ded0bba,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-b949c922b6ef,
+        base:skill-c8d75cb07591,
+        base:skill-e6169e958b37 ;
+    lod:level "2A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-54df2efde62d a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-54df2efde62d" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-1f4a4ded0bba,
+        base:skill-49566270eff6,
+        base:skill-8c2574892063,
+        base:skill-9efab62721cf,
+        base:skill-cd590f6d28ae,
+        base:skill-d4347223667f ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Casablanca" .
+
+base:student-5afff9711979 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-5afff9711979" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-45314e97b0c2,
+        base:skill-a62c0fcffd4e,
+        base:skill-d4347223667f,
+        base:skill-ee27322554e4 ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Safi" .
+
+base:student-5bf57e9190ad a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-5bf57e9190ad" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-3bc8408be5e7,
+        base:skill-598821f540fe,
+        base:skill-72ebd499f293,
+        base:skill-a79bfb3e5086,
+        base:skill-b949c922b6ef,
+        base:skill-e86755d376aa ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Beni Mellal" .
+
+base:student-60b8634fcdae a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-60b8634fcdae" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-a463d9f598a7 ;
+    lod:hasSkill base:skill-1de78d79ea8e,
+        base:skill-6d5cac6925f2,
+        base:skill-c44362bf3425,
+        base:skill-e86755d376aa,
+        base:skill-ebf9a09143ee ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Oujda" .
+
+base:student-64cfd97277a2 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-64cfd97277a2" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-49566270eff6,
+        base:skill-53ee99ac6e3c,
+        base:skill-625da44e4eaf,
+        base:skill-91231ff9ab66,
+        base:skill-a7056a455639,
+        base:skill-a79bfb3e5086 ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-65b582c82f11 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-65b582c82f11" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-3bc8408be5e7,
+        base:skill-4828e60247c1,
+        base:skill-553ea337c893,
+        base:skill-5b11a40ce7ac,
+        base:skill-724f40bbb5cf,
+        base:skill-bde483d06e32,
+        base:skill-d4347223667f,
+        base:skill-d66e14828ca4,
+        base:skill-de371adefe4d ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Safi" .
+
+base:student-6945c6281fcb a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-6945c6281fcb" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-07783d014345,
+        base:skill-1fc0c785332e,
+        base:skill-538372d293e8,
+        base:skill-5b11a40ce7ac,
+        base:skill-6cab6d272b4d,
+        base:skill-8c2574892063,
+        base:skill-ec75f79040af,
+        base:skill-ed0504f70a48 ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-712abb030227 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-712abb030227" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-05b073bd5e46,
+        base:skill-1dbd59f661d6,
+        base:skill-26f2faf23e18,
+        base:skill-3bc8408be5e7,
+        base:skill-724f40bbb5cf,
+        base:skill-8e194cdc9d6f,
+        base:skill-d66e14828ca4 ;
+    lod:level "1A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-748d64740dd1 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-748d64740dd1" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05b073bd5e46,
+        base:skill-18885f27b5af,
+        base:skill-8fcd1836eba8,
+        base:skill-c58f5de0911c,
+        base:skill-c8d75cb07591,
+        base:skill-cc63137a281a,
+        base:skill-d4347223667f,
+        base:skill-f1deb75fa21d ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-75612cb7ad59 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-75612cb7ad59" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-098bda83a6fa,
+        base:skill-1de78d79ea8e,
+        base:skill-41a52587276c,
+        base:skill-8cdf6dd5be3b,
+        base:skill-c44362bf3425,
+        base:skill-e148d591f1e2 ;
+    lod:level "3A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Safi" .
+
+base:student-7758dfd3c76b a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-7758dfd3c76b" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-07783d014345,
+        base:skill-1f4a4ded0bba,
+        base:skill-20f3bd11a056,
+        base:skill-598821f540fe,
+        base:skill-c44362bf3425,
+        base:skill-c4e0ecf5b345,
+        base:skill-ef0f41c9727a ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-7b6fab509720 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-7b6fab509720" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-3bc8408be5e7,
+        base:skill-8ff7b29c130d,
+        base:skill-c4e0ecf5b345,
+        base:skill-cc52d03280b7,
+        base:skill-d58222c0b47f,
+        base:skill-e6169e958b37 ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Tanger" .
+
+base:student-7c1666ca54ab a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-7c1666ca54ab" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05642da1523d,
+        base:skill-1de78d79ea8e,
+        base:skill-5aa5a4a0e913,
+        base:skill-8c2574892063,
+        base:skill-b37bda2ccfc5,
+        base:skill-c58f5de0911c,
+        base:skill-cc63137a281a,
+        base:skill-d66e14828ca4 ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Casablanca" .
+
+base:student-8256d10d246c a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-8256d10d246c" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-a463d9f598a7 ;
+    lod:hasSkill base:skill-1de78d79ea8e,
+        base:skill-274b0f34ea9f,
+        base:skill-5ad7efb21006,
+        base:skill-9a4d10e69361,
+        base:skill-b1fa104b9bf0,
+        base:skill-cc9e70625970,
+        base:skill-d4347223667f,
+        base:skill-e148d591f1e2 ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-826e5a0d15c3 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-826e5a0d15c3" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-41a52587276c,
+        base:skill-5b11a40ce7ac,
+        base:skill-8d9a80fb1dc3,
+        base:skill-9efab62721cf,
+        base:skill-c1ba60ce1358,
+        base:skill-e6169e958b37,
+        base:skill-ee27322554e4 ;
+    lod:level "3A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Safi" .
+
+base:student-8342316eac59 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-8342316eac59" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-2dd9eb7d9f0c,
+        base:skill-598821f540fe,
+        base:skill-724f40bbb5cf,
+        base:skill-8e2848d04afe,
+        base:skill-b1fa104b9bf0,
+        base:skill-b949c922b6ef,
+        base:skill-cc9e70625970,
+        base:skill-e6169e958b37 ;
+    lod:level "1A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Fes" .
+
+base:student-84897cf262d1 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-84897cf262d1" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-07783d014345,
+        base:skill-18885f27b5af,
+        base:skill-6cab6d272b4d,
+        base:skill-8e2848d04afe,
+        base:skill-a7056a455639,
+        base:skill-c0862201e27e,
+        base:skill-ef0f41c9727a ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Oujda" .
+
+base:student-95cde0f0dd4c a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-95cde0f0dd4c" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-ff4ccbb2c676 ;
+    lod:hasSkill base:skill-009feb88ac14,
+        base:skill-07783d014345,
+        base:skill-3140d22d8cb3,
+        base:skill-49566270eff6,
+        base:skill-5b11a40ce7ac,
+        base:skill-625da44e4eaf,
+        base:skill-d4347223667f ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Rabat" .
+
+base:student-99a033c6672f a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-99a033c6672f" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-6e776c5041e9,
+        base:skill-724f40bbb5cf,
+        base:skill-94f1c7c0ec6d ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Marrakech" .
+
+base:student-b49c84581a51 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-b49c84581a51" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-18885f27b5af,
+        base:skill-3bc8408be5e7,
+        base:skill-4445d918dfcf,
+        base:skill-bde483d06e32,
+        base:skill-ed0504f70a48,
+        base:skill-ef0f41c9727a ;
+    lod:level "1A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-b6e482146e41 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-b6e482146e41" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-040228846ead,
+        base:skill-3bc8408be5e7,
+        base:skill-6cab6d272b4d,
+        base:skill-724f40bbb5cf,
+        base:skill-bde483d06e32,
+        base:skill-ef0f41c9727a ;
+    lod:level "3A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Rabat" .
+
+base:student-bd88676e8d83 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-bd88676e8d83" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-26f2faf23e18,
+        base:skill-3c26e7a5b744,
+        base:skill-5b11a40ce7ac,
+        base:skill-724f40bbb5cf,
+        base:skill-72ebd499f293 ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-c1176ea4da56 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-c1176ea4da56" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-01fad993ff61,
+        base:skill-20f3bd11a056,
+        base:skill-41a52587276c,
+        base:skill-47e4996e13cd,
+        base:skill-8cdf6dd5be3b,
+        base:skill-8d9a80fb1dc3,
+        base:skill-b949c922b6ef,
+        base:skill-c1ba60ce1358 ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Kenitra" .
+
+base:student-ca640fd34fa2 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-ca640fd34fa2" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05642da1523d,
+        base:skill-1fc0c785332e,
+        base:skill-45314e97b0c2,
+        base:skill-494a953d8b1c,
+        base:skill-c58f5de0911c,
+        base:skill-de371adefe4d ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-cb49e657493f a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-cb49e657493f" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-03312bee2e65,
+        base:skill-20f3bd11a056,
+        base:skill-39dd7cffe498,
+        base:skill-598821f540fe,
+        base:skill-5ad7efb21006,
+        base:skill-5b11a40ce7ac,
+        base:skill-90cf7bd8432d ;
+    lod:level "3A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-e4350bbef33f a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-e4350bbef33f" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-20f3bd11a056,
+        base:skill-598821f540fe,
+        base:skill-8c2574892063,
+        base:skill-8e194cdc9d6f,
+        base:skill-a7056a455639,
+        base:skill-b27ad06d123c,
+        base:skill-cc63137a281a ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Rabat" .
+
+base:student-e532c1bb17c1 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-e532c1bb17c1" ;
+    lod:academicYear "2023"^^xsd:gYear ;
+    lod:enrolledIn base:program-84c600d852ba ;
+    lod:hasSkill base:skill-41a52587276c,
+        base:skill-4445d918dfcf,
+        base:skill-8d9a80fb1dc3,
+        base:skill-8e2848d04afe,
+        base:skill-b27ad06d123c,
+        base:skill-b949c922b6ef,
+        base:skill-c1ba60ce1358 ;
+    lod:level "3A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Settat" .
+
+base:student-ecf69caded74 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-ecf69caded74" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-03e96b78856b ;
+    lod:hasSkill base:skill-009feb88ac14,
+        base:skill-05642da1523d,
+        base:skill-20f3bd11a056,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-598821f540fe,
+        base:skill-94d8a734ab66 ;
+    lod:level "3A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Tetouan" .
+
+base:student-f017c8b84811 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-f017c8b84811" ;
+    lod:academicYear "2024"^^xsd:gYear ;
+    lod:enrolledIn base:program-7e9d148fab94 ;
+    lod:hasSkill base:skill-18885f27b5af,
+        base:skill-2dd9eb7d9f0c,
+        base:skill-598821f540fe,
+        base:skill-74eae95fdba4,
+        base:skill-8c2574892063,
+        base:skill-bcd41373249e,
+        base:skill-c4e0ecf5b345,
+        base:skill-e876abbe46ea ;
+    lod:level "3A" ;
+    lod:mention "Passable"@fr ;
+    schema:addressLocality "Agadir" .
+
+base:student-f3ef35b4baa4 a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-f3ef35b4baa4" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-c2d6c1425e9c ;
+    lod:hasSkill base:skill-1fc0c785332e,
+        base:skill-53ee99ac6e3c,
+        base:skill-553ea337c893,
+        base:skill-724f40bbb5cf,
+        base:skill-94f1c7c0ec6d,
+        base:skill-bde483d06e32,
+        base:skill-d66e14828ca4,
+        base:skill-f1deb75fa21d ;
+    lod:level "2A" ;
+    lod:mention "Bien"@fr ;
+    schema:addressLocality "Nador" .
+
+base:student-f56f18bba2ca a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-f56f18bba2ca" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-3768cc1c3f72 ;
+    lod:hasSkill base:skill-0073e8c7fe96,
+        base:skill-18885f27b5af,
+        base:skill-39dd7cffe498,
+        base:skill-598821f540fe,
+        base:skill-6cab6d272b4d,
+        base:skill-74eae95fdba4,
+        base:skill-8e2848d04afe,
+        base:skill-91231ff9ab66,
+        base:skill-cc52d03280b7,
+        base:skill-d58222c0b47f ;
+    lod:level "1A" ;
+    lod:mention "Assez Bien"@fr ;
+    schema:addressLocality "Beni Mellal" .
+
+base:student-fbc3256f693c a lod:Student,
+        schema:Person ;
+    dcterms:identifier "student-fbc3256f693c" ;
+    lod:academicYear "2025"^^xsd:gYear ;
+    lod:enrolledIn base:program-d626f2e89fa3 ;
+    lod:hasSkill base:skill-05642da1523d,
+        base:skill-07783d014345,
+        base:skill-18885f27b5af,
+        base:skill-353f838b4b39,
+        base:skill-45314e97b0c2,
+        base:skill-b37bda2ccfc5,
+        base:skill-bcd41373249e,
+        base:skill-bde483d06e32,
+        base:skill-d4347223667f ;
+    lod:level "2A" ;
+    lod:mention "Tres Bien"@fr ;
+    schema:addressLocality "Tanger" .
+

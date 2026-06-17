@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}{{ offre.titre }}{% endblock %}
+
+{% block content %}
+<a href="/offres" class="btn btn-secondaire" style="margin-bottom:1.5rem; display:inline-block;">
+    ← Retour aux offres
+</a>
+
+<h1>{{ offre.titre }}</h1>
+
+<div class="grid grid-2">
+
+    <!-- Informations principales -->
+    <div class="card">
+        <h2>Informations</h2>
+        <table style="box-shadow:none;">
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d; width:140px;">Entreprise</td>
+                <td>{{ offre.entreprise }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Secteur</td>
+                <td>{{ offre.secteur }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Ville</td>
+                <td>📍 {{ offre.ville }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Durée</td>
+                <td>⏱ {{ offre.duree }} mois</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Niveau requis</td>
+                <td><span class="badge badge-vert">{{ offre.niveau }}</span></td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Compensation</td>
+                <td>💰 {{ offre.compensation }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Début</td>
+                <td>{{ offre.debut }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Fin</td>
+                <td>{{ offre.fin }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Statut</td>
+                <td>
+                    {% if 'Ouverte' in offre.statut %}
+                    <span class="badge badge-vert">✅ Ouverte</span>
+                    {% else %}
+                    <span class="badge badge-rouge">❌ Fermée</span>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Compétences requises -->
+    <div class="card">
+        <h2>Compétences requises</h2>
+        {% if competences %}
+            {% set cat_courante = namespace(val='') %}
+            {% for c in competences %}
+                {% if c.categorie != cat_courante.val %}
+                    {% if cat_courante.val != '' %}</div>{% endif %}
+                    <p style="font-size:0.8rem; font-weight:700; color:#7f8c8d;
+                               text-transform:uppercase; margin:1rem 0 0.5rem;">
+                        {{ c.categorie }}
+                    </p>
+                    <div>
+                    {% set cat_courante.val = c.categorie %}
+                {% endif %}
+                <span class="badge badge-bleu">{{ c.competence }}</span>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p style="color:#95a5a6;">Aucune compétence renseignée.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- Description -->
+{% if offre.description %}
+<div class="card">
+    <h2>Description</h2>
+    <p style="line-height:1.7; color:#555;">{{ offre.description }}</p>
+</div>
+{% endif %}
+
+<!-- Bouton matching -->
+<div class="card" style="text-align:center;">
+    <p style="color:#7f8c8d; margin-bottom:1rem;">
+        Voir quels étudiants correspondent le mieux à cette offre
+    </p>
+    <a href="/matching" class="btn btn-vert">🎯 Voir le matching global</a>
+</div>
+{% endblock %}

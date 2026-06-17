@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Profil étudiant{% endblock %}
+
+{% block content %}
+<a href="/etudiants" class="btn btn-secondaire" style="margin-bottom:1.5rem; display:inline-block;">
+    ← Retour aux étudiants
+</a>
+
+<h1>Profil étudiant <span style="font-size:1rem; color:#7f8c8d;">(pseudonymisé)</span></h1>
+
+<div class="grid grid-2">
+
+    <!-- Informations -->
+    <div class="card">
+        <h2>Informations</h2>
+        <table style="box-shadow:none;">
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d; width:130px;">Identifiant</td>
+                <td>
+                    <span style="font-family:monospace; font-size:0.85rem;">
+                        {{ etudiant.id }}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Filière</td>
+                <td>{{ etudiant.filiere }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Niveau</td>
+                <td><span class="badge badge-bleu">{{ etudiant.niveau }}</span></td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Ville</td>
+                <td>📍 {{ etudiant.ville }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Mention</td>
+                <td>
+                    {% if 'Bien' in etudiant.mention %}
+                    <span class="badge badge-vert">{{ etudiant.mention }}</span>
+                    {% else %}
+                    <span class="badge badge-gris">{{ etudiant.mention }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight:600; color:#7f8c8d;">Année</td>
+                <td>{{ etudiant.annee }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Compétences -->
+    <div class="card">
+        <h2>Compétences ({{ competences|length }})</h2>
+        {% if competences %}
+            {% set cat_courante = namespace(val='') %}
+            {% for c in competences %}
+                {% if c.categorie != cat_courante.val %}
+                    {% if cat_courante.val != '' %}</div>{% endif %}
+                    <p style="font-size:0.8rem; font-weight:700; color:#7f8c8d;
+                               text-transform:uppercase; margin:1rem 0 0.4rem;">
+                        {{ c.categorie }}
+                    </p>
+                    <div>
+                    {% set cat_courante.val = c.categorie %}
+                {% endif %}
+                <span class="badge badge-violet">{{ c.competence }}</span>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p style="color:#95a5a6;">Aucune compétence renseignée.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- Offres qui matchent -->
+<div class="card">
+    <h2>🎯 Offres recommandées (top 5)</h2>
+    {% if offres_match %}
+    <table style="box-shadow:none; margin-top:0.5rem;">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Entreprise</th>
+                <th>Ville</th>
+                <th>Score</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for o in offres_match %}
+        <tr>
+            <td>{{ o.titre }}</td>
+            <td>{{ o.entreprise }}</td>
+            <td>{{ o.ville }}</td>
+            <td>
+                {% set s = o.score|int %}
+                {% if s >= 4 %}
+                    <span class="score score-haut">{{ s }} compétences</span>
+                {% elif s >= 2 %}
+                    <span class="score score-moyen">{{ s }} compétences</span>
+                {% else %}
+                    <span class="score score-bas">{{ s }} compétence</span>
+                {% endif %}
+            </td>
+            <td>
+                <a href="/offres/{{ o.id }}" class="btn btn-primaire"
+                   style="font-size:0.8rem; padding:0.3rem 0.8rem;">
+                    Voir →
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="color:#95a5a6; padding:1rem 0;">Aucune offre ouverte ne correspond aux compétences de cet étudiant.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX schema: <https://schema.org/>
+
+# C3 — CONSTRUCT matching étudiant ↔ offres (export graphe)
+CONSTRUCT {
+    ?etudiant lod:matchesOffer ?offre .
+    ?offre schema:title ?titre .
+    ?etudiant lod:level ?niveau .
+}
+WHERE {
+    ?etudiant a lod:Student ;
+              lod:level ?niveau ;
+              lod:hasSkill ?skillCommun .
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:requiresSkill ?skillCommun ;
+           lod:status "Ouverte"@fr .
+}
+LIMIT 100

@@ -1,0 +1,116 @@
+skill_id,name,category
+skill-18885f27b5af,Python,programmation
+skill-c1ba60ce1358,Java,programmation
+skill-b27ad06d123c,JavaScript,programmation
+skill-ed0504f70a48,TypeScript,programmation
+skill-f1deb75fa21d,C++,programmation
+skill-040228846ead,C#,programmation
+skill-8c2574892063,R,programmation
+skill-8fcd1836eba8,Scala,programmation
+skill-d1e9567da9a8,Bash,programmation
+skill-a7056a455639,SQL,programmation
+skill-cd590f6d28ae,MATLAB,programmation
+skill-01fad993ff61,React,developpement_web
+skill-274b0f34ea9f,Vue.js,developpement_web
+skill-e790528b3879,Angular,developpement_web
+skill-1fc0c785332e,Node.js,developpement_web
+skill-4445d918dfcf,Django,developpement_web
+skill-c0862201e27e,Flask,developpement_web
+skill-2dd9eb7d9f0c,FastAPI,developpement_web
+skill-8d9a80fb1dc3,Spring Boot,developpement_web
+skill-cc9e70625970,HTML/CSS,developpement_web
+skill-41a52587276c,REST API,developpement_web
+skill-ee27322554e4,GraphQL,developpement_web
+skill-0ab89cabbdad,PHP/Laravel,developpement_web
+skill-9316cd4d881e,Machine Learning,data_et_ia
+skill-bcd41373249e,Deep Learning,data_et_ia
+skill-b3782288b3dd,NLP,data_et_ia
+skill-69dbf44b3d90,Computer Vision,data_et_ia
+skill-c4e0ecf5b345,Pandas,data_et_ia
+skill-20f3bd11a056,NumPy,data_et_ia
+skill-598821f540fe,Scikit-learn,data_et_ia
+skill-90cf7bd8432d,TensorFlow,data_et_ia
+skill-03312bee2e65,PyTorch,data_et_ia
+skill-c44362bf3425,Jupyter,data_et_ia
+skill-c8d75cb07591,MLflow,data_et_ia
+skill-1b817f9efc97,Hugging Face,data_et_ia
+skill-d4347223667f,Power BI,business_intelligence
+skill-e86755d376aa,Tableau,business_intelligence
+skill-5ad7efb21006,DAX,business_intelligence
+skill-b37bda2ccfc5,Excel avancé,business_intelligence
+skill-1de78d79ea8e,OLAP,business_intelligence
+skill-b1fa104b9bf0,Reporting,business_intelligence
+skill-009feb88ac14,Data Warehouse,business_intelligence
+skill-6d5cac6925f2,Talend,business_intelligence
+skill-6cab6d272b4d,ETL,business_intelligence
+skill-ed79ae0c3a8a,SSIS,business_intelligence
+skill-8ff7b29c130d,Apache Spark,data_engineering
+skill-9efab62721cf,Hadoop,data_engineering
+skill-e4a5f92fd340,Kafka,data_engineering
+skill-d58222c0b47f,Airflow,data_engineering
+skill-de371adefe4d,dbt,data_engineering
+skill-74eae95fdba4,Data Lake,data_engineering
+skill-1dbd59f661d6,Snowflake,data_engineering
+skill-91231ff9ab66,MongoDB,data_engineering
+skill-cc52d03280b7,PostgreSQL,data_engineering
+skill-a7f6415749a3,Redis,data_engineering
+skill-31c819b24cf3,Elasticsearch,data_engineering
+skill-e6169e958b37,Docker,devops_cloud
+skill-a37d07fe3004,Kubernetes,devops_cloud
+skill-b949c922b6ef,Git,devops_cloud
+skill-3c26e7a5b744,CI/CD,devops_cloud
+skill-4828e60247c1,Linux,devops_cloud
+skill-32fd72a0e074,AWS,devops_cloud
+skill-3140d22d8cb3,Azure,devops_cloud
+skill-31e3cbd5c7bd,GCP,devops_cloud
+skill-05b073bd5e46,Terraform,devops_cloud
+skill-9a4d10e69361,Jenkins,devops_cloud
+skill-e876abbe46ea,Ansible,devops_cloud
+skill-ef0f41c9727a,Ethical Hacking,cybersecurite
+skill-724f40bbb5cf,Kali Linux,cybersecurite
+skill-553ea337c893,Wireshark,cybersecurite
+skill-3bc8408be5e7,Pare-feu,cybersecurite
+skill-26f2faf23e18,SIEM,cybersecurite
+skill-0073e8c7fe96,Cryptographie,cybersecurite
+skill-72ebd499f293,OWASP,cybersecurite
+skill-94f1c7c0ec6d,Analyse des vulnérabilités,cybersecurite
+skill-d66e14828ca4,Active Directory,cybersecurite
+skill-bde483d06e32,ISO 27001,cybersecurite
+skill-8e2848d04afe,Pentest,cybersecurite
+skill-94d8a734ab66,SAP SCM,supply_chain
+skill-494a953d8b1c,Optimisation logistique,supply_chain
+skill-cc63137a281a,Gestion des stocks,supply_chain
+skill-05642da1523d,ERP,supply_chain
+skill-45314e97b0c2,Simulation,supply_chain
+skill-5aa5a4a0e913,IoT,supply_chain
+skill-c58f5de0911c,Lean Management,supply_chain
+skill-53ee99ac6e3c,Planification de la demande,supply_chain
+skill-a79bfb3e5086,Transport Management System,supply_chain
+skill-1232362fd209,Modélisation financière,finance_digitale
+skill-625da44e4eaf,Blockchain,finance_digitale
+skill-07783d014345,Risque financier,finance_digitale
+skill-49566270eff6,Bloomberg,finance_digitale
+skill-538372d293e8,FinTech,finance_digitale
+skill-5b11a40ce7ac,Régression,finance_digitale
+skill-e148d591f1e2,Scoring crédit,finance_digitale
+skill-8e194cdc9d6f,Analyse quantitative,finance_digitale
+skill-5d18b8699a17,Gestion de portefeuille,finance_digitale
+skill-5736197f0d19,RDF,web_semantique
+skill-ebf9a09143ee,SPARQL,web_semantique
+skill-39dd7cffe498,OWL,web_semantique
+skill-a62c0fcffd4e,SKOS,web_semantique
+skill-6df2e91a0b30,Linked Data,web_semantique
+skill-47e4996e13cd,JSON-LD,web_semantique
+skill-5171ce3048d3,Turtle,web_semantique
+skill-4f1b2483e777,SHACL,web_semantique
+skill-3dfaa5639173,Ontologie,web_semantique
+skill-3981a2b9c1ef,Communication,soft_skills
+skill-353f838b4b39,Travail en équipe,soft_skills
+skill-1f4a4ded0bba,Gestion de projet,soft_skills
+skill-ae1d41261666,Résolution de problèmes,soft_skills
+skill-6e776c5041e9,Autonomie,soft_skills
+skill-89dccd9f7379,Adaptabilité,soft_skills
+skill-9e8bf4c5c3cb,Présentation,soft_skills
+skill-098bda83a6fa,Agile/Scrum,soft_skills
+skill-ec75f79040af,Leadership,soft_skills
+skill-8cdf6dd5be3b,UML,soft_skills

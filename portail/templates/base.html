@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LOD Platform{% endblock %} — Stages & Compétences</title>
+    <style>
+        /* ── Reset & Base ── */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            color: #2c3e50;
+            min-height: 100vh;
+        }
+
+        /* ── Navbar ── */
+        nav {
+            background: #1a3a5c;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            height: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        nav .logo {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        nav .logo span { color: #3498db; }
+        nav a {
+            color: #bdc3c7;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            background: #2980b9;
+            color: #fff;
+        }
+
+        /* ── Conteneur principal ── */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ── Titre de page ── */
+        h1 {
+            font-size: 1.8rem;
+            color: #1a3a5c;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #3498db;
+            padding-left: 1rem;
+        }
+        h2 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Cartes ── */
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            margin-bottom: 1rem;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+        /* ── Grid de cartes ── */
+        .grid { display: grid; gap: 1rem; }
+        .grid-2 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        /* ── Stats ── */
+        .stat-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .stat-card .nombre {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        /* ── Badges ── */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.2rem;
+        }
+        .badge-bleu    { background: #ebf5fb; color: #2980b9; }
+        .badge-vert    { background: #eafaf1; color: #27ae60; }
+        .badge-orange  { background: #fef9e7; color: #e67e22; }
+        .badge-rouge   { background: #fdedec; color: #e74c3c; }
+        .badge-gris    { background: #f2f3f4; color: #7f8c8d; }
+        .badge-violet  { background: #f4ecf7; color: #8e44ad; }
+
+        /* ── Formulaire de recherche ── */
+        .search-bar {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+        .search-bar .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            flex: 1;
+            min-width: 180px;
+        }
+        .search-bar label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .search-bar select,
+        .search-bar input {
+            padding: 0.6rem 0.9rem;
+            border: 1.5px solid #dde3ea;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            background: #f9fafc;
+            transition: border-color 0.2s;
+        }
+        .search-bar select:focus,
+        .search-bar input:focus {
+            outline: none;
+            border-color: #3498db;
+            background: #fff;
+        }
+
+        /* ── Boutons ── */
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn:active { transform: scale(0.98); }
+        .btn-primaire  { background: #3498db; color: #fff; }
+        .btn-primaire:hover { background: #2980b9; }
+        .btn-secondaire { background: #ecf0f1; color: #2c3e50; }
+        .btn-secondaire:hover { background: #dde3ea; }
+        .btn-vert  { background: #27ae60; color: #fff; }
+        .btn-vert:hover { background: #219a52; }
+
+        /* ── Table ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        th {
+            background: #1a3a5c;
+            color: #fff;
+            padding: 0.9rem 1rem;
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #f8fbfe; }
+
+        /* ── Score matching ── */
+        .score {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .score-haut   { background: #eafaf1; color: #27ae60; }
+        .score-moyen  { background: #fef9e7; color: #e67e22; }
+        .score-bas    { background: #fdedec; color: #e74c3c; }
+
+        /* ── Alerte vide ── */
+        .vide {
+            text-align: center;
+            padding: 3rem;
+            color: #95a5a6;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .vide .icone { font-size: 3rem; margin-bottom: 1rem; }
+
+        /* ── Lien ── */
+        a { color: #2980b9; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #95a5a6;
+            font-size: 0.85rem;
+            margin-top: 3rem;
+            border-top: 1px solid #ecf0f1;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">LOD <span>Platform</span></a>
+    <a href="/"          {% if request.path == '/'          %}class="active"{% endif %}>Accueil</a>
+    <a href="/offres"    {% if request.path == '/offres'    %}class="active"{% endif %}>Offres</a>
+    <a href="/etudiants" {% if request.path == '/etudiants' %}class="active"{% endif %}>Étudiants</a>
+    <a href="/matching"  {% if request.path == '/matching'  %}class="active"{% endif %}>Matching</a>
+</nav>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<footer>
+    LOD Platform — Étudiants · Stages · Compétences &nbsp;|&nbsp;
+    Données : <a href="http://localhost:3030" target="_blank">Apache Jena Fuseki</a>
+</footer>
+
+</body>
+</html>

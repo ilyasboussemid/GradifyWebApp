@@ -1,0 +1,19 @@
+PREFIX lod:    <https://data.lod-school.ma/ontology#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+
+# Q4 — Offres filtrées par compétence
+# PARAMÈTRE : remplacer {{competence}} par la compétence cherchée
+SELECT ?offre ?titre ?entreprise ?ville ?niveau
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:requiresSkill ?skill ;
+           lod:postedBy ?comp ;
+           schema:jobLocation ?ville ;
+           lod:levelRequired ?niveau ;
+           lod:status "Ouverte"@fr .
+    ?skill skos:prefLabel "{{competence}}"@fr .
+    ?comp schema:name ?entreprise .
+}
+ORDER BY ?ville

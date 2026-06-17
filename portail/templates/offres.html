@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Offres de stage{% endblock %}
+
+{% block content %}
+<h1>Offres de stage</h1>
+
+<!-- Barre de recherche -->
+<form method="GET" action="/offres">
+<div class="search-bar">
+    <div class="field">
+        <label>Compétence</label>
+        <select name="competence">
+            <option value="">-- Toutes --</option>
+            {% for c in competences %}
+            <option value="{{ c.competence }}"
+                {% if c.competence == filtre_competence %}selected{% endif %}>
+                {{ c.competence }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="field">
+        <label>Ville</label>
+        <select name="ville">
+            <option value="">-- Toutes --</option>
+            {% for v in villes %}
+            <option value="{{ v.ville }}"
+                {% if v.ville == filtre_ville %}selected{% endif %}>
+                {{ v.ville }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="field">
+        <label>Niveau requis</label>
+        <select name="niveau">
+            <option value="">-- Tous --</option>
+            <option value="2A" {% if filtre_niveau == '2A' %}selected{% endif %}>2A</option>
+            <option value="3A" {% if filtre_niveau == '3A' %}selected{% endif %}>3A</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primaire">🔍 Rechercher</button>
+    <a href="/offres" class="btn btn-secondaire">✕ Réinitialiser</a>
+</div>
+</form>
+
+<!-- Nombre de résultats -->
+<p style="margin-bottom:1rem; color:#7f8c8d; font-size:0.9rem;">
+    {{ offres|length }} offre{{ 's' if offres|length > 1 else '' }} trouvée{{ 's' if offres|length > 1 else '' }}
+    {% if filtre_competence %} · Compétence : <strong>{{ filtre_competence }}</strong>{% endif %}
+    {% if filtre_ville %} · Ville : <strong>{{ filtre_ville }}</strong>{% endif %}
+    {% if filtre_niveau %} · Niveau : <strong>{{ filtre_niveau }}</strong>{% endif %}
+</p>
+
+<!-- Liste des offres -->
+{% if offres %}
+<div class="grid grid-2">
+{% for o in offres %}
+<div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:0.8rem;">
+        <h2 style="font-size:1.1rem;">{{ o.titre }}</h2>
+        <span class="badge badge-vert">{{ o.niveau }}</span>
+    </div>
+    <p style="color:#555; margin-bottom:0.8rem;">🏢 {{ o.entreprise }}</p>
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <span class="badge badge-gris">📍 {{ o.ville }}</span>
+        <span class="badge badge-bleu">⏱ {{ o.duree }} mois</span>
+        <span class="badge badge-orange">💰 {{ o.compensation }}</span>
+    </div>
+    <a href="/offres/{{ o.id }}" class="btn btn-primaire" style="font-size:0.85rem;">
+        Voir le détail →
+    </a>
+</div>
+{% endfor %}
+</div>
+
+{% else %}
+<div class="vide">
+    <div class="icone">🔍</div>
+    <p>Aucune offre ne correspond à votre recherche.</p>
+    <a href="/offres" style="margin-top:1rem; display:inline-block;">Réinitialiser les filtres</a>
+</div>
+{% endif %}
+{% endblock %}
