@@ -53,3 +53,23 @@ lod:Student a owl:Class ;
     dcterms:title "LOD School Ontology — Maroc"@fr ;
     owl:versionInfo "1.0.0" .
 
+
+
+lod:appliedTo a owl:ObjectProperty ;
+    rdfs:label "a postule a"@fr ;
+    rdfs:domain lod:Student ;
+    rdfs:range lod:InternshipOffer .
+
+lod:hasApplication a owl:ObjectProperty ;
+    rdfs:label "a recu une candidature"@fr ;
+    rdfs:domain lod:InternshipOffer .
+
+lod:applicant a owl:ObjectProperty ;
+    rdfs:label "candidat"@fr ;
+    rdfs:range lod:Student .
+
+lod:applicationDate a owl:DatatypeProperty ;
+    rdfs:label "date de candidature"@fr .
+
+lod:applicationStatus a owl:DatatypeProperty ;
+    rdfs:label "statut de candidature"@fr .

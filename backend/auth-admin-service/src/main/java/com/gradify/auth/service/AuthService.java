@@ -3,16 +3,19 @@ package com.gradify.auth.service;
 import com.gradify.auth.dto.LoginRequest;
 import com.gradify.auth.dto.TokenResponse;
 import com.gradify.auth.security.JwtUtil;
+import com.gradify.auth.sparql.SparqlClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class AuthService {
 
     private final JwtUtil jwtUtil;
+    private final SparqlClient sparqlClient;
 
     @Value("${auth.admin.username:admin}")
     private String adminUsername;
@@ -20,7 +23,8 @@ public class AuthService {
     @Value("${auth.admin.password:admin123}")
     private String adminPassword;
 
-    private static final java.util.concurrent.ConcurrentHashMap<String, String> ENTERPRISE_ACCOUNTS = new java.util.concurrent.ConcurrentHashMap<>(Map.of(
+    private static final ConcurrentHashMap<String, String> PASSWORDS = new ConcurrentHashMap<>(Map.of(
+            "admin", "admin123",
             "techsecure", "pass123",
             "cloudfirst", "pass123",
             "datamaroc", "pass123",
@@ -28,10 +32,9 @@ public class AuthService {
             "ailab", "pass123"
     ));
 
-    private static final java.util.concurrent.ConcurrentHashMap<String, String> STUDENT_ACCOUNTS = new java.util.concurrent.ConcurrentHashMap<>();
-
-    public AuthService(JwtUtil jwtUtil) {
+    public AuthService(JwtUtil jwtUtil, SparqlClient sparqlClient) {
         this.jwtUtil = jwtUtil;
+        this.sparqlClient = sparqlClient;
     }
 
     public TokenResponse authenticate(LoginRequest request) {
@@ -41,69 +44,96 @@ public class AuthService {
 
         switch (role) {
             case "ADMIN":
-                return authenticateAdmin(identifier, password);
+                if (!adminUsername.equals(identifier) || !adminPassword.equals(password)) {
+                    throw new IllegalArgumentException("Identifiants administrateur invalides");
+                }
+                return new TokenResponse(jwtUtil.generateToken(identifier, "ADMIN", "Administrateur"), identifier, "ADMIN", "Administrateur");
             case "ENTERPRISE":
-                return authenticateEnterprise(identifier, password);
+                String key = identifier.toLowerCase().replaceAll("[^a-z0-9]", "");
+                String storedPwd = PASSWORDS.get(key);
+                if (storedPwd == null || !storedPwd.equals(password)) {
+                    throw new IllegalArgumentException("Identifiants entreprise invalides");
+                }
+                String entName = identifier;
+                return new TokenResponse(jwtUtil.generateToken(identifier, "ENTERPRISE", entName), identifier, "ENTERPRISE", entName);
             case "STUDENT":
-                return authenticateStudent(identifier, password);
+                if (identifier == null || identifier.isBlank()) {
+                    throw new IllegalArgumentException("Identifiant requis");
+                }
+                String studentPwd = PASSWORDS.get(identifier);
+                if (studentPwd != null) {
+                    if (!studentPwd.equals(password)) throw new IllegalArgumentException("Mot de passe invalide");
+                } else {
+                    if (!"etudiant".equals(password) && !"pass123".equals(password)) {
+                        throw new IllegalArgumentException("Mot de passe étudiant invalide");
+                    }
+                }
+                String name = "Étudiant " + identifier.substring(0, Math.min(16, identifier.length()));
+                return new TokenResponse(jwtUtil.generateToken(identifier, "STUDENT", name), identifier, "STUDENT", name);
             default:
                 throw new IllegalArgumentException("Rôle invalide : " + role);
         }
     }
 
     public void register(String identifier, String password, String role, Map<String, String> data) {
-        switch (role.toUpperCase()) {
-            case "ENTERPRISE":
-                String key = identifier.toLowerCase().replaceAll("[^a-z0-9]", "");
-                if (ENTERPRISE_ACCOUNTS.containsKey(key)) {
-                    throw new IllegalArgumentException("Cet identifiant entreprise existe déjà");
-                }
-                ENTERPRISE_ACCOUNTS.put(key, password);
-                break;
-            case "STUDENT":
-                if (STUDENT_ACCOUNTS.containsKey(identifier)) {
-                    throw new IllegalArgumentException("Cet identifiant étudiant existe déjà");
-                }
-                STUDENT_ACCOUNTS.put(identifier, password);
-                break;
-            default:
-                throw new IllegalArgumentException("L'inscription admin n'est pas autorisée");
-        }
-    }
+        String key = role.equals("ENTERPRISE") ? identifier.toLowerCase().replaceAll("[^a-z0-9]", "") : identifier;
 
-    private TokenResponse authenticateAdmin(String identifier, String password) {
-        if (!adminUsername.equals(identifier) || !adminPassword.equals(password)) {
-            throw new IllegalArgumentException("Identifiants administrateur invalides");
+        if (PASSWORDS.containsKey(key)) {
+            throw new IllegalArgumentException("Cet identifiant existe déjà");
         }
-        String token = jwtUtil.generateToken(identifier, "ADMIN", "Administrateur");
-        return new TokenResponse(token, identifier, "ADMIN", "Administrateur");
-    }
 
-    private TokenResponse authenticateEnterprise(String identifier, String password) {
-        String key = identifier.toLowerCase().replaceAll("[^a-z0-9]", "");
-        if (!ENTERPRISE_ACCOUNTS.containsKey(key) || !ENTERPRISE_ACCOUNTS.get(key).equals(password)) {
-            throw new IllegalArgumentException("Identifiants entreprise invalides");
-        }
-        String name = identifier;
-        String token = jwtUtil.generateToken(identifier, "ENTERPRISE", name);
-        return new TokenResponse(token, identifier, "ENTERPRISE", name);
-    }
+        PASSWORDS.put(key, password);
 
-    private TokenResponse authenticateStudent(String identifier, String password) {
-        if (identifier == null || identifier.isBlank()) {
-            throw new IllegalArgumentException("L'identifiant est requis");
-        }
-        if (STUDENT_ACCOUNTS.containsKey(identifier)) {
-            if (!STUDENT_ACCOUNTS.get(identifier).equals(password)) {
-                throw new IllegalArgumentException("Mot de passe invalide");
+        try {
+            if ("ENTERPRISE".equalsIgnoreCase(role)) {
+                insertEnterprise(identifier, data);
+            } else if ("STUDENT".equalsIgnoreCase(role)) {
+                insertStudent(identifier, data);
             }
-        } else {
-            if (!"etudiant".equals(password) && !"pass123".equals(password)) {
-                throw new IllegalArgumentException("Mot de passe étudiant invalide");
-            }
+        } catch (Exception e) {
+            System.err.println("Warning: Could not persist to Fuseki: " + e.getMessage());
         }
-        String name = "Étudiant " + identifier.substring(0, Math.min(16, identifier.length()));
-        String token = jwtUtil.generateToken(identifier, "STUDENT", name);
-        return new TokenResponse(token, identifier, "STUDENT", name);
+    }
+
+    private void insertEnterprise(String identifier, Map<String, String> data) {
+        String companyName = data.getOrDefault("companyName", identifier);
+        String sector = data.getOrDefault("sector", "Technologie");
+        String city = data.getOrDefault("city", "Casablanca");
+        String hash = UUID.nameUUIDFromBytes(identifier.getBytes()).toString().substring(0, 12);
+
+        String sparql = String.format("""
+            INSERT DATA {
+                base:company-%s a lod:Company, schema:Organization ;
+                    schema:name "%s"^^xsd:string ;
+                    lod:sector "%s"@fr ;
+                    schema:addressLocality "%s"^^xsd:string ;
+                    schema:addressCountry "Maroc"^^xsd:string ;
+                    dcterms:identifier "%s"^^xsd:string .
+            }
+            """, hash, companyName, sector, city, identifier);
+
+        sparqlClient.update(sparql);
+    }
+
+    private void insertStudent(String identifier, Map<String, String> data) {
+        String programLabel = data.getOrDefault("program", "Genie Logiciel");
+        String level = data.getOrDefault("level", "2A");
+        String city = data.getOrDefault("city", "Casablanca");
+        String hash = UUID.nameUUIDFromBytes(identifier.getBytes()).toString().substring(0, 12);
+        String programHash = UUID.nameUUIDFromBytes(programLabel.getBytes()).toString().substring(0, 12);
+
+        String sparql = String.format("""
+            INSERT DATA {
+                base:student-%s a lod:Student, schema:Person ;
+                    dcterms:identifier "%s"^^xsd:string ;
+                    lod:level "%s" ;
+                    lod:enrolledIn base:program-%s ;
+                    schema:addressLocality "%s"^^xsd:string ;
+                    lod:mention "Non évalué"@fr ;
+                    lod:academicYear "2026"^^xsd:gYear .
+            }
+            """, hash, identifier, level, programHash, city);
+
+        sparqlClient.update(sparql);
     }
 }

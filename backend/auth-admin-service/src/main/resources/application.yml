@@ -14,6 +14,9 @@ auth:
     username: ${ADMIN_USERNAME:admin}
     password: ${ADMIN_PASSWORD:admin123}
 
+sparql:
+  endpoint: ${SPARQL_ENDPOINT:http://localhost:3030/lod/sparql}
+
 management:
   endpoints:
     web:

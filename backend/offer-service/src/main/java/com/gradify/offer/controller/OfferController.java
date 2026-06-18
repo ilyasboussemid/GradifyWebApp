@@ -98,6 +98,7 @@ public class OfferController {
     public ResponseEntity<?> applyToOffer(@PathVariable String id, @RequestHeader(value = "X-User-Id", required = false) String userId) {
         try {
             String studentId = userId != null ? userId : "anonymous";
+            offerService.applyToOffer(id, studentId);
             return ResponseEntity.ok(Map.of("message", "Candidature enregistrée", "offerId", id, "studentId", studentId));
         } catch (Exception e) {
             return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
@@ -106,6 +107,21 @@ public class OfferController {
 
     @GetMapping("/{id}/applications")
     public ResponseEntity<?> getApplications(@PathVariable String id) {
-        return ResponseEntity.ok(Map.of("items", List.of(), "total", 0));
+        try {
+            return ResponseEntity.ok(offerService.getApplications(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @PutMapping("/applications/{studentId}/{offerId}/status")
+    public ResponseEntity<?> updateApplicationStatus(@PathVariable String studentId, @PathVariable String offerId, @RequestBody Map<String, String> body) {
+        try {
+            String newStatus = body.get("status");
+            offerService.updateApplicationStatus(offerId, studentId, newStatus);
+            return ResponseEntity.ok(Map.of("message", "Statut mis à jour"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
     }
 }

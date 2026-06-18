@@ -1,4 +1,4 @@
-package com.gradify.student.sparql;
+package com.gradify.auth.sparql;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -12,7 +12,7 @@ import java.util.*;
 @Component
 public class SparqlClient {
 
-    @Value("${sparql.endpoint}")
+    @Value("${sparql.endpoint:http://localhost:3030/lod/sparql}")
     private String endpoint;
 
     private final RestTemplate restTemplate = new RestTemplate();
@@ -33,11 +33,9 @@ public class SparqlClient {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         headers.setAccept(List.of(MediaType.valueOf("application/sparql-results+json")));
-
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
         body.add("query", fullQuery);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(body, headers);
-
         try {
             ResponseEntity<Map> response = restTemplate.exchange(endpoint, HttpMethod.POST, request, Map.class);
             Map<String, Object> data = response.getBody();

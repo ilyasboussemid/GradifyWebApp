@@ -46,4 +46,16 @@ public class SparqlClient {
             return output;
         } catch (Exception e) { throw new RuntimeException("SPARQL failed: " + e.getMessage(), e); }
     }
+
+    public void update(String sparqlUpdate) {
+        String updateEndpoint = endpoint.replace("/sparql", "/update");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.valueOf("application/sparql-update"));
+        HttpEntity<String> request = new HttpEntity<>(PREFIXES + sparqlUpdate, headers);
+        try {
+            restTemplate.exchange(updateEndpoint, HttpMethod.POST, request, String.class);
+        } catch (Exception e) {
+            throw new RuntimeException("SPARQL update failed: " + e.getMessage(), e);
+        }
+    }
 }

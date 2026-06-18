@@ -177,16 +177,76 @@ public class OfferService {
 
     public Map<String, Object> createOffer(Map<String, Object> data) {
         String id = "offer-" + String.format("%03d", System.currentTimeMillis() % 1000);
+        String title = (String) data.getOrDefault("title", "Stage");
+        String description = (String) data.getOrDefault("description", "");
+        String city = (String) data.getOrDefault("city", "Casablanca");
+        String duration = String.valueOf(data.getOrDefault("duration", 3));
+        String level = (String) data.getOrDefault("level", "2A");
+        String compensation = (String) data.getOrDefault("compensation", "Non remunere");
+        String startDate = (String) data.getOrDefault("startDate", java.time.LocalDate.now().toString());
+        String endDate = (String) data.getOrDefault("endDate", java.time.LocalDate.now().plusMonths(3).toString());
+        String targetPrograms = (String) data.getOrDefault("targetPrograms", "");
+        String companyId = (String) data.getOrDefault("companyId", "unknown");
+        List<String> skills = data.get("skills") instanceof List ? (List<String>) data.get("skills") : List.of();
+
+        String companyHash = java.util.UUID.nameUUIDFromBytes(companyId.getBytes()).toString().substring(0, 12);
+
+        StringBuilder skillTriples = new StringBuilder();
+        for (String skill : skills) {
+            String skillHash = java.util.UUID.nameUUIDFromBytes(skill.toLowerCase().getBytes()).toString().substring(0, 12);
+            skillTriples.append(String.format("    lod:requiresSkill base:skill-%s ;\n", skillHash));
+            sparqlClient.update(String.format("""
+                INSERT DATA {
+                    base:skill-%s a skos:Concept ;
+                        skos:prefLabel "%s"@fr ;
+                        skos:inScheme base:skill-scheme .
+                }
+                """, skillHash, skill));
+        }
+
+        String sparql = String.format("""
+            INSERT DATA {
+                base:%s a lod:InternshipOffer, schema:JobPosting ;
+                    dcterms:identifier "%s"^^xsd:string ;
+                    dcterms:created "%s"^^xsd:date ;
+                    schema:title "%s"@fr ;
+                    schema:description "%s"@fr ;
+                    schema:jobLocation "%s" ;
+                    schema:jobStartDate "%s"^^xsd:date ;
+                    schema:jobEndDate "%s"^^xsd:date ;
+                    lod:durationMonths %s ;
+                    lod:levelRequired "%s" ;
+                    lod:compensation "%s"@fr ;
+                    lod:status "Ouverte"@fr ;
+                    lod:targetPrograms "%s"@fr ;
+                    lod:postedBy base:company-%s ;
+                    %s
+                    schema:name "%s" .
+            }
+            """, id, id, java.time.LocalDate.now().toString(), title, description, city,
+                startDate, endDate, duration, level, compensation, targetPrograms,
+                companyHash, skillTriples.toString(), title);
+
+        sparqlClient.update(sparql);
+
         data.put("id", id);
         data.put("status", "Ouverte");
         return data;
     }
 
     public Map<String, Object> updateOffer(Map<String, Object> data) {
-        return data;
+        String id = (String) data.get("id");
+        deleteOffer(id);
+        return createOffer(data);
     }
 
     public void deleteOffer(String offerId) {
+        String sparql = String.format("""
+            DELETE WHERE {
+                base:%s ?p ?o .
+            }
+            """, offerId);
+        sparqlClient.update(sparql);
     }
 
     public Map<String, Object> getByCompany(String companyId) {
@@ -220,5 +280,68 @@ public class OfferService {
         }).collect(Collectors.toList());
 
         return Map.of("items", items);
+    }
+
+    public void applyToOffer(String offerId, String studentId) {
+        String date = java.time.LocalDate.now().toString();
+        String sparql = String.format("""
+            INSERT DATA {
+                base:%s lod:appliedTo base:%s .
+                base:%s lod:hasApplication [
+                    lod:applicant base:%s ;
+                    lod:applicationDate "%s"^^xsd:date ;
+                    lod:applicationStatus "En attente"@fr
+                ] .
+            }
+            """, studentId, offerId, offerId, studentId, date);
+        sparqlClient.update(sparql);
+    }
+
+    public Map<String, Object> getApplications(String offerId) {
+        List<Map<String, String>> results = sparqlClient.query(String.format("""
+            SELECT ?studentId ?date ?status ?filiere ?niveau ?ville WHERE {
+                base:%s lod:hasApplication ?app .
+                ?app lod:applicant ?student ;
+                     lod:applicationDate ?date ;
+                     lod:applicationStatus ?status .
+                ?student dcterms:identifier ?studentId .
+                OPTIONAL { ?student lod:level ?niveau . }
+                OPTIONAL { ?student schema:addressLocality ?ville . }
+                OPTIONAL {
+                    ?student lod:enrolledIn ?prog .
+                    ?prog rdfs:label ?filiere .
+                }
+            }
+            ORDER BY DESC(?date)
+            """, offerId));
+
+        List<Map<String, Object>> items = results.stream().map(row -> {
+            Map<String, Object> app = new HashMap<>(row);
+            app.put("id", "app-" + row.get("studentId").hashCode());
+            app.put("program", row.getOrDefault("filiere", ""));
+            app.put("level", row.getOrDefault("niveau", ""));
+            app.put("city", row.getOrDefault("ville", ""));
+            app.put("appliedAt", row.get("date"));
+            return app;
+        }).collect(Collectors.toList());
+
+        return Map.of("items", items, "total", items.size());
+    }
+
+    public void updateApplicationStatus(String offerId, String studentId, String newStatus) {
+        String sparql = String.format("""
+            DELETE {
+                ?app lod:applicationStatus ?oldStatus .
+            }
+            INSERT {
+                ?app lod:applicationStatus "%s"@fr .
+            }
+            WHERE {
+                base:%s lod:hasApplication ?app .
+                ?app lod:applicant base:%s ;
+                     lod:applicationStatus ?oldStatus .
+            }
+            """, newStatus, offerId, studentId);
+        sparqlClient.update(sparql);
     }
 }
