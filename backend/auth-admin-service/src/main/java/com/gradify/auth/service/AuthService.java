@@ -51,8 +51,23 @@ public class AuthService {
             case "ENTERPRISE":
                 String key = identifier.toLowerCase().replaceAll("[^a-z0-9]", "");
                 String entPwd = ENTERPRISE_PASSWORDS.get(key);
-                if (entPwd == null || !entPwd.equals(password)) {
-                    throw new IllegalArgumentException("Identifiants entreprise invalides. Vérifiez que vous avez choisi le bon rôle.");
+                if (entPwd == null) {
+                    List<Map<String, String>> entCheck = sparqlClient.query(String.format("""
+                        SELECT ?comp WHERE {
+                            ?comp a lod:Company ;
+                                  schema:name ?name .
+                            FILTER (LCASE(str(?name)) = LCASE("%s"))
+                        } LIMIT 1
+                        """, identifier));
+                    if (!entCheck.isEmpty()) {
+                        ENTERPRISE_PASSWORDS.put(key, password);
+                        entPwd = password;
+                    } else {
+                        throw new IllegalArgumentException("Entreprise non trouvée. Inscrivez-vous d'abord.");
+                    }
+                }
+                if (!entPwd.equals(password)) {
+                    throw new IllegalArgumentException("Mot de passe entreprise invalide");
                 }
                 return new TokenResponse(jwtUtil.generateToken(identifier, "ENTERPRISE", identifier), identifier, "ENTERPRISE", identifier);
 
@@ -65,6 +80,16 @@ public class AuthService {
                 }
                 if (identifier.equals(adminUsername)) {
                     throw new IllegalArgumentException("Cet identifiant est l'admin. Choisissez le rôle Admin.");
+                }
+                List<Map<String, String>> companyCheck = sparqlClient.query(String.format("""
+                    SELECT ?comp WHERE {
+                        ?comp a lod:Company ;
+                              schema:name ?name .
+                        FILTER (LCASE(str(?name)) = LCASE("%s"))
+                    } LIMIT 1
+                    """, identifier));
+                if (!companyCheck.isEmpty()) {
+                    throw new IllegalArgumentException("'" + identifier + "' est une entreprise enregistrée. Choisissez le rôle Entreprise.");
                 }
                 String studentPwd = STUDENT_PASSWORDS.get(identifier);
                 if (studentPwd != null) {
