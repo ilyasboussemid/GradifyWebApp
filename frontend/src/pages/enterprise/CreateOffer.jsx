@@ -144,6 +144,7 @@ export default function CreateOffer() {
                 <div className="form-group">
                   <label>Niveau requis</label>
                   <select className="select" style={{ width: '100%' }} value={level} onChange={(e) => setLevel(e.target.value)}>
+                    <option value="1A">1A</option>
                     <option value="2A">2A</option>
                     <option value="3A">3A</option>
                   </select>
@@ -152,15 +153,7 @@ export default function CreateOffer() {
               <div className="grid grid-3">
                 <div className="form-group">
                   <label>Rémunération</label>
-                  <select className="select" style={{ width: '100%' }} value={compensation} onChange={(e) => setCompensation(e.target.value)} required>
-                    <option value="">Choisir</option>
-                    <option value="Non remunere">Non rémunéré</option>
-                    <option value="2 000 MAD/mois">2 000 MAD/mois</option>
-                    <option value="3 000 MAD/mois">3 000 MAD/mois</option>
-                    <option value="4 000 MAD/mois">4 000 MAD/mois</option>
-                    <option value="5 000 MAD/mois">5 000 MAD/mois</option>
-                    <option value="6 000 MAD/mois">6 000 MAD/mois</option>
-                  </select>
+                  <input className="input" placeholder="ex: 3 000 MAD/mois" value={compensation} onChange={(e) => setCompensation(e.target.value)} required />
                 </div>
                 <div className="form-group">
                   <label>Date début</label>
@@ -202,6 +195,7 @@ export default function CreateOffer() {
                 placeholder="Rechercher une compétence..."
                 value={skillSearch}
                 onChange={(e) => setSkillSearch(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); if (skillSearch.trim() && !skills.includes(skillSearch.trim())) { setSkills([...skills, skillSearch.trim()]); setSkillSearch(''); } } }}
               />
             </div>
             {skillSearch && filteredSkills.length > 0 && (
@@ -228,6 +222,7 @@ export default function CreateOffer() {
               ))}
             </div>
             {skills.length === 0 && <p className="text-sm text-muted" style={{ marginTop: '0.5rem' }}>Recherchez et sélectionnez les compétences requises</p>}
+            <p className="text-xs text-muted" style={{ marginTop: '0.75rem' }}>Vous pouvez aussi taper une compétence non listée et appuyer Entrée pour l'ajouter.</p>
           </Card>
 
           {error && <div style={{ padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', background: 'var(--status-error-bg)', color: 'var(--status-error)', fontSize: '0.85rem', marginBottom: '1rem' }}>{error}</div>}
