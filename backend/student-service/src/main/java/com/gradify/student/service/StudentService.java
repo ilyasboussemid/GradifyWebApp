@@ -123,15 +123,27 @@ public class StudentService {
 
         sparqlClient.update(String.format("DELETE WHERE { <%s> lod:hasSkill ?s . }", uri));
         for (String skill : skills) {
-            String skillHash = java.util.UUID.nameUUIDFromBytes(skill.toLowerCase().getBytes()).toString().substring(0, 12);
-            sparqlClient.update(String.format("""
-                INSERT DATA {
-                    base:skill-%s a skos:Concept ;
-                        skos:prefLabel "%s"@fr ;
-                        skos:inScheme base:skill-scheme .
-                    <%s> lod:hasSkill base:skill-%s .
-                }
-                """, skillHash, skill, uri, skillHash));
+            List<Map<String, String>> existing = sparqlClient.query(String.format("""
+                SELECT ?skillUri WHERE {
+                    ?skillUri skos:prefLabel "%s"@fr .
+                } LIMIT 1
+                """, skill));
+
+            String skillUri;
+            if (!existing.isEmpty()) {
+                skillUri = existing.get(0).get("skillUri");
+                sparqlClient.update(String.format("INSERT DATA { <%s> lod:hasSkill <%s> . }", uri, skillUri));
+            } else {
+                String skillHash = java.util.UUID.nameUUIDFromBytes(skill.toLowerCase().getBytes()).toString().substring(0, 12);
+                sparqlClient.update(String.format("""
+                    INSERT DATA {
+                        base:skill-%s a skos:Concept ;
+                            skos:prefLabel "%s"@fr ;
+                            skos:inScheme base:skill-scheme .
+                        <%s> lod:hasSkill base:skill-%s .
+                    }
+                    """, skillHash, skill, uri, skillHash));
+            }
         }
     }
 }
