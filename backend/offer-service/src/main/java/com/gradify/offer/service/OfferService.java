@@ -163,7 +163,7 @@ public class OfferService {
 
     private List<Map<String, String>> getOfferSkillsDetailed(String offerId) {
         String uri = "https://data.lod-school.ma/id/" + offerId;
-        return sparqlClient.query(String.format("""
+        List<Map<String, String>> results = sparqlClient.query(String.format("""
                 SELECT ?competence ?categorie WHERE {
                     <%s> lod:requiresSkill ?skill .
                     ?skill skos:prefLabel ?competence ;
@@ -173,6 +173,7 @@ public class OfferService {
                     FILTER (lang(?categorie) = "fr")
                 } ORDER BY ?categorie
                 """, uri));
+        return results.stream().map(r -> Map.of("name", r.get("competence"), "category", r.get("categorie"))).collect(Collectors.toList());
     }
 
     public Map<String, Object> createOffer(Map<String, Object> data) {
