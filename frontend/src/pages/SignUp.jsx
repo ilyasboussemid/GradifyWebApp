@@ -78,23 +78,23 @@ export default function SignUp() {
   return (
     <div className="login-split">
       <div className="login-showcase">
-        <div style={{ maxWidth: '420px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '3rem' }}>
+        <div style={{ maxWidth: '420px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
             <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.2rem', color: 'white' }}>G</div>
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.5rem', letterSpacing: '-0.04em' }}>Gradify</span>
           </div>
-          <h1 style={{ fontSize: '2.25rem', lineHeight: 1.15, marginBottom: '1.25rem', letterSpacing: '-0.05em' }}>
+          <h1 style={{ fontSize: '3.5rem', lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.06em' }}>
             Rejoignez la<br /><span style={{ opacity: 0.9 }}>plateforme</span>
           </h1>
-          <p style={{ fontSize: '1.05rem', lineHeight: 1.7, opacity: 0.85, marginBottom: '2.5rem' }}>
+          <p style={{ fontSize: '1.25rem', lineHeight: 1.7, opacity: 0.85, marginBottom: '2.5rem' }}>
             Créez votre compte pour accéder au matching intelligent
             entre compétences et offres de stage.
           </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {['Profil pseudonymisé (privacy-by-design)', 'Matching automatique par compétences', 'Publication d\'offres (entreprises)', 'Candidatures en un clic'].map((f, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem' }}>✓</div>
-                <span style={{ fontSize: '0.9rem', opacity: 0.9 }}>{f}</span>
+                <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem' }}>✓</div>
+                <span style={{ fontSize: '1.05rem', opacity: 0.9 }}>{f}</span>
               </div>
             ))}
           </div>
