@@ -1,0 +1,15 @@
+PREFIX lod:     <https://data.lod-school.ma/ontology#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?competence
+       (COUNT(DISTINCT ?offre) AS ?demandee_par)
+       (COUNT(DISTINCT ?etudiant) AS ?detenue_par)
+WHERE {
+    ?skill a skos:Concept ;
+           skos:prefLabel ?competence .
+    OPTIONAL { ?offre lod:requiresSkill ?skill . }
+    OPTIONAL { ?etudiant lod:hasSkill ?skill . }
+    FILTER (lang(?competence) = "fr")
+}
+GROUP BY ?competence
+ORDER BY DESC(?demandee_par)

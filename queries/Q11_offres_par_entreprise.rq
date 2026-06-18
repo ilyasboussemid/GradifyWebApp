@@ -1,0 +1,12 @@
+PREFIX lod:     <https://data.lod-school.ma/ontology#>
+PREFIX schema:  <https://schema.org/>
+
+SELECT ?entreprise ?statut (COUNT(?offre) AS ?nb)
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           lod:postedBy ?comp ;
+           lod:status ?statut .
+    ?comp schema:name ?entreprise .
+}
+GROUP BY ?entreprise ?statut
+ORDER BY ?entreprise

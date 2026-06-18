@@ -1,0 +1,12 @@
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?categorie ?competence
+WHERE {
+    ?skill a skos:Concept ;
+           skos:prefLabel ?competence ;
+           skos:broader ?cat .
+    ?cat skos:prefLabel ?categorie .
+    FILTER (lang(?competence) = "fr")
+    FILTER (lang(?categorie) = "fr")
+}
+ORDER BY ?categorie ?competence

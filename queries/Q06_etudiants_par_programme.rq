@@ -1,0 +1,11 @@
+PREFIX lod:     <https://data.lod-school.ma/ontology#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?filiere (COUNT(?e) AS ?nb_etudiants)
+WHERE {
+    ?e a lod:Student ;
+       lod:enrolledIn ?prog .
+    ?prog rdfs:label ?filiere .
+}
+GROUP BY ?filiere
+ORDER BY DESC(?nb_etudiants)

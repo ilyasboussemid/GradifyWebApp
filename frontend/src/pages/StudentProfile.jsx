@@ -105,7 +105,7 @@ export default function StudentProfile() {
               <Badge>{student.program}</Badge>
             </div>
             <h1 style={{ marginBottom: '0.5rem', fontSize: '2rem' }}>
-              {student.firstName} {student.lastName}
+              Profil Étudiant
             </h1>
             {isOwnProfile && (
               <Link to="/profil/modifier" style={{ marginTop: '0.5rem', display: 'inline-block' }}>

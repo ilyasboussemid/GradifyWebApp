@@ -1,0 +1,12 @@
+PREFIX lod:     <https://data.lod-school.ma/ontology#>
+PREFIX schema:  <https://schema.org/>
+
+SELECT ?entreprise ?secteur ?ville ?pays
+WHERE {
+    ?comp a lod:Company ;
+          schema:name ?entreprise ;
+          lod:sector ?secteur ;
+          schema:addressLocality ?ville ;
+          schema:addressCountry ?pays .
+}
+ORDER BY ?entreprise

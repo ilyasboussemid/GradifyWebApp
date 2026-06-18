@@ -1,0 +1,18 @@
+PREFIX lod:     <https://data.lod-school.ma/ontology#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?etudiant_id ?filiere (COUNT(?skill) AS ?score)
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           lod:requiresSkill ?skill ;
+           lod:status "Ouverte"@fr .
+    ?etudiant a lod:Student ;
+              dcterms:identifier ?etudiant_id ;
+              lod:hasSkill ?skill ;
+              lod:enrolledIn ?prog .
+    ?prog rdfs:label ?filiere .
+}
+GROUP BY ?etudiant_id ?filiere
+ORDER BY DESC(?score)
+LIMIT 15

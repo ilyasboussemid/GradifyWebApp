@@ -1,0 +1,16 @@
+PREFIX lod:     <https://data.lod-school.ma/ontology#>
+PREFIX schema:  <https://schema.org/>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?offre ?titre ?entreprise ?competence
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:requiresSkill ?skill ;
+           lod:postedBy ?comp ;
+           lod:status "Ouverte"@fr .
+    ?comp schema:name ?entreprise .
+    ?skill skos:prefLabel ?competence .
+    FILTER (lang(?competence) = "fr")
+}
+ORDER BY ?competence ?titre

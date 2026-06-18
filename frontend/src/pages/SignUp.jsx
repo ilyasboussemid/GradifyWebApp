@@ -11,8 +11,6 @@ export default function SignUp() {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [sector, setSector] = useState('');
   const [city, setCity] = useState('');
@@ -48,8 +46,6 @@ export default function SignUp() {
         body.sector = sector;
         body.city = city;
       } else {
-        body.firstName = firstName;
-        body.lastName = lastName;
         body.program = program;
         body.level = level;
         body.city = city;
@@ -124,7 +120,7 @@ export default function SignUp() {
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <div className="form-group">
               <label>Identifiant</label>
-              <input className="input" placeholder={selectedRole === 'ENTERPRISE' ? 'ex: techsecure' : 'ex: student-monid'} value={identifier} onChange={(e) => setIdentifier(e.target.value)} required />
+              <input className="input" placeholder={selectedRole === 'ENTERPRISE' ? 'ex: mon-entreprise' : 'Choisissez un identifiant unique'} value={identifier} onChange={(e) => setIdentifier(e.target.value)} required />
             </div>
 
             {selectedRole === 'ENTERPRISE' && (
@@ -142,16 +138,6 @@ export default function SignUp() {
 
             {selectedRole === 'STUDENT' && (
               <>
-                <div className="grid grid-2">
-                  <div className="form-group">
-                    <label>Prénom</label>
-                    <input className="input" placeholder="ex: Ilyas" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
-                  </div>
-                  <div className="form-group">
-                    <label>Nom</label>
-                    <input className="input" placeholder="ex: Boussemid" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-                  </div>
-                </div>
                 <div className="form-group">
                   <label>Programme / Filière</label>
                   <select className="select" style={{ width: '100%' }} value={program} onChange={(e) => setProgram(e.target.value)} required>

@@ -1,0 +1,16 @@
+PREFIX lod:     <https://data.lod-school.ma/ontology#>
+PREFIX schema:  <https://schema.org/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?titre ?entreprise ?ville ?date_creation ?statut
+WHERE {
+    ?offre a lod:InternshipOffer ;
+           schema:title ?titre ;
+           lod:postedBy ?comp ;
+           schema:jobLocation ?ville ;
+           dcterms:created ?date_creation ;
+           lod:status ?statut .
+    ?comp schema:name ?entreprise .
+}
+ORDER BY DESC(?date_creation)
+LIMIT 10
