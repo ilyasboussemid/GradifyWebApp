@@ -1,13 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../ui/Button';
-import { FiLogOut, FiUser, FiShield, FiBriefcase, FiBookmark } from 'react-icons/fi';
+import { FiLogOut, FiUser, FiShield, FiBriefcase, FiBell } from 'react-icons/fi';
 
 export default function Header() {
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const [notifications, setNotifications] = useState([]);
+  const [showNotifs, setShowNotifs] = useState(false);
+
+  useEffect(() => {
+    if (user) fetchNotifications();
+  }, [user, location.pathname]);
+
+  async function fetchNotifications() {
+    try {
+      if (user.role === 'STUDENT') {
+        const res = await fetch('/api/offers/my-applications', { headers: { Authorization: `Bearer ${localStorage.getItem('gradify_token')}` } });
+        if (res.ok) {
+          const data = await res.json();
+          const items = data.items || data;
+          const notifs = items.filter(a => a.status === 'Acceptée' || a.status === 'Refusée').map(a => ({
+            id: a.offerId,
+            message: a.status === 'Acceptée' ? `Votre candidature pour "${a.title}" a été acceptée !` : `Votre candidature pour "${a.title}" a été déclinée.`,
+            type: a.status === 'Acceptée' ? 'success' : 'error',
+          }));
+          setNotifications(notifs);
+        }
+      } else if (user.role === 'ENTERPRISE') {
+        const res = await fetch('/api/offers/mine', { headers: { Authorization: `Bearer ${localStorage.getItem('gradify_token')}` } });
+        if (res.ok) {
+          const data = await res.json();
+          const items = data.items || data;
+          const totalApps = items.reduce((sum, o) => sum + (o.applications || 0), 0);
+          if (totalApps > 0) {
+            setNotifications([{ id: 'apps', message: `${totalApps} nouvelle(s) candidature(s) reçue(s)`, type: 'info' }]);
+          }
+        }
+      }
+    } catch (err) {}
+  }
 
   let navLinks = [];
 
@@ -58,6 +92,24 @@ export default function Header() {
         <div className="flex items-center gap-2">
           {user ? (
             <>
+              {notifications.length > 0 && (
+                <div style={{ position: 'relative' }}>
+                  <button onClick={() => setShowNotifs(!showNotifs)} style={{ background: 'none', border: 'none', cursor: 'pointer', position: 'relative', padding: '0.4rem' }}>
+                    <FiBell style={{ fontSize: '1.2rem', color: 'var(--accent)' }} />
+                    <span style={{ position: 'absolute', top: 0, right: 0, width: 16, height: 16, borderRadius: '50%', background: 'var(--status-error)', color: 'white', fontSize: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>{notifications.length}</span>
+                  </button>
+                  {showNotifs && (
+                    <div style={{ position: 'absolute', top: '100%', right: 0, marginTop: '0.5rem', width: '320px', background: 'var(--surface-strong)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow)', zIndex: 200, padding: '0.5rem' }}>
+                      <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--muted)', display: 'block', padding: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Notifications</span>
+                      {notifications.map((n, i) => (
+                        <div key={i} style={{ padding: '0.6rem 0.75rem', borderRadius: '8px', marginBottom: '0.25rem', background: n.type === 'success' ? 'var(--status-success-bg)' : n.type === 'error' ? 'var(--status-error-bg)' : 'var(--accent-light)', fontSize: '0.8rem', color: n.type === 'success' ? 'var(--status-success)' : n.type === 'error' ? 'var(--status-error)' : 'var(--accent-strong)' }}>
+                          {n.message}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
               <span className="flex items-center gap-1" style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>
                 {user.role === 'ADMIN' && <FiShield style={{ color: 'var(--accent)' }} />}
                 {user.role === 'ENTERPRISE' && <FiBriefcase style={{ color: 'var(--accent)' }} />}
