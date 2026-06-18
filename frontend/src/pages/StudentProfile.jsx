@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FiMapPin, FiBook, FiAward, FiCalendar, FiArrowLeft, FiBriefcase } from 'react-icons/fi';
+import { FiMapPin, FiBook, FiAward, FiCalendar, FiArrowLeft, FiBriefcase, FiEdit2 } from 'react-icons/fi';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
@@ -8,6 +8,7 @@ import ProgressBar from '../components/ui/ProgressBar';
 import Loader from '../components/ui/Loader';
 import studentsService from '../services/studentsService';
 import matchingService from '../services/matchingService';
+import { useAuth } from '../context/AuthContext';
 const DEMO_STUDENT = {
   id: 'student-0224012b0526',
   level: '3A',
@@ -36,6 +37,8 @@ const DEMO_MATCHING_OFFERS = [
 ];
 export default function StudentProfile() {
   const { id } = useParams();
+  const { user } = useAuth();
+  const isOwnProfile = user?.identifier === id;
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [matchingOffers, setMatchingOffers] = useState([]);
@@ -102,6 +105,11 @@ export default function StudentProfile() {
             <h1 style={{ marginBottom: '0.5rem', fontSize: '2rem' }}>
               Profil Étudiant
             </h1>
+            {isOwnProfile && (
+              <Link to="/profil/modifier" style={{ marginTop: '0.5rem', display: 'inline-block' }}>
+                <Button variant="secondary" size="sm" icon={<FiEdit2 />}>Modifier mon profil</Button>
+              </Link>
+            )}
             <p className="text-muted" style={{ fontSize: '0.9rem' }}>
               ID pseudonymisé : <code style={{
                 background: 'var(--accent-light)',

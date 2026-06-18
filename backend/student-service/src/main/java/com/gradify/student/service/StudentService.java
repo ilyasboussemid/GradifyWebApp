@@ -88,4 +88,41 @@ public class StudentService {
 
         return Map.of("items", items, "page", page, "size", size);
     }
+
+    @SuppressWarnings("unchecked")
+    public void updateProfile(String studentId, Map<String, Object> data) {
+        String uri = "https://data.lod-school.ma/id/" + studentId;
+        String city = (String) data.getOrDefault("city", "");
+        String level = (String) data.getOrDefault("level", "");
+        List<String> skills = data.get("skills") instanceof List ? (List<String>) data.get("skills") : List.of();
+
+        if (!city.isBlank()) {
+            sparqlClient.update(String.format("""
+                DELETE { <%s> schema:addressLocality ?old }
+                INSERT { <%s> schema:addressLocality "%s"^^xsd:string }
+                WHERE { OPTIONAL { <%s> schema:addressLocality ?old } }
+                """, uri, uri, city, uri));
+        }
+
+        if (!level.isBlank()) {
+            sparqlClient.update(String.format("""
+                DELETE { <%s> lod:level ?old }
+                INSERT { <%s> lod:level "%s" }
+                WHERE { OPTIONAL { <%s> lod:level ?old } }
+                """, uri, uri, level, uri));
+        }
+
+        sparqlClient.update(String.format("DELETE WHERE { <%s> lod:hasSkill ?s . }", uri));
+        for (String skill : skills) {
+            String skillHash = java.util.UUID.nameUUIDFromBytes(skill.toLowerCase().getBytes()).toString().substring(0, 12);
+            sparqlClient.update(String.format("""
+                INSERT DATA {
+                    base:skill-%s a skos:Concept ;
+                        skos:prefLabel "%s"@fr ;
+                        skos:inScheme base:skill-scheme .
+                    <%s> lod:hasSkill base:skill-%s .
+                }
+                """, skillHash, skill, uri, skillHash));
+        }
+    }
 }

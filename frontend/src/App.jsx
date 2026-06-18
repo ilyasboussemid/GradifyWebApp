@@ -16,6 +16,8 @@ import MyOffers from './pages/enterprise/MyOffers';
 import CreateOffer from './pages/enterprise/CreateOffer';
 import Applications from './pages/enterprise/Applications';
 
+import EditProfile from './pages/EditProfile';
+
 function ProtectedRoute({ children, allowedRoles }) {
   const { user } = useAuth();
   if (!user) return <Navigate to="/login" replace />;
@@ -32,6 +34,7 @@ function AppRoutes() {
       <Route path="/offres" element={<PageLayout><OfferSearch /></PageLayout>} />
       <Route path="/offres/:id" element={<PageLayout><OfferDetail /></PageLayout>} />
       <Route path="/etudiants/:id" element={<ProtectedRoute allowedRoles={['STUDENT', 'ADMIN']}><PageLayout><StudentProfile /></PageLayout></ProtectedRoute>} />
+      <Route path="/profil/modifier" element={<ProtectedRoute allowedRoles={['STUDENT']}><PageLayout><EditProfile /></PageLayout></ProtectedRoute>} />
       <Route path="/sparql" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><SparqlExplorer /></PageLayout></ProtectedRoute>} />
       <Route path="/vocabulaires" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><Vocabularies /></PageLayout></ProtectedRoute>} />
       <Route path="/admin" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><AdminDashboard /></PageLayout></ProtectedRoute>} />

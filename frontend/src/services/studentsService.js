@@ -13,5 +13,10 @@ const studentsService = {
     const response = await api.get(`/students?${params.toString()}`);
     return response.data;
   },
+
+  updateProfile: async (studentId, data) => {
+    const response = await api.put(`/students/${studentId}`, data);
+    return response.data;
+  },
 };
 export default studentsService;

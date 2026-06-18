@@ -39,4 +39,14 @@ public class StudentController {
             return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
         }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateProfile(@PathVariable String id, @RequestBody Map<String, Object> body) {
+        try {
+            studentService.updateProfile(id, body);
+            return ResponseEntity.ok(Map.of("message", "Profil mis à jour"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
 }
