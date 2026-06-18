@@ -243,20 +243,6 @@ export default function OfferDetail() {
               </div>
             </div>
           </Card>
-          <Card variant="flat" style={{ fontSize: '0.75rem' }}>
-            <span className="text-xs text-muted" style={{ display: 'block', marginBottom: '0.25rem' }}>URI RDF</span>
-            <code style={{
-              background: 'var(--surface-muted)',
-              padding: '0.5rem',
-              borderRadius: '8px',
-              display: 'block',
-              wordBreak: 'break-all',
-              fontSize: '0.7rem',
-              color: 'var(--accent-strong)',
-            }}>
-              https://data.lod-school.ma/id/{offer.id}
-            </code>
-          </Card>
           {user?.role === 'STUDENT' && (
             <Card>
               <Button

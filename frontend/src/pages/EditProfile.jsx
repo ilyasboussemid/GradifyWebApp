@@ -13,6 +13,8 @@ export default function EditProfile() {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [city, setCity] = useState('');
   const [level, setLevel] = useState('');
   const [program, setProgram] = useState('');
@@ -29,11 +31,15 @@ export default function EditProfile() {
     setLoading(true);
     try {
       const data = await studentsService.getById(user.identifier);
+      setFirstName(data.firstName || '');
+      setLastName(data.lastName || '');
       setCity(data.city || '');
       setLevel(data.level || '2A');
       setProgram(data.program || '');
       setSkills((data.skills || []).map(s => typeof s === 'string' ? s : s.name));
     } catch (err) {
+      setFirstName('Ilyas');
+      setLastName('Boussemid');
       setCity('Casablanca');
       setLevel('2A');
       setProgram('Genie Logiciel');
@@ -60,7 +66,7 @@ export default function EditProfile() {
     setSuccess('');
     setSaving(true);
     try {
-      await studentsService.updateProfile(user.identifier, { city, level, program, skills });
+      await studentsService.updateProfile(user.identifier, { firstName, lastName, city, level, program, skills });
       setSuccess('Profil mis à jour avec succès');
       setTimeout(() => navigate(`/etudiants/${user.identifier}`), 1500);
     } catch (err) {
@@ -91,9 +97,15 @@ export default function EditProfile() {
           <Card variant="flat" style={{ marginBottom: '1.5rem' }}>
             <h4 style={{ marginBottom: '1rem' }}>Informations</h4>
             <div className="flex flex-col gap-3">
-              <div className="form-group">
-                <label>ID (non modifiable)</label>
-                <input className="input" value={user.identifier} disabled style={{ opacity: 0.6 }} />
+              <div className="grid grid-2">
+                <div className="form-group">
+                  <label>Prénom</label>
+                  <input className="input" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                  <label>Nom</label>
+                  <input className="input" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+                </div>
               </div>
               <div className="grid grid-3">
                 <div className="form-group">

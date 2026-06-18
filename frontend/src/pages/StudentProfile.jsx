@@ -11,6 +11,8 @@ import matchingService from '../services/matchingService';
 import { useAuth } from '../context/AuthContext';
 const DEMO_STUDENT = {
   id: 'student-0224012b0526',
+  firstName: 'Ilyas',
+  lastName: 'Boussemid',
   level: '3A',
   program: 'Cybersecurite',
   city: 'Beni Mellal',
@@ -103,39 +105,13 @@ export default function StudentProfile() {
               <Badge>{student.program}</Badge>
             </div>
             <h1 style={{ marginBottom: '0.5rem', fontSize: '2rem' }}>
-              Profil Étudiant
+              {student.firstName} {student.lastName}
             </h1>
             {isOwnProfile && (
               <Link to="/profil/modifier" style={{ marginTop: '0.5rem', display: 'inline-block' }}>
                 <Button variant="secondary" size="sm" icon={<FiEdit2 />}>Modifier mon profil</Button>
               </Link>
             )}
-            <p className="text-muted" style={{ fontSize: '0.9rem' }}>
-              ID pseudonymisé : <code style={{
-                background: 'var(--accent-light)',
-                padding: '0.2rem 0.5rem',
-                borderRadius: '6px',
-                fontSize: '0.8rem',
-                color: 'var(--accent-strong)',
-              }}>{student.id}</code>
-            </p>
-          </div>
-          <div style={{
-            background: 'var(--accent-light)',
-            border: '1px solid rgba(29, 78, 216, 0.15)',
-            borderRadius: 'var(--radius-md)',
-            padding: '0.85rem 1.25rem',
-            fontSize: '0.8rem',
-            color: 'var(--muted)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-          }}>
-            <span style={{ fontSize: '1rem' }}>🔒</span>
-            <span>
-              <strong style={{ color: 'var(--text)' }}>Privacy-by-design</strong> — Ce profil est pseudonymisé.
-              Aucune donnée personnelle identifiable (nom, email, notes) n'est affichée.
-            </span>
           </div>
           <Card variant="flat">
             <h4 style={{ marginBottom: '1.25rem' }}>
@@ -258,20 +234,6 @@ export default function StudentProfile() {
                 </div>
               )}
             </div>
-          </Card>
-          <Card variant="flat" style={{ fontSize: '0.75rem' }}>
-            <span className="text-xs text-muted" style={{ display: 'block', marginBottom: '0.25rem' }}>URI RDF</span>
-            <code style={{
-              background: 'var(--surface-muted)',
-              padding: '0.5rem',
-              borderRadius: '8px',
-              display: 'block',
-              wordBreak: 'break-all',
-              fontSize: '0.7rem',
-              color: 'var(--accent-strong)',
-            }}>
-              https://data.lod-school.ma/id/{student.id}
-            </code>
           </Card>
         </div>
       </div>
