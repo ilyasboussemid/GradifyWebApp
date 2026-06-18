@@ -10,13 +10,15 @@ import SparqlExplorer from './pages/SparqlExplorer';
 import Vocabularies from './pages/Vocabularies';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import EditProfile from './pages/EditProfile';
 import AdminDashboard from './pages/admin/Dashboard';
 import ShaclReport from './pages/admin/ShaclReport';
 import MyOffers from './pages/enterprise/MyOffers';
 import CreateOffer from './pages/enterprise/CreateOffer';
 import Applications from './pages/enterprise/Applications';
-
-import EditProfile from './pages/EditProfile';
+import EnterpriseDashboard from './pages/enterprise/Dashboard';
+import StudentDashboard from './pages/student/Dashboard';
+import Bookmarks from './pages/student/Bookmarks';
 
 function ProtectedRoute({ children, allowedRoles }) {
   const { user } = useAuth();
@@ -33,16 +35,23 @@ function AppRoutes() {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/offres" element={<PageLayout><OfferSearch /></PageLayout>} />
       <Route path="/offres/:id" element={<PageLayout><OfferDetail /></PageLayout>} />
-      <Route path="/etudiants/:id" element={<ProtectedRoute allowedRoles={['STUDENT', 'ADMIN']}><PageLayout><StudentProfile /></PageLayout></ProtectedRoute>} />
+
+      <Route path="/mon-espace" element={<ProtectedRoute allowedRoles={['STUDENT']}><PageLayout><StudentDashboard /></PageLayout></ProtectedRoute>} />
+      <Route path="/favoris" element={<ProtectedRoute allowedRoles={['STUDENT']}><PageLayout><Bookmarks /></PageLayout></ProtectedRoute>} />
+      <Route path="/etudiants/:id" element={<ProtectedRoute allowedRoles={['STUDENT', 'ADMIN', 'ENTERPRISE']}><PageLayout><StudentProfile /></PageLayout></ProtectedRoute>} />
       <Route path="/profil/modifier" element={<ProtectedRoute allowedRoles={['STUDENT']}><PageLayout><EditProfile /></PageLayout></ProtectedRoute>} />
-      <Route path="/sparql" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><SparqlExplorer /></PageLayout></ProtectedRoute>} />
-      <Route path="/vocabulaires" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><Vocabularies /></PageLayout></ProtectedRoute>} />
-      <Route path="/admin" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><AdminDashboard /></PageLayout></ProtectedRoute>} />
-      <Route path="/admin/shacl" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><ShaclReport /></PageLayout></ProtectedRoute>} />
+
+      <Route path="/entreprise" element={<ProtectedRoute allowedRoles={['ENTERPRISE']}><PageLayout><EnterpriseDashboard /></PageLayout></ProtectedRoute>} />
       <Route path="/entreprise/offres" element={<ProtectedRoute allowedRoles={['ENTERPRISE']}><PageLayout><MyOffers /></PageLayout></ProtectedRoute>} />
       <Route path="/entreprise/offres/nouvelle" element={<ProtectedRoute allowedRoles={['ENTERPRISE']}><PageLayout><CreateOffer /></PageLayout></ProtectedRoute>} />
       <Route path="/entreprise/offres/:offerId/modifier" element={<ProtectedRoute allowedRoles={['ENTERPRISE']}><PageLayout><CreateOffer /></PageLayout></ProtectedRoute>} />
       <Route path="/entreprise/offres/:offerId/candidatures" element={<ProtectedRoute allowedRoles={['ENTERPRISE']}><PageLayout><Applications /></PageLayout></ProtectedRoute>} />
+
+      <Route path="/sparql" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><SparqlExplorer /></PageLayout></ProtectedRoute>} />
+      <Route path="/vocabulaires" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><Vocabularies /></PageLayout></ProtectedRoute>} />
+      <Route path="/admin" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><AdminDashboard /></PageLayout></ProtectedRoute>} />
+      <Route path="/admin/shacl" element={<ProtectedRoute allowedRoles={['ADMIN']}><PageLayout><ShaclReport /></PageLayout></ProtectedRoute>} />
+
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

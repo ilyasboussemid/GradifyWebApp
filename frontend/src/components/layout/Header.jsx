@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../ui/Button';
-import { FiLogOut, FiUser, FiShield, FiBriefcase } from 'react-icons/fi';
+import { FiLogOut, FiUser, FiShield, FiBriefcase, FiBookmark } from 'react-icons/fi';
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -15,18 +15,17 @@ export default function Header() {
     navLinks = [
       { path: '/', label: 'Accueil' },
       { path: '/offres', label: 'Offres' },
-      { path: '/sparql', label: 'SPARQL' },
-      { path: '/vocabulaires', label: 'Vocabulaires' },
     ];
   } else if (user.role === 'STUDENT') {
     navLinks = [
-      { path: '/', label: 'Accueil' },
+      { path: '/mon-espace', label: 'Mon espace' },
       { path: '/offres', label: 'Offres' },
       { path: `/etudiants/${user.identifier}`, label: 'Mon profil' },
+      { path: '/favoris', label: 'Favoris' },
     ];
   } else if (user.role === 'ENTERPRISE') {
     navLinks = [
-      { path: '/', label: 'Accueil' },
+      { path: '/entreprise', label: 'Dashboard' },
       { path: '/offres', label: 'Offres' },
       { path: '/entreprise/offres', label: 'Mes offres' },
     ];
@@ -64,7 +63,6 @@ export default function Header() {
                 {user.role === 'ENTERPRISE' && <FiBriefcase style={{ color: 'var(--accent)' }} />}
                 {user.role === 'STUDENT' && <FiUser style={{ color: 'var(--accent)' }} />}
                 <span style={{ fontWeight: 600, color: 'var(--text)' }}>{user.name || user.identifier}</span>
-                <span className="badge badge-sm" style={{ marginLeft: '0.25rem' }}>{user.role}</span>
               </span>
               <Button variant="ghost" size="sm" onClick={handleLogout} icon={<FiLogOut />}>Déconnexion</Button>
             </>
@@ -72,7 +70,6 @@ export default function Header() {
             <>
               <Button variant="ghost" size="sm" onClick={() => navigate('/login')}>Connexion</Button>
               <Button variant="secondary" size="sm" onClick={() => navigate('/signup')}>Inscription</Button>
-              <Button variant="primary" size="sm" onClick={() => navigate('/offres')}>Explorer</Button>
             </>
           )}
         </div>

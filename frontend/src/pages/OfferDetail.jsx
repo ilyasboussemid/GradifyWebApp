@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FiMapPin, FiBriefcase, FiClock, FiCalendar, FiUsers, FiArrowLeft, FiSend, FiCheck } from 'react-icons/fi';
+import { FiMapPin, FiBriefcase, FiClock, FiCalendar, FiUsers, FiArrowLeft, FiSend, FiCheck, FiBookmark } from 'react-icons/fi';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
@@ -49,8 +49,14 @@ export default function OfferDetail() {
   const [matchingLoading, setMatchingLoading] = useState(false);
   const [applied, setApplied] = useState(false);
   const [applyLoading, setApplyLoading] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
+
   useEffect(() => {
     fetchOffer();
+    if (user) {
+      const stored = JSON.parse(localStorage.getItem(`bookmarks_${user.identifier}`) || '[]');
+      setBookmarked(stored.some(b => b.id === id));
+    }
   }, [id]);
   async function fetchOffer() {
     setLoading(true);
@@ -247,7 +253,7 @@ export default function OfferDetail() {
             <Card>
               <Button
                 variant={applied ? 'secondary' : 'primary'}
-                style={{ width: '100%' }}
+                style={{ width: '100%', marginBottom: '0.75rem' }}
                 disabled={applyLoading || applied}
                 icon={applied ? <FiCheck /> : <FiSend />}
                 onClick={async () => {
@@ -258,7 +264,26 @@ export default function OfferDetail() {
               >
                 {applied ? 'Candidature envoyée' : applyLoading ? 'Envoi...' : 'Postuler à cette offre'}
               </Button>
-              {applied && <p className="text-xs text-muted" style={{ marginTop: '0.5rem', textAlign: 'center' }}>Votre candidature a été transmise à l'entreprise.</p>}
+              <Button
+                variant={bookmarked ? 'ghost' : 'secondary'}
+                style={{ width: '100%' }}
+                icon={<FiBookmark />}
+                onClick={() => {
+                  const stored = JSON.parse(localStorage.getItem(`bookmarks_${user.identifier}`) || '[]');
+                  if (bookmarked) {
+                    const updated = stored.filter(b => b.id !== id);
+                    localStorage.setItem(`bookmarks_${user.identifier}`, JSON.stringify(updated));
+                    setBookmarked(false);
+                  } else {
+                    stored.push({ id, title: offer.title, company: offer.company, city: offer.city, level: offer.level, duration: offer.duration });
+                    localStorage.setItem(`bookmarks_${user.identifier}`, JSON.stringify(stored));
+                    setBookmarked(true);
+                  }
+                }}
+              >
+                {bookmarked ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+              </Button>
+              {applied && <p className="text-xs text-muted" style={{ marginTop: '0.5rem', textAlign: 'center' }}>Votre candidature a été transmise.</p>}
             </Card>
           )}
         </div>
