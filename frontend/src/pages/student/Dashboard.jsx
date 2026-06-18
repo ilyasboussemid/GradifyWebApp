@@ -52,6 +52,7 @@ export default function StudentDashboard() {
   const pending = applications.filter(a => a.status === 'En attente').length;
   const accepted = applications.filter(a => a.status === 'Acceptée').length;
   const rejected = applications.filter(a => a.status === 'Refusée').length;
+  const hasNotifications = accepted > 0 || rejected > 0;
 
   return (
     <div>
@@ -60,6 +61,28 @@ export default function StudentDashboard() {
         <p>Votre espace personnel — candidatures et offres recommandées.</p>
       </div>
       <div className="container" style={{ paddingBottom: '3rem' }}>
+        {hasNotifications && (
+          <div style={{ marginBottom: '1.5rem' }}>
+            {accepted > 0 && (
+              <div style={{ padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)', background: 'var(--status-success-bg)', border: '1px solid rgba(22, 163, 74, 0.2)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span style={{ fontSize: '1.25rem' }}>🎉</span>
+                <div>
+                  <span style={{ fontWeight: 600, color: 'var(--status-success)', display: 'block' }}>{accepted} candidature(s) acceptée(s) !</span>
+                  <span className="text-sm text-muted">Félicitations, une entreprise a accepté votre candidature.</span>
+                </div>
+              </div>
+            )}
+            {rejected > 0 && (
+              <div style={{ padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)', background: 'var(--status-error-bg)', border: '1px solid rgba(220, 38, 38, 0.2)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span style={{ fontSize: '1.25rem' }}>📋</span>
+                <div>
+                  <span style={{ fontWeight: 600, color: 'var(--status-error)', display: 'block' }}>{rejected} candidature(s) déclinée(s)</span>
+                  <span className="text-sm text-muted">Continuez à postuler, d'autres offres correspondent à votre profil.</span>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
         <div className="grid grid-3" style={{ marginBottom: '2rem' }}>
           <Card variant="flat" style={{ textAlign: 'center', padding: '1.25rem' }}>
             <FiClock style={{ color: 'var(--status-warning)', fontSize: '1.5rem', marginBottom: '0.5rem' }} />

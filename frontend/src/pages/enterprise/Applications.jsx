@@ -35,10 +35,10 @@ export default function Applications() {
     }
   }
 
-  async function handleUpdateStatus(appId, newStatus) {
+  async function handleUpdateStatus(appId, studentId, newStatus) {
     setApplications(applications.map(a => a.id === appId ? { ...a, status: newStatus } : a));
     try {
-      await fetch(`/api/applications/${appId}/status`, {
+      await fetch(`/api/offers/applications/${studentId}/${offerId}/status`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),
@@ -85,8 +85,8 @@ export default function Applications() {
                   <span className="text-xs text-muted">Candidature reçue le {app.appliedAt}</span>
                   {app.status === 'En attente' && (
                     <div className="flex gap-1">
-                      <Button variant="primary" size="sm" onClick={() => handleUpdateStatus(app.id, 'Acceptée')}>Accepter</Button>
-                      <Button variant="ghost" size="sm" onClick={() => handleUpdateStatus(app.id, 'Refusée')} style={{ color: 'var(--status-error)' }}>Refuser</Button>
+                      <Button variant="primary" size="sm" onClick={() => handleUpdateStatus(app.id, app.studentId, 'Acceptée')}>Accepter</Button>
+                      <Button variant="ghost" size="sm" onClick={() => handleUpdateStatus(app.id, app.studentId, 'Refusée')} style={{ color: 'var(--status-error)' }}>Refuser</Button>
                     </div>
                   )}
                 </div>
