@@ -49,25 +49,25 @@ public class AuthService {
                 return new TokenResponse(jwtUtil.generateToken(identifier, "ADMIN", "Administrateur"), identifier, "ADMIN", "Administrateur");
 
             case "ENTERPRISE":
-                String key = identifier.toLowerCase().replaceAll("[^a-z0-9]", "");
+                String key = identifier.toLowerCase().replaceAll("[^a-z0-9 ]", "").trim();
                 String entPwd = ENTERPRISE_PASSWORDS.get(key);
                 if (entPwd == null) {
                     List<Map<String, String>> entCheck = sparqlClient.query(String.format("""
-                        SELECT ?comp WHERE {
+                        SELECT ?name WHERE {
                             ?comp a lod:Company ;
                                   schema:name ?name .
-                            FILTER (CONTAINS(LCASE(str(?name)), LCASE("%s")))
+                            FILTER (LCASE(str(?name)) = LCASE("%s"))
                         } LIMIT 1
-                        """, identifier.length() > 3 ? identifier.substring(0, Math.min(identifier.length(), 10)) : identifier));
+                        """, identifier));
                     if (!entCheck.isEmpty()) {
-                        ENTERPRISE_PASSWORDS.put(key, password);
-                        entPwd = password;
+                        ENTERPRISE_PASSWORDS.put(key, "pass123");
+                        entPwd = "pass123";
                     } else {
-                        throw new IllegalArgumentException("Entreprise non trouvée. Inscrivez-vous d'abord.");
+                        throw new IllegalArgumentException("Entreprise '" + identifier + "' non trouvée. Vérifiez le nom exact.");
                     }
                 }
                 if (!entPwd.equals(password)) {
-                    throw new IllegalArgumentException("Mot de passe entreprise invalide");
+                    throw new IllegalArgumentException("Mot de passe invalide");
                 }
                 return new TokenResponse(jwtUtil.generateToken(identifier, "ENTERPRISE", identifier), identifier, "ENTERPRISE", identifier);
 
@@ -82,14 +82,14 @@ public class AuthService {
                     throw new IllegalArgumentException("Cet identifiant est l'admin. Choisissez le rôle Admin.");
                 }
                 List<Map<String, String>> companyCheck = sparqlClient.query(String.format("""
-                    SELECT ?comp WHERE {
+                    SELECT ?name WHERE {
                         ?comp a lod:Company ;
                               schema:name ?name .
-                        FILTER (CONTAINS(LCASE(str(?name)), LCASE("%s")))
+                        FILTER (LCASE(str(?name)) = LCASE("%s"))
                     } LIMIT 1
-                    """, identifier.length() > 3 ? identifier.substring(0, Math.min(identifier.length(), 10)) : identifier));
+                    """, identifier));
                 if (!companyCheck.isEmpty()) {
-                    throw new IllegalArgumentException("'" + identifier + "' est une entreprise enregistrée. Choisissez le rôle Entreprise.");
+                    throw new IllegalArgumentException("'" + identifier + "' est une entreprise. Choisissez le rôle Entreprise.");
                 }
                 String studentPwd = STUDENT_PASSWORDS.get(identifier);
                 if (studentPwd != null) {
