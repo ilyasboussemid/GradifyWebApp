@@ -51,6 +51,7 @@ public class SparqlClient {
         String updateEndpoint = endpoint.replace("/sparql", "/update");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.valueOf("application/sparql-update"));
+        headers.setBasicAuth("admin", "admin123");
         HttpEntity<String> request = new HttpEntity<>(PREFIXES + sparqlUpdate, headers);
         try {
             restTemplate.exchange(updateEndpoint, HttpMethod.POST, request, String.class);
