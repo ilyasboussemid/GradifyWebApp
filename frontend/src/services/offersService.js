@@ -1,4 +1,5 @@
 import api from './api';
+
 const offersService = {
   search: async ({ skill, company, program, city, page = 1, size = 10 } = {}) => {
     const params = new URLSearchParams();
@@ -11,15 +12,17 @@ const offersService = {
     const response = await api.get(`/offers/search?${params.toString()}`);
     return response.data;
   },
+
   getById: async (offerId) => {
     const response = await api.get(`/offers/${offerId}`);
     return response.data;
   },
+
   getFilters: async () => {
     const response = await api.get('/offers/filters');
     return response.data;
   },
-};
+
   getMyOffers: async () => {
     const response = await api.get('/offers/mine');
     return response.data;
