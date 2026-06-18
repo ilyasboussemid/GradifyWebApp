@@ -264,7 +264,7 @@ public class OfferService {
                            lod:compensation ?compensation ;
                            lod:status ?statut .
                     ?comp schema:name ?entreprise .
-                    FILTER (CONTAINS(LCASE(str(?comp)), LCASE("%s")))
+                    FILTER (LCASE(str(?entreprise)) = LCASE("%s"))
                 }
                 ORDER BY ?titre
                 """, companyId));
@@ -272,12 +272,21 @@ public class OfferService {
         List<Map<String, Object>> items = results.stream().map(row -> {
             Map<String, Object> offer = new HashMap<>(row);
             String uri = row.get("offre");
-            offer.put("id", uri.substring(uri.lastIndexOf('/') + 1));
+            String offerId = uri.substring(uri.lastIndexOf('/') + 1);
+            offer.put("id", offerId);
             offer.put("title", row.get("titre"));
             offer.put("city", row.get("ville"));
             offer.put("duration", row.get("duree"));
             offer.put("level", row.get("niveau"));
             offer.put("status", row.get("statut"));
+            offer.put("compensation", row.get("compensation"));
+            offer.put("skills", getOfferSkills(offerId));
+            try {
+                Map<String, Object> apps = getApplications(offerId);
+                offer.put("applications", ((List<?>) apps.get("items")).size());
+            } catch (Exception e) {
+                offer.put("applications", 0);
+            }
             return offer;
         }).collect(Collectors.toList());
 
