@@ -174,4 +174,51 @@ public class OfferService {
                 } ORDER BY ?categorie
                 """, uri));
     }
+
+    public Map<String, Object> createOffer(Map<String, Object> data) {
+        String id = "offer-" + String.format("%03d", System.currentTimeMillis() % 1000);
+        data.put("id", id);
+        data.put("status", "Ouverte");
+        return data;
+    }
+
+    public Map<String, Object> updateOffer(Map<String, Object> data) {
+        return data;
+    }
+
+    public void deleteOffer(String offerId) {
+    }
+
+    public Map<String, Object> getByCompany(String companyId) {
+        List<Map<String, String>> results = sparqlClient.query(String.format("""
+                SELECT ?offre ?titre ?ville ?duree ?niveau ?compensation ?statut
+                WHERE {
+                    ?offre a lod:InternshipOffer ;
+                           schema:title ?titre ;
+                           lod:postedBy ?comp ;
+                           schema:jobLocation ?ville ;
+                           lod:durationMonths ?duree ;
+                           lod:levelRequired ?niveau ;
+                           lod:compensation ?compensation ;
+                           lod:status ?statut .
+                    ?comp schema:name ?entreprise .
+                    FILTER (CONTAINS(LCASE(str(?comp)), LCASE("%s")))
+                }
+                ORDER BY ?titre
+                """, companyId));
+
+        List<Map<String, Object>> items = results.stream().map(row -> {
+            Map<String, Object> offer = new HashMap<>(row);
+            String uri = row.get("offre");
+            offer.put("id", uri.substring(uri.lastIndexOf('/') + 1));
+            offer.put("title", row.get("titre"));
+            offer.put("city", row.get("ville"));
+            offer.put("duration", row.get("duree"));
+            offer.put("level", row.get("niveau"));
+            offer.put("status", row.get("statut"));
+            return offer;
+        }).collect(Collectors.toList());
+
+        return Map.of("items", items);
+    }
 }

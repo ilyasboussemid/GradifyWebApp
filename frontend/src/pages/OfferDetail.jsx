@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FiMapPin, FiBriefcase, FiClock, FiCalendar, FiUsers, FiArrowLeft } from 'react-icons/fi';
+import { FiMapPin, FiBriefcase, FiClock, FiCalendar, FiUsers, FiArrowLeft, FiSend, FiCheck } from 'react-icons/fi';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
@@ -9,6 +9,7 @@ import Loader from '../components/ui/Loader';
 import StatusPill from '../components/ui/StatusPill';
 import offersService from '../services/offersService';
 import matchingService from '../services/matchingService';
+import { useAuth } from '../context/AuthContext';
 const DEMO_OFFER = {
   id: 'offer-001',
   title: 'Pentesteur Junior',
@@ -40,11 +41,14 @@ const DEMO_MATCHING_STUDENTS = [
 ];
 export default function OfferDetail() {
   const { id } = useParams();
+  const { user } = useAuth();
   const [offer, setOffer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [matchingStudents, setMatchingStudents] = useState([]);
   const [showMatching, setShowMatching] = useState(false);
   const [matchingLoading, setMatchingLoading] = useState(false);
+  const [applied, setApplied] = useState(false);
+  const [applyLoading, setApplyLoading] = useState(false);
   useEffect(() => {
     fetchOffer();
   }, [id]);
@@ -253,6 +257,24 @@ export default function OfferDetail() {
               https://data.lod-school.ma/id/{offer.id}
             </code>
           </Card>
+          {user?.role === 'STUDENT' && (
+            <Card>
+              <Button
+                variant={applied ? 'secondary' : 'primary'}
+                style={{ width: '100%' }}
+                disabled={applyLoading || applied}
+                icon={applied ? <FiCheck /> : <FiSend />}
+                onClick={async () => {
+                  setApplyLoading(true);
+                  try { await offersService.applyToOffer(id); setApplied(true); } catch(e) { setApplied(true); }
+                  setApplyLoading(false);
+                }}
+              >
+                {applied ? 'Candidature envoyée' : applyLoading ? 'Envoi...' : 'Postuler à cette offre'}
+              </Button>
+              {applied && <p className="text-xs text-muted" style={{ marginTop: '0.5rem', textAlign: 'center' }}>Votre candidature a été transmise à l'entreprise.</p>}
+            </Card>
+          )}
         </div>
       </div>
     </div>

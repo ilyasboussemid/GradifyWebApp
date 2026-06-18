@@ -20,4 +20,40 @@ const offersService = {
     return response.data;
   },
 };
+  getMyOffers: async () => {
+    const response = await api.get('/offers/mine');
+    return response.data;
+  },
+
+  createOffer: async (offerData) => {
+    const response = await api.post('/offers', offerData);
+    return response.data;
+  },
+
+  updateOffer: async (offerId, offerData) => {
+    const response = await api.put(`/offers/${offerId}`, offerData);
+    return response.data;
+  },
+
+  deleteOffer: async (offerId) => {
+    const response = await api.delete(`/offers/${offerId}`);
+    return response.data;
+  },
+
+  applyToOffer: async (offerId) => {
+    const response = await api.post(`/offers/${offerId}/apply`);
+    return response.data;
+  },
+
+  getApplications: async (offerId) => {
+    const response = await api.get(`/offers/${offerId}/applications`);
+    return response.data;
+  },
+
+  getMyApplications: async () => {
+    const response = await api.get('/offers/my-applications');
+    return response.data;
+  },
+};
+
 export default offersService;

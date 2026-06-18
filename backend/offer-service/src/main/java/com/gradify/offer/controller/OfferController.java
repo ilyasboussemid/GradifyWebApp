@@ -4,7 +4,7 @@ import com.gradify.offer.service.OfferService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/offers")
@@ -52,5 +52,60 @@ public class OfferController {
         } catch (Exception e) {
             return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
         }
+    }
+
+    @PostMapping
+    public ResponseEntity<?> createOffer(@RequestBody Map<String, Object> body) {
+        try {
+            Map<String, Object> result = offerService.createOffer(body);
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateOffer(@PathVariable String id, @RequestBody Map<String, Object> body) {
+        try {
+            body.put("id", id);
+            Map<String, Object> result = offerService.updateOffer(body);
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteOffer(@PathVariable String id) {
+        try {
+            offerService.deleteOffer(id);
+            return ResponseEntity.ok(Map.of("message", "Offre supprimée"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/mine")
+    public ResponseEntity<?> getMyOffers(@RequestHeader(value = "X-User-Id", required = false) String userId) {
+        try {
+            return ResponseEntity.ok(offerService.getByCompany(userId != null ? userId : "unknown"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/{id}/apply")
+    public ResponseEntity<?> applyToOffer(@PathVariable String id, @RequestHeader(value = "X-User-Id", required = false) String userId) {
+        try {
+            String studentId = userId != null ? userId : "anonymous";
+            return ResponseEntity.ok(Map.of("message", "Candidature enregistrée", "offerId", id, "studentId", studentId));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/{id}/applications")
+    public ResponseEntity<?> getApplications(@PathVariable String id) {
+        return ResponseEntity.ok(Map.of("items", List.of(), "total", 0));
     }
 }

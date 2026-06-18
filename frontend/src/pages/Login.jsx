@@ -227,7 +227,10 @@ export default function Login() {
             Aucune donnée personnelle identifiable n'est stockée ni affichée.
           </div>
           <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
-            <a href="/" style={{ fontSize: '0.85rem' }}>
+            <span className="text-sm text-muted">Pas encore de compte ? </span>
+            <a href="/signup" style={{ fontSize: '0.85rem' }}>S'inscrire</a>
+            <br />
+            <a href="/" style={{ fontSize: '0.85rem', marginTop: '0.5rem', display: 'inline-block' }}>
               ← Retour à l'accueil
             </a>
           </div>

@@ -20,13 +20,15 @@ public class AuthService {
     @Value("${auth.admin.password:admin123}")
     private String adminPassword;
 
-    private static final Map<String, String> ENTERPRISE_ACCOUNTS = Map.of(
+    private static final java.util.concurrent.ConcurrentHashMap<String, String> ENTERPRISE_ACCOUNTS = new java.util.concurrent.ConcurrentHashMap<>(Map.of(
             "techsecure", "pass123",
             "cloudfirst", "pass123",
             "datamaroc", "pass123",
             "webagency", "pass123",
             "ailab", "pass123"
-    );
+    ));
+
+    private static final java.util.concurrent.ConcurrentHashMap<String, String> STUDENT_ACCOUNTS = new java.util.concurrent.ConcurrentHashMap<>();
 
     public AuthService(JwtUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
@@ -49,6 +51,26 @@ public class AuthService {
         }
     }
 
+    public void register(String identifier, String password, String role, Map<String, String> data) {
+        switch (role.toUpperCase()) {
+            case "ENTERPRISE":
+                String key = identifier.toLowerCase().replaceAll("[^a-z0-9]", "");
+                if (ENTERPRISE_ACCOUNTS.containsKey(key)) {
+                    throw new IllegalArgumentException("Cet identifiant entreprise existe déjà");
+                }
+                ENTERPRISE_ACCOUNTS.put(key, password);
+                break;
+            case "STUDENT":
+                if (STUDENT_ACCOUNTS.containsKey(identifier)) {
+                    throw new IllegalArgumentException("Cet identifiant étudiant existe déjà");
+                }
+                STUDENT_ACCOUNTS.put(identifier, password);
+                break;
+            default:
+                throw new IllegalArgumentException("L'inscription admin n'est pas autorisée");
+        }
+    }
+
     private TokenResponse authenticateAdmin(String identifier, String password) {
         if (!adminUsername.equals(identifier) || !adminPassword.equals(password)) {
             throw new IllegalArgumentException("Identifiants administrateur invalides");
@@ -68,13 +90,19 @@ public class AuthService {
     }
 
     private TokenResponse authenticateStudent(String identifier, String password) {
-        if (identifier == null || !identifier.startsWith("student-")) {
-            throw new IllegalArgumentException("L'identifiant étudiant doit commencer par 'student-'");
+        if (identifier == null || identifier.isBlank()) {
+            throw new IllegalArgumentException("L'identifiant est requis");
         }
-        if (!"etudiant".equals(password) && !"pass123".equals(password)) {
-            throw new IllegalArgumentException("Mot de passe étudiant invalide");
+        if (STUDENT_ACCOUNTS.containsKey(identifier)) {
+            if (!STUDENT_ACCOUNTS.get(identifier).equals(password)) {
+                throw new IllegalArgumentException("Mot de passe invalide");
+            }
+        } else {
+            if (!"etudiant".equals(password) && !"pass123".equals(password)) {
+                throw new IllegalArgumentException("Mot de passe étudiant invalide");
+            }
         }
-        String name = "Étudiant " + identifier.substring(8, Math.min(16, identifier.length()));
+        String name = "Étudiant " + identifier.substring(0, Math.min(16, identifier.length()));
         String token = jwtUtil.generateToken(identifier, "STUDENT", name);
         return new TokenResponse(token, identifier, "STUDENT", name);
     }
