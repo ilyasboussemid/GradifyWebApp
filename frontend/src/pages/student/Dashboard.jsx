@@ -56,7 +56,7 @@ export default function StudentDashboard() {
   return (
     <div>
       <div className="page-header container">
-        <h1>Bonjour, {user.name || user.identifier} 👋</h1>
+        <h1>Bonjour, {user.firstName || user.name || user.identifier} {user.lastName || ''} 👋</h1>
         <p>Votre espace personnel — candidatures et offres recommandées.</p>
       </div>
       <div className="container" style={{ paddingBottom: '3rem' }}>

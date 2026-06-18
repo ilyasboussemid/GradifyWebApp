@@ -62,7 +62,7 @@ export default function Header() {
                 {user.role === 'ADMIN' && <FiShield style={{ color: 'var(--accent)' }} />}
                 {user.role === 'ENTERPRISE' && <FiBriefcase style={{ color: 'var(--accent)' }} />}
                 {user.role === 'STUDENT' && <FiUser style={{ color: 'var(--accent)' }} />}
-                <span style={{ fontWeight: 600, color: 'var(--text)' }}>{user.name || user.identifier}</span>
+                <span style={{ fontWeight: 600, color: 'var(--text)' }}>{user.firstName && user.lastName ? `${user.firstName} ${user.lastName}` : user.name || user.identifier}</span>
               </span>
               <Button variant="ghost" size="sm" onClick={handleLogout} icon={<FiLogOut />}>Déconnexion</Button>
             </>

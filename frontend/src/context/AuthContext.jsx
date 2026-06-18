@@ -34,7 +34,18 @@ export function AuthProvider({ children }) {
         throw new Error(err.message || 'Identifiants invalides');
       }
       const data = await response.json();
-      setUser({ identifier: data.identifier, role: data.role, name: data.name });
+      const userData = { identifier: data.identifier, role: data.role, name: data.name };
+      if (data.role === 'STUDENT') {
+        try {
+          const profileRes = await fetch(`/api/students/${data.identifier}`);
+          if (profileRes.ok) {
+            const profile = await profileRes.json();
+            userData.firstName = profile.firstName || '';
+            userData.lastName = profile.lastName || '';
+          }
+        } catch (e) {}
+      }
+      setUser(userData);
       setToken(data.token);
       return { success: true };
     } catch (error) {
