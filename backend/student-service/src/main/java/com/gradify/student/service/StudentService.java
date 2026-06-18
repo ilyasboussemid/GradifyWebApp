@@ -103,35 +103,23 @@ public class StudentService {
         List<String> skills = data.get("skills") instanceof List ? (List<String>) data.get("skills") : List.of();
 
         if (!firstName.isBlank()) {
-            sparqlClient.update(String.format("""
-                DELETE { <%s> schema:givenName ?old }
-                INSERT { <%s> schema:givenName "%s"^^xsd:string }
-                WHERE { OPTIONAL { <%s> schema:givenName ?old } }
-                """, uri, uri, firstName, uri));
+            sparqlClient.update(String.format("DELETE WHERE { <%s> schema:givenName ?o . }", uri));
+            sparqlClient.update(String.format("INSERT DATA { <%s> schema:givenName \"%s\" . }", uri, firstName));
         }
 
         if (!lastName.isBlank()) {
-            sparqlClient.update(String.format("""
-                DELETE { <%s> schema:familyName ?old }
-                INSERT { <%s> schema:familyName "%s"^^xsd:string }
-                WHERE { OPTIONAL { <%s> schema:familyName ?old } }
-                """, uri, uri, lastName, uri));
+            sparqlClient.update(String.format("DELETE WHERE { <%s> schema:familyName ?o . }", uri));
+            sparqlClient.update(String.format("INSERT DATA { <%s> schema:familyName \"%s\" . }", uri, lastName));
         }
 
         if (!city.isBlank()) {
-            sparqlClient.update(String.format("""
-                DELETE { <%s> schema:addressLocality ?old }
-                INSERT { <%s> schema:addressLocality "%s"^^xsd:string }
-                WHERE { OPTIONAL { <%s> schema:addressLocality ?old } }
-                """, uri, uri, city, uri));
+            sparqlClient.update(String.format("DELETE WHERE { <%s> schema:addressLocality ?o . }", uri));
+            sparqlClient.update(String.format("INSERT DATA { <%s> schema:addressLocality \"%s\" . }", uri, city));
         }
 
         if (!level.isBlank()) {
-            sparqlClient.update(String.format("""
-                DELETE { <%s> lod:level ?old }
-                INSERT { <%s> lod:level "%s" }
-                WHERE { OPTIONAL { <%s> lod:level ?old } }
-                """, uri, uri, level, uri));
+            sparqlClient.update(String.format("DELETE WHERE { <%s> lod:level ?o . }", uri));
+            sparqlClient.update(String.format("INSERT DATA { <%s> lod:level \"%s\" . }", uri, level));
         }
 
         sparqlClient.update(String.format("DELETE WHERE { <%s> lod:hasSkill ?s . }", uri));
