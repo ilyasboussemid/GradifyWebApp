@@ -33,15 +33,6 @@ export default function Footer() {
               <span>SHACL (validation)</span>
             </div>
           </div>
-          <div>
-            <h4 style={{ marginBottom: '0.75rem', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)' }}>
-              Projet
-            </h4>
-            <p className="text-sm text-muted">
-              Projet académique S4 — Web Sémantique &amp; Linked Open Data.
-              Knowledge Graphs appliqués à l'orientation étudiante.
-            </p>
-          </div>
         </div>
         <div style={{ borderTop: '1px solid var(--border)', marginTop: '2rem', paddingTop: '1.5rem', textAlign: 'center' }}>
           <p className="text-xs text-muted">
