@@ -163,7 +163,7 @@ export default function OfferDetail() {
           <Card variant="flat">
             <div className="flex items-center justify-between" style={{ marginBottom: '1rem' }}>
               <h4>Étudiants compatibles</h4>
-              {!showMatching && (
+              {!showMatching && (user?.role === 'ENTERPRISE' || user?.role === 'ADMIN') && (
                 <Button variant="primary" size="sm" onClick={handleShowMatching} icon={<FiUsers />}>
                   Voir les étudiants compatibles
                 </Button>
