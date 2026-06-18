@@ -75,21 +75,8 @@ public class AuthService {
                 if (identifier == null || identifier.isBlank()) {
                     throw new IllegalArgumentException("Identifiant requis");
                 }
-                if (ENTERPRISE_PASSWORDS.containsKey(identifier.toLowerCase().replaceAll("[^a-z0-9]", ""))) {
-                    throw new IllegalArgumentException("Cet identifiant est une entreprise. Choisissez le rôle Entreprise.");
-                }
                 if (identifier.equals(adminUsername)) {
                     throw new IllegalArgumentException("Cet identifiant est l'admin. Choisissez le rôle Admin.");
-                }
-                List<Map<String, String>> companyCheck = sparqlClient.query(String.format("""
-                    SELECT ?name WHERE {
-                        ?comp a lod:Company ;
-                              schema:name ?name .
-                        FILTER (LCASE(str(?name)) = LCASE("%s"))
-                    } LIMIT 1
-                    """, identifier));
-                if (!companyCheck.isEmpty()) {
-                    throw new IllegalArgumentException("'" + identifier + "' est une entreprise. Choisissez le rôle Entreprise.");
                 }
                 String studentPwd = STUDENT_PASSWORDS.get(identifier);
                 if (studentPwd != null) {
