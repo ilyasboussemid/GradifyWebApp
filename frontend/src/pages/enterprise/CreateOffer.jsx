@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiArrowLeft, FiSave, FiPlus, FiX } from 'react-icons/fi';
 import Card from '../../components/ui/Card';
@@ -6,6 +6,28 @@ import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import { useAuth } from '../../context/AuthContext';
 import offersService from '../../services/offersService';
+
+const AVAILABLE_SKILLS = [
+  'Python', 'Java', 'C#', 'JavaScript', 'TypeScript',
+  'React', 'Vue.js', 'Angular', 'Node.js', 'Spring Boot', 'PHP/Laravel',
+  'Docker', 'Kubernetes', 'Terraform', 'Ansible', 'CI/CD', 'AWS', 'Azure',
+  'SQL', 'MongoDB', 'PostgreSQL', 'Power BI', 'Tableau',
+  'PyTorch', 'TensorFlow', 'NLP', 'Hugging Face', 'Machine Learning',
+  'Pentest', 'OWASP', 'Cryptographie', 'Kali Linux', 'ISO 27001',
+  'Linux', 'Wireshark', 'Active Directory', 'Sécurité réseau',
+  'Agile/Scrum', 'Git', 'UML', 'Gestion de projet',
+  'ERP', 'SAP', 'Supply Chain', 'Modélisation financière',
+  'Data Warehouse', 'Snowflake', 'Apache Spark', 'ETL',
+];
+
+const AVAILABLE_PROGRAMS = [
+  'Genie Logiciel',
+  'Cybersecurite',
+  'Genie de la Data',
+  'Supply Chain',
+  'Finance Digitale',
+  'Business Intelligence',
+];
 
 export default function CreateOffer() {
   const navigate = useNavigate();
@@ -16,19 +38,22 @@ export default function CreateOffer() {
   const [duration, setDuration] = useState('');
   const [level, setLevel] = useState('2A');
   const [compensation, setCompensation] = useState('');
-  const [targetPrograms, setTargetPrograms] = useState('');
-  const [skillInput, setSkillInput] = useState('');
+  const [selectedPrograms, setSelectedPrograms] = useState([]);
   const [skills, setSkills] = useState([]);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [skillSearch, setSkillSearch] = useState('');
 
+  const filteredSkills = AVAILABLE_SKILLS.filter(s =>
+    s.toLowerCase().includes(skillSearch.toLowerCase()) && !skills.includes(s)
+  );
 
-  function addSkill() {
-    if (skillInput.trim() && !skills.includes(skillInput.trim())) {
-      setSkills([...skills, skillInput.trim()]);
-      setSkillInput('');
+  function addSkill(skill) {
+    if (!skills.includes(skill)) {
+      setSkills([...skills, skill]);
+      setSkillSearch('');
     }
   }
 
@@ -36,15 +61,25 @@ export default function CreateOffer() {
     setSkills(skills.filter(s => s !== skill));
   }
 
+  function toggleProgram(prog) {
+    if (selectedPrograms.includes(prog)) {
+      setSelectedPrograms(selectedPrograms.filter(p => p !== prog));
+    } else {
+      setSelectedPrograms([...selectedPrograms, prog]);
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setError('');
-    if (skills.length === 0) { setError('Ajoutez au moins une compétence requise'); return; }
+    if (skills.length === 0) { setError('Sélectionnez au moins une compétence requise'); return; }
     setLoading(true);
     try {
       await offersService.createOffer({
         title, description, city, duration: parseInt(duration),
-        level, compensation, targetPrograms, skills, startDate, endDate,
+        level, compensation,
+        targetPrograms: selectedPrograms.join(' | '),
+        skills, startDate, endDate,
         companyId: user.identifier,
       });
       navigate('/entreprise/offres');
@@ -64,7 +99,7 @@ export default function CreateOffer() {
       <div className="page-header container">
         <Link to="/entreprise/offres" className="flex items-center gap-1 text-sm" style={{ marginBottom: '1rem', color: 'var(--muted)' }}><FiArrowLeft /> Retour à mes offres</Link>
         <h1>Nouvelle offre de stage</h1>
-        <p>Remplissez les informations de votre offre. Les compétences seront modélisées en SKOS.</p>
+        <p>Remplissez les informations de votre offre.</p>
       </div>
       <div className="container" style={{ paddingBottom: '3rem', maxWidth: '800px' }}>
         <form onSubmit={handleSubmit}>
@@ -82,11 +117,29 @@ export default function CreateOffer() {
               <div className="grid grid-3">
                 <div className="form-group">
                   <label>Ville</label>
-                  <input className="input" placeholder="ex: Casablanca" value={city} onChange={(e) => setCity(e.target.value)} required />
+                  <select className="select" style={{ width: '100%' }} value={city} onChange={(e) => setCity(e.target.value)} required>
+                    <option value="">Choisir une ville</option>
+                    <option value="Casablanca">Casablanca</option>
+                    <option value="Rabat">Rabat</option>
+                    <option value="Tanger">Tanger</option>
+                    <option value="Marrakech">Marrakech</option>
+                    <option value="Fès">Fès</option>
+                    <option value="Oujda">Oujda</option>
+                    <option value="Kenitra">Kenitra</option>
+                    <option value="Agadir">Agadir</option>
+                  </select>
                 </div>
                 <div className="form-group">
                   <label>Durée (mois)</label>
-                  <input className="input" type="number" min="1" max="12" placeholder="ex: 3" value={duration} onChange={(e) => setDuration(e.target.value)} required />
+                  <select className="select" style={{ width: '100%' }} value={duration} onChange={(e) => setDuration(e.target.value)} required>
+                    <option value="">Choisir</option>
+                    <option value="1">1 mois</option>
+                    <option value="2">2 mois</option>
+                    <option value="3">3 mois</option>
+                    <option value="4">4 mois</option>
+                    <option value="5">5 mois</option>
+                    <option value="6">6 mois</option>
+                  </select>
                 </div>
                 <div className="form-group">
                   <label>Niveau requis</label>
@@ -99,7 +152,15 @@ export default function CreateOffer() {
               <div className="grid grid-3">
                 <div className="form-group">
                   <label>Rémunération</label>
-                  <input className="input" placeholder="ex: 3 000 MAD/mois" value={compensation} onChange={(e) => setCompensation(e.target.value)} required />
+                  <select className="select" style={{ width: '100%' }} value={compensation} onChange={(e) => setCompensation(e.target.value)} required>
+                    <option value="">Choisir</option>
+                    <option value="Non remunere">Non rémunéré</option>
+                    <option value="2 000 MAD/mois">2 000 MAD/mois</option>
+                    <option value="3 000 MAD/mois">3 000 MAD/mois</option>
+                    <option value="4 000 MAD/mois">4 000 MAD/mois</option>
+                    <option value="5 000 MAD/mois">5 000 MAD/mois</option>
+                    <option value="6 000 MAD/mois">6 000 MAD/mois</option>
+                  </select>
                 </div>
                 <div className="form-group">
                   <label>Date début</label>
@@ -110,19 +171,54 @@ export default function CreateOffer() {
                   <input className="input" type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} required />
                 </div>
               </div>
-              <div className="form-group">
-                <label>Filières ciblées</label>
-                <input className="input" placeholder="ex: Genie Logiciel | Cybersecurite" value={targetPrograms} onChange={(e) => setTargetPrograms(e.target.value)} />
-              </div>
             </div>
           </Card>
 
           <Card variant="flat" style={{ marginBottom: '1.5rem' }}>
-            <h4 style={{ marginBottom: '1rem' }}>Compétences requises (SKOS)</h4>
-            <div className="flex items-center gap-1" style={{ marginBottom: '1rem' }}>
-              <input className="input" style={{ flex: 1 }} placeholder="Ajouter une compétence (ex: Python, Docker, React...)" value={skillInput} onChange={(e) => setSkillInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addSkill(); } }} />
-              <Button type="button" variant="secondary" onClick={addSkill} icon={<FiPlus />}>Ajouter</Button>
+            <h4 style={{ marginBottom: '1rem' }}>Filières ciblées</h4>
+            <div className="flex flex-wrap gap-1">
+              {AVAILABLE_PROGRAMS.map((prog) => (
+                <Badge
+                  key={prog}
+                  style={{
+                    cursor: 'pointer',
+                    background: selectedPrograms.includes(prog) ? 'var(--accent)' : 'var(--accent-soft)',
+                    color: selectedPrograms.includes(prog) ? 'white' : 'var(--accent-strong)',
+                  }}
+                  onClick={() => toggleProgram(prog)}
+                >
+                  {selectedPrograms.includes(prog) ? '✓ ' : ''}{prog}
+                </Badge>
+              ))}
             </div>
+            {selectedPrograms.length === 0 && <p className="text-sm text-muted" style={{ marginTop: '0.5rem' }}>Cliquez pour sélectionner les filières ciblées</p>}
+          </Card>
+
+          <Card variant="flat" style={{ marginBottom: '1.5rem' }}>
+            <h4 style={{ marginBottom: '1rem' }}>Compétences requises</h4>
+            <div className="form-group" style={{ marginBottom: '1rem' }}>
+              <input
+                className="input"
+                placeholder="Rechercher une compétence..."
+                value={skillSearch}
+                onChange={(e) => setSkillSearch(e.target.value)}
+              />
+            </div>
+            {skillSearch && filteredSkills.length > 0 && (
+              <div style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', maxHeight: '180px', overflowY: 'auto', marginBottom: '1rem' }}>
+                {filteredSkills.slice(0, 10).map((skill) => (
+                  <div
+                    key={skill}
+                    onClick={() => addSkill(skill)}
+                    style={{ padding: '0.6rem 1rem', cursor: 'pointer', fontSize: '0.85rem', borderBottom: '1px solid var(--border)', transition: 'background 0.15s' }}
+                    onMouseOver={(e) => e.target.style.background = 'var(--accent-light)'}
+                    onMouseOut={(e) => e.target.style.background = 'transparent'}
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
+            )}
             <div className="flex flex-wrap gap-1">
               {skills.map((skill) => (
                 <Badge key={skill}>
@@ -131,7 +227,7 @@ export default function CreateOffer() {
                 </Badge>
               ))}
             </div>
-            {skills.length === 0 && <p className="text-sm text-muted" style={{ marginTop: '0.5rem' }}>Aucune compétence ajoutée</p>}
+            {skills.length === 0 && <p className="text-sm text-muted" style={{ marginTop: '0.5rem' }}>Recherchez et sélectionnez les compétences requises</p>}
           </Card>
 
           {error && <div style={{ padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', background: 'var(--status-error-bg)', color: 'var(--status-error)', fontSize: '0.85rem', marginBottom: '1rem' }}>{error}</div>}

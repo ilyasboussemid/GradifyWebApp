@@ -121,10 +121,22 @@ export default function EditProfile() {
 
           <Card variant="flat" style={{ marginBottom: '1.5rem' }}>
             <h4 style={{ marginBottom: '1rem' }}>Mes compétences</h4>
-            <div className="flex items-center gap-1" style={{ marginBottom: '1rem' }}>
-              <input className="input" style={{ flex: 1 }} placeholder="Ajouter une compétence (ex: Python, Docker...)" value={skillInput} onChange={(e) => setSkillInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addSkill(); } }} />
-              <Button type="button" variant="secondary" onClick={addSkill} icon={<FiPlus />}>Ajouter</Button>
+            <div className="form-group" style={{ marginBottom: '1rem' }}>
+              <input className="input" placeholder="Rechercher une compétence..." value={skillInput} onChange={(e) => setSkillInput(e.target.value)} />
             </div>
+            {skillInput && (() => {
+              const available = ['Python', 'Java', 'C#', 'JavaScript', 'TypeScript', 'React', 'Vue.js', 'Angular', 'Node.js', 'Spring Boot', 'PHP/Laravel', 'Docker', 'Kubernetes', 'Terraform', 'Ansible', 'CI/CD', 'AWS', 'Azure', 'SQL', 'MongoDB', 'PostgreSQL', 'Power BI', 'Tableau', 'PyTorch', 'TensorFlow', 'NLP', 'Hugging Face', 'Machine Learning', 'Pentest', 'OWASP', 'Cryptographie', 'Kali Linux', 'ISO 27001', 'Linux', 'Wireshark', 'Active Directory', 'Agile/Scrum', 'Git', 'UML', 'ERP', 'SAP', 'Data Warehouse', 'Snowflake', 'Apache Spark', 'ETL'];
+              const filtered = available.filter(s => s.toLowerCase().includes(skillInput.toLowerCase()) && !skills.includes(s));
+              return filtered.length > 0 ? (
+                <div style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', maxHeight: '180px', overflowY: 'auto', marginBottom: '1rem' }}>
+                  {filtered.slice(0, 10).map((skill) => (
+                    <div key={skill} onClick={() => { setSkills([...skills, skill]); setSkillInput(''); }} style={{ padding: '0.6rem 1rem', cursor: 'pointer', fontSize: '0.85rem', borderBottom: '1px solid var(--border)' }} onMouseOver={(e) => e.target.style.background = 'var(--accent-light)'} onMouseOut={(e) => e.target.style.background = 'transparent'}>
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              ) : null;
+            })()}
             <div className="flex flex-wrap gap-1">
               {skills.map((skill) => (
                 <Badge key={skill}>
@@ -133,7 +145,7 @@ export default function EditProfile() {
                 </Badge>
               ))}
             </div>
-            {skills.length === 0 && <p className="text-sm text-muted" style={{ marginTop: '0.5rem' }}>Aucune compétence</p>}
+            {skills.length === 0 && <p className="text-sm text-muted" style={{ marginTop: '0.5rem' }}>Recherchez et sélectionnez vos compétences</p>}
           </Card>
 
           {error && <div style={{ padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', background: 'var(--status-error-bg)', color: 'var(--status-error)', fontSize: '0.85rem', marginBottom: '1rem' }}>{error}</div>}
