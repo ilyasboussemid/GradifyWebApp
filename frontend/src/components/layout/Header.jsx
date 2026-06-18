@@ -9,18 +9,35 @@ export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const navLinks = [
-    { path: '/', label: 'Accueil' },
-    { path: '/offres', label: 'Offres' },
-    { path: '/sparql', label: 'SPARQL' },
-    { path: '/vocabulaires', label: 'Vocabulaires' },
-  ];
+  let navLinks = [];
 
-  if (user?.role === 'ENTERPRISE') {
-    navLinks.push({ path: '/entreprise/offres', label: 'Mes offres' });
-  }
-  if (user?.role === 'ADMIN') {
-    navLinks.push({ path: '/admin', label: 'Admin' });
+  if (!user) {
+    navLinks = [
+      { path: '/', label: 'Accueil' },
+      { path: '/offres', label: 'Offres' },
+      { path: '/sparql', label: 'SPARQL' },
+      { path: '/vocabulaires', label: 'Vocabulaires' },
+    ];
+  } else if (user.role === 'STUDENT') {
+    navLinks = [
+      { path: '/', label: 'Accueil' },
+      { path: '/offres', label: 'Offres' },
+      { path: `/etudiants/${user.identifier}`, label: 'Mon profil' },
+    ];
+  } else if (user.role === 'ENTERPRISE') {
+    navLinks = [
+      { path: '/', label: 'Accueil' },
+      { path: '/offres', label: 'Offres' },
+      { path: '/entreprise/offres', label: 'Mes offres' },
+    ];
+  } else if (user.role === 'ADMIN') {
+    navLinks = [
+      { path: '/', label: 'Accueil' },
+      { path: '/offres', label: 'Offres' },
+      { path: '/sparql', label: 'SPARQL' },
+      { path: '/vocabulaires', label: 'Vocabulaires' },
+      { path: '/admin', label: 'Admin' },
+    ];
   }
 
   const handleLogout = () => { logout(); navigate('/'); };
