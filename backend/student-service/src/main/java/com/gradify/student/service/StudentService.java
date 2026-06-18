@@ -37,10 +37,9 @@ public class StudentService {
         List<Map<String, String>> skills = sparqlClient.query(String.format("""
                 SELECT ?competence ?categorie WHERE {
                     <%s> lod:hasSkill ?skill .
-                    ?skill skos:prefLabel ?competence ; skos:broader ?cat .
-                    ?cat skos:prefLabel ?categorie .
+                    ?skill skos:prefLabel ?competence .
+                    OPTIONAL { ?skill skos:broader ?cat . ?cat skos:prefLabel ?categorie . FILTER (lang(?categorie) = "fr") }
                     FILTER (lang(?competence) = "fr")
-                    FILTER (lang(?categorie) = "fr")
                 } ORDER BY ?categorie
                 """, uri));
 
@@ -54,7 +53,7 @@ public class StudentService {
         student.put("mention", row.get("mention"));
         student.put("academicYear", row.get("annee"));
         student.put("skills", skills.stream()
-                .map(s -> Map.of("name", s.get("competence"), "category", s.get("categorie")))
+                .map(s -> Map.of("name", s.getOrDefault("competence", ""), "category", s.getOrDefault("categorie", "Autre")))
                 .collect(Collectors.toList()));
         return student;
     }
