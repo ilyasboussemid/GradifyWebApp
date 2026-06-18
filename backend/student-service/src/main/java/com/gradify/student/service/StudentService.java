@@ -18,7 +18,7 @@ public class StudentService {
     public Map<String, Object> getById(String studentId) {
         String uri = "https://data.lod-school.ma/id/" + studentId;
         List<Map<String, String>> infos = sparqlClient.query(String.format("""
-                SELECT ?id ?niveau ?filiere ?ville ?mention ?annee WHERE {
+                SELECT ?id ?niveau ?filiere ?ville ?mention ?annee ?prenom ?nom WHERE {
                     <%s> dcterms:identifier ?id ;
                          lod:level ?niveau ;
                          lod:enrolledIn ?prog ;
@@ -26,8 +26,10 @@ public class StudentService {
                          lod:mention ?mention ;
                          lod:academicYear ?annee .
                     ?prog rdfs:label ?filiere .
+                    OPTIONAL { <%s> schema:givenName ?prenom . }
+                    OPTIONAL { <%s> schema:familyName ?nom . }
                 } LIMIT 1
-                """, uri));
+                """, uri, uri, uri));
 
         if (infos.isEmpty()) return null;
         Map<String, String> row = infos.get(0);
@@ -44,6 +46,8 @@ public class StudentService {
 
         Map<String, Object> student = new HashMap<>();
         student.put("id", studentId);
+        student.put("firstName", row.getOrDefault("prenom", ""));
+        student.put("lastName", row.getOrDefault("nom", ""));
         student.put("level", row.get("niveau"));
         student.put("program", row.get("filiere"));
         student.put("city", row.get("ville"));
@@ -94,7 +98,25 @@ public class StudentService {
         String uri = "https://data.lod-school.ma/id/" + studentId;
         String city = (String) data.getOrDefault("city", "");
         String level = (String) data.getOrDefault("level", "");
+        String firstName = (String) data.getOrDefault("firstName", "");
+        String lastName = (String) data.getOrDefault("lastName", "");
         List<String> skills = data.get("skills") instanceof List ? (List<String>) data.get("skills") : List.of();
+
+        if (!firstName.isBlank()) {
+            sparqlClient.update(String.format("""
+                DELETE { <%s> schema:givenName ?old }
+                INSERT { <%s> schema:givenName "%s"^^xsd:string }
+                WHERE { OPTIONAL { <%s> schema:givenName ?old } }
+                """, uri, uri, firstName, uri));
+        }
+
+        if (!lastName.isBlank()) {
+            sparqlClient.update(String.format("""
+                DELETE { <%s> schema:familyName ?old }
+                INSERT { <%s> schema:familyName "%s"^^xsd:string }
+                WHERE { OPTIONAL { <%s> schema:familyName ?old } }
+                """, uri, uri, lastName, uri));
+        }
 
         if (!city.isBlank()) {
             sparqlClient.update(String.format("""

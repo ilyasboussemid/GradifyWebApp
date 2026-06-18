@@ -116,23 +116,34 @@ public class AuthService {
     }
 
     private void insertStudent(String identifier, Map<String, String> data) {
+        String firstName = data.getOrDefault("firstName", "");
+        String lastName = data.getOrDefault("lastName", "");
         String programLabel = data.getOrDefault("program", "Genie Logiciel");
         String level = data.getOrDefault("level", "2A");
         String city = data.getOrDefault("city", "Casablanca");
         String hash = UUID.nameUUIDFromBytes(identifier.getBytes()).toString().substring(0, 12);
         String programHash = UUID.nameUUIDFromBytes(programLabel.getBytes()).toString().substring(0, 12);
 
+        String nameTriples = "";
+        if (!firstName.isBlank()) {
+            nameTriples += String.format("    schema:givenName \"%s\"^^xsd:string ;\n", firstName);
+        }
+        if (!lastName.isBlank()) {
+            nameTriples += String.format("    schema:familyName \"%s\"^^xsd:string ;\n", lastName);
+        }
+
         String sparql = String.format("""
             INSERT DATA {
                 base:student-%s a lod:Student, schema:Person ;
                     dcterms:identifier "%s"^^xsd:string ;
+                    %s
                     lod:level "%s" ;
                     lod:enrolledIn base:program-%s ;
                     schema:addressLocality "%s"^^xsd:string ;
                     lod:mention "Non évalué"@fr ;
                     lod:academicYear "2026"^^xsd:gYear .
             }
-            """, hash, identifier, level, programHash, city);
+            """, hash, identifier, nameTriples, level, programHash, city);
 
         sparqlClient.update(sparql);
     }
