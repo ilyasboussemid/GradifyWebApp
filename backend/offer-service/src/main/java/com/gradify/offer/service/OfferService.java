@@ -191,10 +191,8 @@ public class OfferService {
 
         String companyHash = java.util.UUID.nameUUIDFromBytes(companyId.getBytes()).toString().substring(0, 12);
 
-        StringBuilder skillTriples = new StringBuilder();
         for (String skill : skills) {
             String skillHash = java.util.UUID.nameUUIDFromBytes(skill.toLowerCase().getBytes()).toString().substring(0, 12);
-            skillTriples.append(String.format("    lod:requiresSkill base:skill-%s ;\n", skillHash));
             sparqlClient.update(String.format("""
                 INSERT DATA {
                     base:skill-%s a skos:Concept ;
@@ -219,15 +217,18 @@ public class OfferService {
                     lod:compensation "%s"@fr ;
                     lod:status "Ouverte"@fr ;
                     lod:targetPrograms "%s"@fr ;
-                    lod:postedBy base:company-%s ;
-                    %s
-                    schema:name "%s" .
+                    lod:postedBy base:company-%s .
             }
             """, id, id, java.time.LocalDate.now().toString(), title, description, city,
                 startDate, endDate, duration, level, compensation, targetPrograms,
-                companyHash, skillTriples.toString(), title);
+                companyHash);
 
         sparqlClient.update(sparql);
+
+        for (String skill : skills) {
+            String skillHash = java.util.UUID.nameUUIDFromBytes(skill.toLowerCase().getBytes()).toString().substring(0, 12);
+            sparqlClient.update(String.format("INSERT DATA { base:%s lod:requiresSkill base:skill-%s . }", id, skillHash));
+        }
 
         data.put("id", id);
         data.put("status", "Ouverte");
@@ -329,20 +330,23 @@ public class OfferService {
     }
 
     public void updateApplicationStatus(String offerId, String studentId, String newStatus) {
-        String sparql = String.format("""
-            DELETE {
-                ?app lod:applicationStatus ?oldStatus .
-            }
-            INSERT {
-                ?app lod:applicationStatus "%s"@fr .
-            }
-            WHERE {
-                base:%s lod:hasApplication ?app .
+        sparqlClient.update(String.format("""
+            DELETE WHERE {
                 ?app lod:applicant base:%s ;
                      lod:applicationStatus ?oldStatus .
+                base:%s lod:hasApplication ?app .
             }
-            """, newStatus, offerId, studentId);
-        sparqlClient.update(sparql);
+            """, studentId, offerId));
+        String date = java.time.LocalDate.now().toString();
+        sparqlClient.update(String.format("""
+            INSERT DATA {
+                base:%s lod:hasApplication [
+                    lod:applicant base:%s ;
+                    lod:applicationDate "%s"^^xsd:date ;
+                    lod:applicationStatus "%s"@fr
+                ] .
+            }
+            """, offerId, studentId, date, newStatus));
     }
 
     public Map<String, Object> getStudentApplications(String studentId) {
