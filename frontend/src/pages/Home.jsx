@@ -17,7 +17,7 @@ export default function Home() {
           <div style={{ marginBottom: '1.5rem' }}>
             <span className="badge" style={{ padding: '0.4rem 1rem', fontSize: '0.8rem' }}>
               <FiDatabase style={{ marginRight: '0.25rem' }} />
-              Knowledge Graph · Web Sémantique
+              Gradify · Find Your Future
             </span>
           </div>
           <h1 style={{ fontSize: '3.25rem', lineHeight: 1.1, letterSpacing: '-0.06em', marginBottom: '1.25rem' }}>
@@ -34,8 +34,8 @@ export default function Home() {
             <Button variant="primary" size="lg" onClick={() => navigate('/offres')} icon={<FiSearch />}>
               Rechercher une offre
             </Button>
-            <Button variant="secondary" size="lg" onClick={() => navigate('/sparql')} icon={<FiCode />}>
-              Explorer le graphe
+            <Button variant="secondary" size="lg" onClick={() => navigate('/offres')} icon={<FiCode />}>
+              Découvrir les offres
             </Button>
           </div>
         </div>
