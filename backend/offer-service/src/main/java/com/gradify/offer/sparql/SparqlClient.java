@@ -69,6 +69,7 @@ public class SparqlClient {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.valueOf("application/sparql-update"));
+        headers.setBasicAuth("admin", "admin123");
 
         HttpEntity<String> request = new HttpEntity<>(fullUpdate, headers);
 
