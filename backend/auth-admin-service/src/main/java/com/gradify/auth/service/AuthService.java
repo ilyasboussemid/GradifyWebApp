@@ -56,9 +56,9 @@ public class AuthService {
                         SELECT ?comp WHERE {
                             ?comp a lod:Company ;
                                   schema:name ?name .
-                            FILTER (LCASE(str(?name)) = LCASE("%s"))
+                            FILTER (CONTAINS(LCASE(str(?name)), LCASE("%s")))
                         } LIMIT 1
-                        """, identifier));
+                        """, identifier.length() > 3 ? identifier.substring(0, Math.min(identifier.length(), 10)) : identifier));
                     if (!entCheck.isEmpty()) {
                         ENTERPRISE_PASSWORDS.put(key, password);
                         entPwd = password;
@@ -85,9 +85,9 @@ public class AuthService {
                     SELECT ?comp WHERE {
                         ?comp a lod:Company ;
                               schema:name ?name .
-                        FILTER (LCASE(str(?name)) = LCASE("%s"))
+                        FILTER (CONTAINS(LCASE(str(?name)), LCASE("%s")))
                     } LIMIT 1
-                    """, identifier));
+                    """, identifier.length() > 3 ? identifier.substring(0, Math.min(identifier.length(), 10)) : identifier));
                 if (!companyCheck.isEmpty()) {
                     throw new IllegalArgumentException("'" + identifier + "' est une entreprise enregistrée. Choisissez le rôle Entreprise.");
                 }
