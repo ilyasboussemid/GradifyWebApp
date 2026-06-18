@@ -124,4 +124,55 @@ public class OfferController {
             return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
         }
     }
+
+    @GetMapping("/my-applications")
+    public ResponseEntity<?> getMyApplications(@RequestHeader(value = "X-User-Id", required = false) String userId) {
+        try {
+            String studentId = userId != null ? userId : "anonymous";
+            return ResponseEntity.ok(offerService.getStudentApplications(studentId));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/mine/stats")
+    public ResponseEntity<?> getMyStats(@RequestHeader(value = "X-User-Id", required = false) String userId) {
+        try {
+            return ResponseEntity.ok(offerService.getCompanyStats(userId != null ? userId : "unknown"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/{id}/bookmark")
+    public ResponseEntity<?> bookmarkOffer(@PathVariable String id, @RequestHeader(value = "X-User-Id", required = false) String userId) {
+        try {
+            String studentId = userId != null ? userId : "anonymous";
+            offerService.bookmarkOffer(id, studentId);
+            return ResponseEntity.ok(Map.of("message", "Offre ajoutée aux favoris"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @DeleteMapping("/{id}/bookmark")
+    public ResponseEntity<?> removeBookmark(@PathVariable String id, @RequestHeader(value = "X-User-Id", required = false) String userId) {
+        try {
+            String studentId = userId != null ? userId : "anonymous";
+            offerService.removeBookmark(id, studentId);
+            return ResponseEntity.ok(Map.of("message", "Offre retirée des favoris"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/bookmarks")
+    public ResponseEntity<?> getBookmarks(@RequestHeader(value = "X-User-Id", required = false) String userId) {
+        try {
+            String studentId = userId != null ? userId : "anonymous";
+            return ResponseEntity.ok(offerService.getBookmarks(studentId));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
 }

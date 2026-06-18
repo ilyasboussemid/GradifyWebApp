@@ -344,4 +344,112 @@ public class OfferService {
             """, newStatus, offerId, studentId);
         sparqlClient.update(sparql);
     }
+
+    public Map<String, Object> getStudentApplications(String studentId) {
+        List<Map<String, String>> results = sparqlClient.query(String.format("""
+            SELECT ?offre ?titre ?entreprise ?ville ?date ?status WHERE {
+                base:%s lod:appliedTo ?offre .
+                ?offre schema:title ?titre ;
+                       lod:postedBy ?comp ;
+                       schema:jobLocation ?ville .
+                ?comp schema:name ?entreprise .
+                OPTIONAL {
+                    ?offre lod:hasApplication ?app .
+                    ?app lod:applicant base:%s ;
+                         lod:applicationDate ?date ;
+                         lod:applicationStatus ?status .
+                }
+            }
+            ORDER BY DESC(?date)
+            """, studentId, studentId));
+
+        List<Map<String, Object>> items = results.stream().map(row -> {
+            Map<String, Object> app = new HashMap<>();
+            String offerUri = row.get("offre");
+            app.put("offerId", offerUri.substring(offerUri.lastIndexOf('/') + 1));
+            app.put("title", row.get("titre"));
+            app.put("company", row.get("entreprise"));
+            app.put("city", row.get("ville"));
+            app.put("appliedAt", row.getOrDefault("date", ""));
+            app.put("status", row.getOrDefault("status", "En attente"));
+            return app;
+        }).collect(Collectors.toList());
+
+        return Map.of("items", items, "total", items.size());
+    }
+
+    public Map<String, Object> getCompanyStats(String companyId) {
+        Map<String, Object> byCompany = getByCompany(companyId);
+        List<Map<String, Object>> offers = (List<Map<String, Object>>) byCompany.get("items");
+
+        int totalOffers = offers.size();
+        int openOffers = (int) offers.stream().filter(o -> "Ouverte".equals(o.get("status")) || String.valueOf(o.get("statut")).contains("Ouverte")).count();
+
+        int totalApplications = 0;
+        int acceptedApplications = 0;
+        for (Map<String, Object> offer : offers) {
+            String offerId = (String) offer.get("id");
+            if (offerId != null) {
+                try {
+                    Map<String, Object> apps = getApplications(offerId);
+                    List<?> appItems = (List<?>) apps.get("items");
+                    totalApplications += appItems.size();
+                } catch (Exception ignored) {}
+            }
+        }
+
+        return Map.of(
+            "totalOffers", totalOffers,
+            "openOffers", openOffers,
+            "totalApplications", totalApplications,
+            "acceptedApplications", acceptedApplications
+        );
+    }
+
+    public void bookmarkOffer(String offerId, String studentId) {
+        String sparql = String.format("""
+            INSERT DATA {
+                base:%s lod:bookmarked base:%s .
+            }
+            """, studentId, offerId);
+        sparqlClient.update(sparql);
+    }
+
+    public void removeBookmark(String offerId, String studentId) {
+        String sparql = String.format("""
+            DELETE DATA {
+                base:%s lod:bookmarked base:%s .
+            }
+            """, studentId, offerId);
+        sparqlClient.update(sparql);
+    }
+
+    public Map<String, Object> getBookmarks(String studentId) {
+        List<Map<String, String>> results = sparqlClient.query(String.format("""
+            SELECT ?offre ?titre ?entreprise ?ville ?niveau ?duree WHERE {
+                base:%s lod:bookmarked ?offre .
+                ?offre schema:title ?titre ;
+                       lod:postedBy ?comp ;
+                       schema:jobLocation ?ville ;
+                       lod:levelRequired ?niveau ;
+                       lod:durationMonths ?duree .
+                ?comp schema:name ?entreprise .
+            }
+            ORDER BY ?titre
+            """, studentId));
+
+        List<Map<String, Object>> items = results.stream().map(row -> {
+            Map<String, Object> b = new HashMap<>();
+            String uri = row.get("offre");
+            b.put("id", uri.substring(uri.lastIndexOf('/') + 1));
+            b.put("title", row.get("titre"));
+            b.put("company", row.get("entreprise"));
+            b.put("city", row.get("ville"));
+            b.put("level", row.get("niveau"));
+            b.put("duration", row.get("duree"));
+            return b;
+        }).collect(Collectors.toList());
+
+        return Map.of("items", items, "total", items.size());
+    }
 }

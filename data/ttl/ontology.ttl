@@ -73,3 +73,9 @@ lod:applicationDate a owl:DatatypeProperty ;
 
 lod:applicationStatus a owl:DatatypeProperty ;
     rdfs:label "statut de candidature"@fr .
+
+
+lod:bookmarked a owl:ObjectProperty ;
+    rdfs:label "a sauvegarde"@fr ;
+    rdfs:domain lod:Student ;
+    rdfs:range lod:InternshipOffer .
