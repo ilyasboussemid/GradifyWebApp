@@ -100,7 +100,7 @@ export default function OfferSearch() {
   const [showFilters, setShowFilters] = useState(false);
   const pageSize = 20;
 
-  useEffect(() => { fetchOffers(); }, [selectedSkill, selectedCity, selectedProgram, currentPage]);
+  useEffect(() => { fetchOffers(); }, [selectedSkill, selectedCity, selectedProgram]);
   useEffect(() => { fetchFilters(); }, []);
 
   async function fetchFilters() {
@@ -116,8 +116,8 @@ export default function OfferSearch() {
         skill: selectedSkill,
         city: selectedCity,
         program: selectedProgram,
-        page: currentPage,
-        size: 50,
+        page: 1,
+        size: 200,
       });
       setOffers(data.items || data || []);
       if (data.filters) setFilters(data.filters);
