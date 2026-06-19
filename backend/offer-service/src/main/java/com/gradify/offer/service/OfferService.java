@@ -17,7 +17,6 @@ public class OfferService {
 
     public Map<String, Object> search(String skill, String company, String program, String city, int page, int size) {
         StringBuilder filters = new StringBuilder();
-        filters.append("?offre lod:status 'Ouverte'@fr .\n");
 
         if (skill != null && !skill.isBlank()) {
             filters.append(String.format("""
@@ -42,8 +41,9 @@ public class OfferService {
                            lod:durationMonths ?duree ;
                            lod:levelRequired ?niveau ;
                            lod:compensation ?compensation ;
-                           %s
+                           lod:status "Ouverte"@fr .
                     ?comp schema:name ?entreprise .
+                    %s
                 }
                 ORDER BY ?ville ?titre
                 LIMIT %d OFFSET %d
