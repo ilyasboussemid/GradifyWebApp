@@ -356,22 +356,25 @@ public class OfferService {
 
     public void updateApplicationStatus(String offerId, String studentId, String newStatus) {
         sparqlClient.update(String.format("""
-            DELETE WHERE {
+            DELETE {
+                ?app lod:applicationStatus ?oldStatus .
+            }
+            WHERE {
+                base:%s lod:hasApplication ?app .
                 ?app lod:applicant base:%s ;
                      lod:applicationStatus ?oldStatus .
-                base:%s lod:hasApplication ?app .
             }
-            """, studentId, offerId));
-        String date = java.time.LocalDate.now().toString();
+            """, offerId, studentId));
         sparqlClient.update(String.format("""
-            INSERT DATA {
-                base:%s lod:hasApplication [
-                    lod:applicant base:%s ;
-                    lod:applicationDate "%s"^^xsd:date ;
-                    lod:applicationStatus "%s"@fr
-                ] .
+            INSERT {
+                ?app lod:applicationStatus "%s"@fr .
             }
-            """, offerId, studentId, date, newStatus));
+            WHERE {
+                base:%s lod:hasApplication ?app .
+                ?app lod:applicant base:%s .
+                FILTER NOT EXISTS { ?app lod:applicationStatus ?any }
+            }
+            """, newStatus, offerId, studentId));
     }
 
     public Map<String, Object> getStudentApplications(String studentId) {
