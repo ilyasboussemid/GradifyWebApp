@@ -190,7 +190,20 @@ public class OfferService {
         String companyId = (String) data.getOrDefault("companyId", "unknown");
         List<String> skills = data.get("skills") instanceof List ? (List<String>) data.get("skills") : List.of();
 
-        String companyHash = java.util.UUID.nameUUIDFromBytes(companyId.getBytes()).toString().substring(0, 12);
+        List<Map<String, String>> companyLookup = sparqlClient.query(String.format("""
+            SELECT ?comp WHERE {
+                ?comp a lod:Company ;
+                      schema:name ?name .
+                FILTER (LCASE(str(?name)) = LCASE("%s"))
+            } LIMIT 1
+            """, companyId));
+        String companyUri;
+        if (!companyLookup.isEmpty()) {
+            companyUri = "<" + companyLookup.get(0).get("comp") + ">";
+        } else {
+            String companyHash = java.util.UUID.nameUUIDFromBytes(companyId.getBytes()).toString().substring(0, 12);
+            companyUri = "base:company-" + companyHash;
+        }
 
         for (String skill : skills) {
             String skillHash = java.util.UUID.nameUUIDFromBytes(skill.toLowerCase().getBytes()).toString().substring(0, 12);
@@ -218,11 +231,11 @@ public class OfferService {
                     lod:compensation "%s"@fr ;
                     lod:status "Ouverte"@fr ;
                     lod:targetPrograms "%s"@fr ;
-                    lod:postedBy base:company-%s .
+                    lod:postedBy %s .
             }
             """, id, id, java.time.LocalDate.now().toString(), title, description, city,
                 startDate, endDate, duration, level, compensation, targetPrograms,
-                companyHash);
+                companyUri);
 
         sparqlClient.update(sparql);
 
