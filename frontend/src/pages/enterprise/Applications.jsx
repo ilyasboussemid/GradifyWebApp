@@ -85,6 +85,12 @@ export default function Applications() {
                       <Button variant="ghost" size="sm" onClick={() => handleUpdateStatus(app.id, app.studentId, 'Refusée')} style={{ color: 'var(--status-error)' }}>Refuser</Button>
                     </div>
                   )}
+                  {app.status === 'Acceptée' && (
+                    <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--status-success)' }}>✓ Candidat accepté</span>
+                  )}
+                  {app.status === 'Refusée' && (
+                    <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--status-error)' }}>✗ Candidat refusé</span>
+                  )}
                 </div>
               </Card>
             ))}
