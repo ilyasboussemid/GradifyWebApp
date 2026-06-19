@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { FiArrowLeft, FiSave, FiPlus, FiX } from 'react-icons/fi';
 import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
@@ -31,7 +31,9 @@ const AVAILABLE_PROGRAMS = [
 
 export default function CreateOffer() {
   const navigate = useNavigate();
+  const { offerId } = useParams();
   const { user } = useAuth();
+  const isEditing = !!offerId;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [city, setCity] = useState('');
@@ -45,6 +47,33 @@ export default function CreateOffer() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [skillSearch, setSkillSearch] = useState('');
+
+  useEffect(() => {
+    if (isEditing) {
+      fetchOffer();
+    }
+  }, [offerId]);
+
+  async function fetchOffer() {
+    try {
+      const data = await offersService.getById(offerId);
+      if (data) {
+        setTitle(data.title || '');
+        setDescription(data.description || '');
+        setCity(data.city || '');
+        setDuration(String(data.duration || ''));
+        setLevel(data.level || '2A');
+        setCompensation(data.compensation || '');
+        setStartDate(data.startDate || '');
+        setEndDate(data.endDate || '');
+        const offerSkills = (data.skills || []).map(s => typeof s === 'string' ? s : s.name);
+        setSkills(offerSkills);
+        if (data.targetPrograms) {
+          setSelectedPrograms(data.targetPrograms.split(' | ').filter(p => p));
+        }
+      }
+    } catch (err) {}
+  }
 
   const filteredSkills = AVAILABLE_SKILLS.filter(s =>
     s.toLowerCase().includes(skillSearch.toLowerCase()) && !skills.includes(s)
@@ -75,13 +104,23 @@ export default function CreateOffer() {
     if (skills.length === 0) { setError('Sélectionnez au moins une compétence requise'); return; }
     setLoading(true);
     try {
-      await offersService.createOffer({
-        title, description, city, duration: parseInt(duration),
-        level, compensation,
-        targetPrograms: selectedPrograms.join(' | '),
-        skills, startDate, endDate,
-        companyId: user.identifier,
-      });
+      if (isEditing) {
+        await offersService.updateOffer(offerId, {
+          title, description, city, duration: parseInt(duration),
+          level, compensation,
+          targetPrograms: selectedPrograms.join(' | '),
+          skills, startDate, endDate,
+          companyId: user.identifier,
+        });
+      } else {
+        await offersService.createOffer({
+          title, description, city, duration: parseInt(duration),
+          level, compensation,
+          targetPrograms: selectedPrograms.join(' | '),
+          skills, startDate, endDate,
+          companyId: user.identifier,
+        });
+      }
       navigate('/entreprise/offres');
     } catch (err) {
       if (err.message === 'Failed to fetch' || err.name === 'TypeError') {
@@ -98,7 +137,7 @@ export default function CreateOffer() {
     <div>
       <div className="page-header container">
         <Link to="/entreprise/offres" className="flex items-center gap-1 text-sm" style={{ marginBottom: '1rem', color: 'var(--muted)' }}><FiArrowLeft /> Retour à mes offres</Link>
-        <h1>Nouvelle offre de stage</h1>
+        <h1>{isEditing ? 'Modifier l\'offre' : 'Nouvelle offre de stage'}</h1>
         <p>Remplissez les informations de votre offre.</p>
       </div>
       <div className="container" style={{ paddingBottom: '3rem', maxWidth: '800px' }}>
@@ -230,7 +269,7 @@ export default function CreateOffer() {
           <div className="flex items-center justify-between">
             <Link to="/entreprise/offres"><Button type="button" variant="ghost">Annuler</Button></Link>
             <Button type="submit" variant="primary" size="lg" disabled={loading} icon={<FiSave />}>
-              {loading ? 'Publication...' : 'Publier l\'offre'}
+              {loading ? (isEditing ? 'Mise à jour...' : 'Publication...') : (isEditing ? 'Mettre à jour' : 'Publier l\'offre')}
             </Button>
           </div>
         </form>
