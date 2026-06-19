@@ -25,9 +25,8 @@ export default function Applications() {
   async function fetchApplications() {
     setLoading(true);
     try {
-      const res = await fetch(`/api/offers/${offerId}/applications`);
-      const data = await res.json();
-      setApplications(data.items || data);
+      const response = await import('../../services/offersService').then(m => m.default.getApplications(offerId));
+      setApplications(response.items || response || []);
     } catch (err) {
       setApplications(DEMO_APPLICATIONS);
     } finally {
@@ -38,11 +37,8 @@ export default function Applications() {
   async function handleUpdateStatus(appId, studentId, newStatus) {
     setApplications(applications.map(a => a.id === appId ? { ...a, status: newStatus } : a));
     try {
-      await fetch(`/api/offers/applications/${studentId}/${offerId}/status`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: newStatus }),
-      });
+      const api = (await import('../../services/api')).default;
+      await api.put(`/offers/applications/${studentId}/${offerId}/status`, { status: newStatus });
     } catch (err) {}
   }
 

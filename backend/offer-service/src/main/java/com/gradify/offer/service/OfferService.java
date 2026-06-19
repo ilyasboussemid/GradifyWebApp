@@ -57,8 +57,10 @@ public class OfferService {
             offer.put("id", offerId);
             offer.put("title", row.get("titre"));
             offer.put("company", row.get("entreprise"));
+            offer.put("city", row.get("ville"));
             offer.put("duration", row.get("duree"));
             offer.put("level", row.get("niveau"));
+            offer.put("compensation", row.get("compensation"));
             offer.put("status", "Ouverte");
             offer.put("skills", getOfferSkills(offerId));
             return offer;

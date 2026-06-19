@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/ui/Button';
 import { FiUser, FiBriefcase, FiShield, FiArrowRight, FiBookOpen } from 'react-icons/fi';
@@ -228,11 +228,11 @@ export default function Login() {
           </div>
           <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
             <span className="text-sm text-muted">Pas encore de compte ? </span>
-            <a href="/signup" style={{ fontSize: '0.85rem' }}>S'inscrire</a>
+            <Link to="/signup" style={{ fontSize: '0.85rem' }}>S'inscrire</Link>
             <br />
-            <a href="/" style={{ fontSize: '0.85rem', marginTop: '0.5rem', display: 'inline-block' }}>
+            <Link to="/" style={{ fontSize: '0.85rem', marginTop: '0.5rem', display: 'inline-block' }}>
               ← Retour à l'accueil
-            </a>
+            </Link>
           </div>
         </div>
       </div>

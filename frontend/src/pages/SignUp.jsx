@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/ui/Button';
-import { FiUser, FiBriefcase, FiArrowRight, FiBookOpen } from 'react-icons/fi';
+import { FiUser, FiBriefcase, FiArrowRight } from 'react-icons/fi';
 
 export default function SignUp() {
   const { login } = useAuth();
