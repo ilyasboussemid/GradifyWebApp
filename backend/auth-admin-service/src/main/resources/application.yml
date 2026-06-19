@@ -6,16 +6,16 @@ spring:
     name: auth-admin-service
 
 jwt:
-  secret: ${JWT_SECRET:gradify-secret-key-change-in-production-2024}
-  expiration: 86400000  # 24 heures
+  secret: gradify-secret-key-change-in-production-2024
+  expiration: 86400000
 
 auth:
   admin:
-    username: ${ADMIN_USERNAME:admin}
-    password: ${ADMIN_PASSWORD:admin123}
+    username: admin
+    password: admin123
 
 sparql:
-  endpoint: ${SPARQL_ENDPOINT:http://localhost:3030/lod/sparql}
+  endpoint: http://localhost:3030/lod/sparql
 
 management:
   endpoints:

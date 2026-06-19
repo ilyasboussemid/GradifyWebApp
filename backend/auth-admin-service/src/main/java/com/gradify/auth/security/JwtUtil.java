@@ -17,7 +17,7 @@ public class JwtUtil {
     private String secret;
 
     @Value("${jwt.expiration:86400000}")
-    private long expirationMs; // 24h par défaut
+    private long expirationMs;
 
     private SecretKey getKey() {
         return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
