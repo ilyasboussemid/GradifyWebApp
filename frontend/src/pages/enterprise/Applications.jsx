@@ -19,6 +19,7 @@ export default function Applications() {
   const { offerId } = useParams();
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [successMsg, setSuccessMsg] = useState('');
 
   useEffect(() => { fetchApplications(); }, [offerId]);
 
@@ -39,7 +40,11 @@ export default function Applications() {
     try {
       const api = (await import('../../services/api')).default;
       await api.put(`/offers/applications/${studentId}/${offerId}/status`, { status: newStatus });
-    } catch (err) {}
+      setSuccessMsg(newStatus === 'Acceptée' ? `Candidat ${studentId} accepté avec succès !` : `Candidat ${studentId} refusé.`);
+      setTimeout(() => setSuccessMsg(''), 4000);
+    } catch (err) {
+      setSuccessMsg('');
+    }
   }
 
   if (loading) return <Loader text="Chargement des candidatures..." />;
@@ -52,6 +57,11 @@ export default function Applications() {
         <p>Offre : <strong>{offerId}</strong> — {applications.length} candidature(s) reçue(s)</p>
       </div>
       <div className="container" style={{ paddingBottom: '3rem' }}>
+        {successMsg && (
+          <div style={{ padding: '0.85rem 1.25rem', borderRadius: 'var(--radius-md)', background: 'var(--status-success-bg)', border: '1px solid rgba(22, 163, 74, 0.2)', marginBottom: '1.5rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--status-success)' }}>
+            {successMsg}
+          </div>
+        )}
         {applications.length === 0 ? (
           <div className="empty-state">
             <div className="empty-icon">📭</div>

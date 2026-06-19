@@ -85,9 +85,16 @@ export default function EnterpriseDashboard() {
                     <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>{offer.title}</span>
                     <span className="text-xs text-muted" style={{ display: 'block' }}>{offer.city} · {offer.applications || 0} candidature(s)</span>
                   </div>
-                  <StatusPill status={String(offer.status || '').includes('Ouverte') ? 'success' : 'error'}>
-                    {String(offer.status || '').includes('Ouverte') ? 'Ouverte' : 'Fermée'}
-                  </StatusPill>
+                  <div className="flex items-center gap-2">
+                    {(offer.applications || 0) > 0 && (
+                      <Link to={`/entreprise/offres/${offer.id}/candidatures`}>
+                        <Button variant="ghost" size="sm">Voir</Button>
+                      </Link>
+                    )}
+                    <StatusPill status={String(offer.status || '').includes('Ouverte') ? 'success' : 'error'}>
+                      {String(offer.status || '').includes('Ouverte') ? 'Ouverte' : 'Fermée'}
+                    </StatusPill>
+                  </div>
                 </div>
               ))
             )}
@@ -99,6 +106,14 @@ export default function EnterpriseDashboard() {
               <Link to="/entreprise/offres/nouvelle"><Button variant="primary" size="sm" style={{ width: '100%' }} icon={<FiPlus />}>Publier une offre</Button></Link>
               <Link to="/entreprise/offres"><Button variant="secondary" size="sm" style={{ width: '100%' }} icon={<FiBriefcase />}>Gérer mes offres</Button></Link>
             </div>
+            {stats.totalApplications > 0 && (
+              <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'var(--accent-light)', borderRadius: 'var(--radius-md)' }}>
+                <span style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--accent-strong)', display: 'block', marginBottom: '0.25rem' }}>
+                  {stats.totalApplications} candidature(s) à traiter
+                </span>
+                <span className="text-xs text-muted">Consultez vos offres pour accepter ou refuser les candidats.</span>
+              </div>
+            )}
           </Card>
         </div>
       </div>
