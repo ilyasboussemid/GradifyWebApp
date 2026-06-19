@@ -23,7 +23,7 @@ public class OfferController {
             @RequestParam(required = false) String program,
             @RequestParam(required = false) String city,
             @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "50") int size) {
         try {
             Map<String, Object> results = offerService.search(skill, company, program, city, page, size);
             return ResponseEntity.ok(results);

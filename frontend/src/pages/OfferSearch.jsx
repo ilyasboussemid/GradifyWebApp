@@ -90,7 +90,7 @@ const DEMO_FILTERS = {
 };
 export default function OfferSearch() {
   const [offers, setOffers] = useState([]);
-  const [filters, setFilters] = useState(DEMO_FILTERS);
+  const [filters, setFilters] = useState({ skills: [], cities: [], companies: [], programs: [] });
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSkill, setSelectedSkill] = useState('');
@@ -98,10 +98,17 @@ export default function OfferSearch() {
   const [selectedProgram, setSelectedProgram] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilters, setShowFilters] = useState(false);
-  const pageSize = 6;
-  useEffect(() => {
-    fetchOffers();
-  }, [selectedSkill, selectedCity, selectedProgram, currentPage]);
+  const pageSize = 20;
+
+  useEffect(() => { fetchOffers(); }, [selectedSkill, selectedCity, selectedProgram, currentPage]);
+  useEffect(() => { fetchFilters(); }, []);
+
+  async function fetchFilters() {
+    try {
+      const data = await offersService.getFilters();
+      if (data) setFilters(data);
+    } catch (err) {}
+  }
   async function fetchOffers() {
     setLoading(true);
     try {
@@ -110,22 +117,12 @@ export default function OfferSearch() {
         city: selectedCity,
         program: selectedProgram,
         page: currentPage,
-        size: pageSize,
+        size: 50,
       });
-      setOffers(data.items || data);
+      setOffers(data.items || data || []);
       if (data.filters) setFilters(data.filters);
     } catch (err) {
-      let filtered = [...DEMO_OFFERS];
-      if (selectedSkill) {
-        filtered = filtered.filter(o => o.skills.some(s => s.toLowerCase().includes(selectedSkill.toLowerCase())));
-      }
-      if (selectedCity) {
-        filtered = filtered.filter(o => o.city === selectedCity);
-      }
-      if (selectedProgram) {
-        filtered = filtered.filter(o => o.program === selectedProgram);
-      }
-      setOffers(filtered);
+      setOffers([]);
     } finally {
       setLoading(false);
     }
