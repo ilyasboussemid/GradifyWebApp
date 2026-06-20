@@ -309,11 +309,12 @@ public class OfferService {
     }
 
     public void applyToOffer(String offerId, String studentId) {
-        String appUri = "https://data.lod-school.ma/id/" + studentId + "_app_" + offerId;
+        String BASE = "https://data.lod-school.ma/id/";
+        String appUri = BASE + studentId + "_app_" + offerId;
+        String studentUri = BASE + studentId;
+        String offerUri = BASE + offerId;
         List<Map<String, String>> existing = sparqlClient.query(String.format("""
-            SELECT ?s WHERE {
-                <%s> a lod:Application .
-            } LIMIT 1
+            SELECT ?s WHERE { <%s> a lod:Application . } LIMIT 1
             """, appUri));
         if (!existing.isEmpty()) {
             return;
@@ -321,22 +322,23 @@ public class OfferService {
         String date = java.time.LocalDate.now().toString();
         String sparql = String.format("""
             INSERT DATA {
-                base:%s lod:appliedTo base:%s .
+                <%s> lod:appliedTo <%s> .
                 <%s> a lod:Application ;
-                    lod:applicant base:%s ;
-                    lod:appliedOffer base:%s ;
+                    lod:applicant <%s> ;
+                    lod:appliedOffer <%s> ;
                     lod:applicationDate "%s"^^xsd:date ;
                     lod:applicationStatus "En attente"@fr .
             }
-            """, studentId, offerId, appUri, studentId, offerId, date);
+            """, studentUri, offerUri, appUri, studentUri, offerUri, date);
         sparqlClient.update(sparql);
     }
 
     public Map<String, Object> getApplications(String offerId) {
+        String offerUri = "https://data.lod-school.ma/id/" + offerId;
         List<Map<String, String>> results = sparqlClient.query(String.format("""
             SELECT DISTINCT ?studentId ?date ?status ?filiere ?niveau ?ville WHERE {
                 ?app a lod:Application ;
-                     lod:appliedOffer base:%s ;
+                     lod:appliedOffer <%s> ;
                      lod:applicant ?student ;
                      lod:applicationDate ?date .
                 OPTIONAL { ?app lod:applicationStatus ?status . }
@@ -349,7 +351,7 @@ public class OfferService {
                 }
             }
             ORDER BY DESC(?date)
-            """, offerId));
+            """, offerUri));
 
         java.util.Set<String> seen = new java.util.HashSet<>();
         List<Map<String, Object>> items = results.stream()
@@ -361,6 +363,7 @@ public class OfferService {
             app.put("level", row.getOrDefault("niveau", ""));
             app.put("city", row.getOrDefault("ville", ""));
             app.put("appliedAt", row.get("date"));
+            app.put("status", row.getOrDefault("status", "En attente"));
             return app;
         }).collect(Collectors.toList());
 
@@ -378,10 +381,11 @@ public class OfferService {
     }
 
     public Map<String, Object> getStudentApplications(String studentId) {
+        String studentUri = "https://data.lod-school.ma/id/" + studentId;
         List<Map<String, String>> results = sparqlClient.query(String.format("""
             SELECT ?offre ?titre ?entreprise ?ville ?date ?status WHERE {
                 ?app a lod:Application ;
-                     lod:applicant base:%s ;
+                     lod:applicant <%s> ;
                      lod:appliedOffer ?offre ;
                      lod:applicationDate ?date .
                 OPTIONAL { ?app lod:applicationStatus ?status . }
@@ -391,7 +395,7 @@ public class OfferService {
                 ?comp schema:name ?entreprise .
             }
             ORDER BY DESC(?date)
-            """, studentId));
+            """, studentUri));
 
         List<Map<String, Object>> items = results.stream().map(row -> {
             Map<String, Object> app = new HashMap<>();
@@ -437,27 +441,22 @@ public class OfferService {
     }
 
     public void bookmarkOffer(String offerId, String studentId) {
-        String sparql = String.format("""
-            INSERT DATA {
-                base:%s lod:bookmarked base:%s .
-            }
-            """, studentId, offerId);
-        sparqlClient.update(sparql);
+        String studentUri = "https://data.lod-school.ma/id/" + studentId;
+        String offerUri = "https://data.lod-school.ma/id/" + offerId;
+        sparqlClient.update(String.format("INSERT DATA { <%s> lod:bookmarked <%s> . }", studentUri, offerUri));
     }
 
     public void removeBookmark(String offerId, String studentId) {
-        String sparql = String.format("""
-            DELETE DATA {
-                base:%s lod:bookmarked base:%s .
-            }
-            """, studentId, offerId);
-        sparqlClient.update(sparql);
+        String studentUri = "https://data.lod-school.ma/id/" + studentId;
+        String offerUri = "https://data.lod-school.ma/id/" + offerId;
+        sparqlClient.update(String.format("DELETE DATA { <%s> lod:bookmarked <%s> . }", studentUri, offerUri));
     }
 
     public Map<String, Object> getBookmarks(String studentId) {
+        String studentUri = "https://data.lod-school.ma/id/" + studentId;
         List<Map<String, String>> results = sparqlClient.query(String.format("""
             SELECT ?offre ?titre ?entreprise ?ville ?niveau ?duree WHERE {
-                base:%s lod:bookmarked ?offre .
+                <%s> lod:bookmarked ?offre .
                 ?offre schema:title ?titre ;
                        lod:postedBy ?comp ;
                        schema:jobLocation ?ville ;
@@ -466,7 +465,7 @@ public class OfferService {
                 ?comp schema:name ?entreprise .
             }
             ORDER BY ?titre
-            """, studentId));
+            """, studentUri));
 
         List<Map<String, Object>> items = results.stream().map(row -> {
             Map<String, Object> b = new HashMap<>();
