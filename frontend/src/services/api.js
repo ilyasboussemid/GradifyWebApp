@@ -11,6 +11,12 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  const userStr = localStorage.getItem('gradify_user');
+  if (userStr) {
+    const user = JSON.parse(userStr);
+    config.headers['X-User-Id'] = user.identifier;
+    config.headers['X-User-Role'] = user.role;
+  }
   return config;
 });
 api.interceptors.response.use(
