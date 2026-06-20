@@ -114,10 +114,15 @@ public class OfferController {
         }
     }
 
-    @PutMapping("/applications/{studentId}/{offerId}/status")
-    public ResponseEntity<?> updateApplicationStatus(@PathVariable String studentId, @PathVariable String offerId, @RequestBody Map<String, String> body) {
+    @PutMapping("/applications/status")
+    public ResponseEntity<?> updateApplicationStatus(@RequestBody Map<String, String> body) {
         try {
+            String studentId = body.get("studentId");
+            String offerId = body.get("offerId");
             String newStatus = body.get("status");
+            if (studentId == null || offerId == null || newStatus == null) {
+                return ResponseEntity.badRequest().body(Map.of("error", "studentId, offerId et status sont requis"));
+            }
             offerService.updateApplicationStatus(offerId, studentId, newStatus);
             return ResponseEntity.ok(Map.of("message", "Statut mis à jour"));
         } catch (Exception e) {

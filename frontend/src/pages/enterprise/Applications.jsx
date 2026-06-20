@@ -39,7 +39,7 @@ export default function Applications() {
     setApplications(applications.map(a => a.id === appId ? { ...a, status: newStatus } : a));
     try {
       const api = (await import('../../services/api')).default;
-      await api.put(`/offers/applications/${studentId}/${offerId}/status`, { status: newStatus });
+      await api.put('/offers/applications/status', { studentId, offerId, status: newStatus });
       setSuccessMsg(newStatus === 'Acceptée' ? `Candidat ${studentId} accepté avec succès !` : `Candidat ${studentId} refusé.`);
       setTimeout(() => setSuccessMsg(''), 4000);
     } catch (err) {
