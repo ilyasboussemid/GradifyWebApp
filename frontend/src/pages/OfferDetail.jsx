@@ -56,8 +56,20 @@ export default function OfferDetail() {
     if (user) {
       const stored = JSON.parse(localStorage.getItem(`bookmarks_${user.identifier}`) || '[]');
       setBookmarked(stored.some(b => b.id === id));
+      checkIfApplied();
     }
   }, [id]);
+
+  async function checkIfApplied() {
+    if (user?.role === 'STUDENT') {
+      try {
+        const data = await offersService.getMyApplications();
+        const apps = data.items || data || [];
+        const alreadyApplied = apps.some(a => a.offerId === id);
+        if (alreadyApplied) setApplied(true);
+      } catch (err) {}
+    }
+  }
   async function fetchOffer() {
     setLoading(true);
     try {

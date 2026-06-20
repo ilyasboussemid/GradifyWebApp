@@ -24,7 +24,7 @@ export default function Header() {
           const items = data.items || data;
           const notifs = items.filter(a => a.status === 'Acceptée' || a.status === 'Refusée').map(a => ({
             id: a.offerId,
-            message: a.status === 'Acceptée' ? `Votre candidature pour "${a.title}" a été acceptée !` : `Votre candidature pour "${a.title}" a été déclinée.`,
+            message: a.status === 'Acceptée' ? `Votre candidature pour "${a.title || a.offerId}" a été acceptée !` : `Votre candidature pour "${a.title || a.offerId}" a été déclinée.`,
             type: a.status === 'Acceptée' ? 'success' : 'error',
           }));
           setNotifications(notifs);
@@ -34,10 +34,13 @@ export default function Header() {
         if (res.ok) {
           const data = await res.json();
           const items = data.items || data;
-          const totalApps = items.reduce((sum, o) => sum + (o.applications || 0), 0);
-          if (totalApps > 0) {
-            setNotifications([{ id: 'apps', message: `${totalApps} nouvelle(s) candidature(s) reçue(s)`, type: 'info' }]);
-          }
+          const notifs = [];
+          items.forEach(offer => {
+            if (offer.applications > 0) {
+              notifs.push({ id: offer.id, message: `${offer.applications} candidature(s) sur "${offer.title}"`, type: 'info' });
+            }
+          });
+          setNotifications(notifs);
         }
       }
     } catch (err) {}
