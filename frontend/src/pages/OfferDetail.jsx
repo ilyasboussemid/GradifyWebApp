@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FiMapPin, FiBriefcase, FiClock, FiCalendar, FiUsers, FiArrowLeft, FiSend, FiCheck, FiBookmark } from 'react-icons/fi';
+import { FiMapPin, FiBriefcase, FiClock, FiCalendar, FiUsers, FiArrowLeft, FiSend, FiCheck, FiBookmark, FiX } from 'react-icons/fi';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
@@ -48,6 +48,7 @@ export default function OfferDetail() {
   const [showMatching, setShowMatching] = useState(false);
   const [matchingLoading, setMatchingLoading] = useState(false);
   const [applied, setApplied] = useState(false);
+  const [applicationStatus, setApplicationStatus] = useState('');
   const [applyLoading, setApplyLoading] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
 
@@ -65,8 +66,11 @@ export default function OfferDetail() {
       try {
         const data = await offersService.getMyApplications();
         const apps = data.items || data || [];
-        const alreadyApplied = apps.some(a => a.offerId === id);
-        if (alreadyApplied) setApplied(true);
+        const myApp = apps.find(a => a.offerId === id);
+        if (myApp) {
+          setApplied(true);
+          setApplicationStatus(myApp.status || 'En attente');
+        }
       } catch (err) {}
     }
   }
@@ -264,17 +268,21 @@ export default function OfferDetail() {
           {user?.role === 'STUDENT' && (
             <Card>
               <Button
-                variant={applied ? 'secondary' : 'primary'}
-                style={{ width: '100%', marginBottom: '0.75rem' }}
+                variant={applied ? (applicationStatus.includes('Accept') ? 'primary' : applicationStatus.includes('Refus') ? 'ghost' : 'secondary') : 'primary'}
+                style={{ width: '100%', marginBottom: '0.75rem', ...(applicationStatus.includes('Refus') ? { borderColor: 'var(--status-error)', color: 'var(--status-error)' } : {}), ...(applicationStatus.includes('Accept') ? { background: 'var(--status-success)', boxShadow: 'none' } : {}) }}
                 disabled={applyLoading || applied}
-                icon={applied ? <FiCheck /> : <FiSend />}
+                icon={applied ? (applicationStatus.includes('Accept') ? <FiCheck /> : applicationStatus.includes('Refus') ? <FiX /> : <FiCheck />) : <FiSend />}
                 onClick={async () => {
                   setApplyLoading(true);
-                  try { await offersService.applyToOffer(id); setApplied(true); } catch(e) { setApplied(true); }
+                  try { await offersService.applyToOffer(id); setApplied(true); setApplicationStatus('En attente'); } catch(e) { setApplied(true); setApplicationStatus('En attente'); }
                   setApplyLoading(false);
                 }}
               >
-                {applied ? 'Candidature envoyée' : applyLoading ? 'Envoi...' : 'Postuler à cette offre'}
+                {applied
+                  ? (applicationStatus.includes('Accept') ? 'Candidature acceptée !'
+                    : applicationStatus.includes('Refus') ? 'Candidature refusée'
+                    : 'Candidature en attente')
+                  : applyLoading ? 'Envoi...' : 'Postuler à cette offre'}
               </Button>
               <Button
                 variant={bookmarked ? 'ghost' : 'secondary'}
@@ -295,7 +303,13 @@ export default function OfferDetail() {
               >
                 {bookmarked ? 'Retirer des favoris' : 'Ajouter aux favoris'}
               </Button>
-              {applied && <p className="text-xs text-muted" style={{ marginTop: '0.5rem', textAlign: 'center' }}>Votre candidature a été transmise.</p>}
+              {applied && (
+                <p className="text-xs" style={{ marginTop: '0.5rem', textAlign: 'center', color: applicationStatus.includes('Accept') ? 'var(--status-success)' : applicationStatus.includes('Refus') ? 'var(--status-error)' : 'var(--muted)' }}>
+                  {applicationStatus.includes('Accept') ? 'Félicitations ! L\'entreprise a accepté votre candidature.'
+                    : applicationStatus.includes('Refus') ? 'Votre candidature n\'a pas été retenue.'
+                    : 'Votre candidature est en cours de traitement.'}
+                </p>
+              )}
             </Card>
           )}
         </div>
