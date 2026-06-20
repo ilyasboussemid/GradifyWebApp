@@ -309,9 +309,9 @@ public class OfferService {
     }
 
     public void applyToOffer(String offerId, String studentId) {
-        String appId = studentId + "-app-" + offerId;
+        String appId = studentId + "_app_" + offerId;
         List<Map<String, String>> existing = sparqlClient.query(String.format("""
-            SELECT ?app WHERE {
+            SELECT ?s WHERE {
                 base:%s a lod:Application .
             } LIMIT 1
             """, appId));
@@ -368,7 +368,7 @@ public class OfferService {
     }
 
     public void updateApplicationStatus(String offerId, String studentId, String newStatus) {
-        String appId = studentId + "-app-" + offerId;
+        String appId = studentId + "_app_" + offerId;
         sparqlClient.update(String.format("DELETE WHERE { base:%s lod:applicationStatus ?o . }", appId));
         sparqlClient.update(String.format("INSERT DATA { base:%s lod:applicationStatus \"%s\"@fr . }", appId, newStatus));
     }
