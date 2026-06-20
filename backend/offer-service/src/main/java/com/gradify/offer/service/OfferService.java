@@ -338,8 +338,8 @@ public class OfferService {
                 ?app a lod:Application ;
                      lod:appliedOffer base:%s ;
                      lod:applicant ?student ;
-                     lod:applicationDate ?date ;
-                     lod:applicationStatus ?status .
+                     lod:applicationDate ?date .
+                OPTIONAL { ?app lod:applicationStatus ?status . }
                 ?student dcterms:identifier ?studentId .
                 OPTIONAL { ?student lod:level ?niveau . }
                 OPTIONAL { ?student schema:addressLocality ?ville . }
@@ -369,8 +369,12 @@ public class OfferService {
 
     public void updateApplicationStatus(String offerId, String studentId, String newStatus) {
         String appId = studentId + "_app_" + offerId;
-        sparqlClient.update(String.format("DELETE WHERE { base:%s lod:applicationStatus ?o . }", appId));
-        sparqlClient.update(String.format("INSERT DATA { base:%s lod:applicationStatus \"%s\"@fr . }", appId, newStatus));
+        String cleanStatus = newStatus.replace("é", "e").replace("É", "E");
+        sparqlClient.update(String.format("""
+            DELETE { base:%s lod:applicationStatus ?old }
+            INSERT { base:%s lod:applicationStatus "%s"@fr }
+            WHERE { base:%s lod:applicationStatus ?old }
+            """, appId, appId, cleanStatus, appId));
     }
 
     public Map<String, Object> getStudentApplications(String studentId) {
@@ -379,8 +383,8 @@ public class OfferService {
                 ?app a lod:Application ;
                      lod:applicant base:%s ;
                      lod:appliedOffer ?offre ;
-                     lod:applicationDate ?date ;
-                     lod:applicationStatus ?status .
+                     lod:applicationDate ?date .
+                OPTIONAL { ?app lod:applicationStatus ?status . }
                 ?offre schema:title ?titre ;
                        lod:postedBy ?comp ;
                        schema:jobLocation ?ville .
