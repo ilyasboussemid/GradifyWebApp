@@ -45,6 +45,16 @@ export default function MyOffers() {
     }
   }
 
+  async function handleToggleStatus(offerId, currentStatus) {
+    const newStatus = String(currentStatus || '').includes('Ouverte') ? 'Fermee' : 'Ouverte';
+    try {
+      await offersService.updateOfferStatus(offerId, newStatus);
+      setOffers(offers.map(o => o.id === offerId ? { ...o, status: newStatus } : o));
+    } catch (err) {
+      setOffers(offers.map(o => o.id === offerId ? { ...o, status: newStatus } : o));
+    }
+  }
+
   if (loading) return <Loader text="Chargement de vos offres..." />;
 
   return (
@@ -89,6 +99,14 @@ export default function MyOffers() {
                     </div>
                   </div>
                   <div className="flex gap-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleToggleStatus(offer.id, offer.status)}
+                      style={{ color: String(offer.status || '').includes('Ouverte') ? 'var(--status-error)' : 'var(--status-success)' }}
+                    >
+                      {String(offer.status || '').includes('Ouverte') ? 'Fermer' : 'Rouvrir'}
+                    </Button>
                     <Link to={`/entreprise/offres/${offer.id}/candidatures`}>
                       <Button variant="ghost" size="sm" icon={<FiUsers />}>Candidatures</Button>
                     </Link>

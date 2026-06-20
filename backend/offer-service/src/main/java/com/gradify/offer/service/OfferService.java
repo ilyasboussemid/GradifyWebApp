@@ -266,6 +266,14 @@ public class OfferService {
         sparqlClient.update(sparql);
     }
 
+    public void updateOfferStatus(String offerId, String newStatus) {
+        String offerUri = "https://data.lod-school.ma/id/" + offerId;
+        sparqlClient.update(String.format(
+            "DELETE WHERE { <%s> lod:status ?old . }", offerUri));
+        sparqlClient.update(String.format(
+            "INSERT DATA { <%s> lod:status '%s'@fr . }", offerUri, newStatus));
+    }
+
     public Map<String, Object> getByCompany(String companyId) {
         List<Map<String, String>> results = sparqlClient.query(String.format("""
                 SELECT ?offre ?titre ?ville ?duree ?niveau ?compensation ?statut

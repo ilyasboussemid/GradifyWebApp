@@ -43,6 +43,11 @@ const offersService = {
     return response.data;
   },
 
+  updateOfferStatus: async (offerId, status) => {
+    const response = await api.put(`/offers/${offerId}/status`, { status });
+    return response.data;
+  },
+
   applyToOffer: async (offerId) => {
     const response = await api.post(`/offers/${offerId}/apply`);
     return response.data;

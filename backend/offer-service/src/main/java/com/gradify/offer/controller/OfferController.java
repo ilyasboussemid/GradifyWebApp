@@ -85,6 +85,17 @@ public class OfferController {
         }
     }
 
+    @PutMapping("/{id}/status")
+    public ResponseEntity<?> updateOfferStatus(@PathVariable String id, @RequestBody Map<String, String> body) {
+        try {
+            String status = body.get("status");
+            offerService.updateOfferStatus(id, status);
+            return ResponseEntity.ok(Map.of("message", "Statut mis à jour"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
+
     @GetMapping("/mine")
     public ResponseEntity<?> getMyOffers(@RequestHeader(value = "X-User-Id", required = false) String userId) {
         try {
