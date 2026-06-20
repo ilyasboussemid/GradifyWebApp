@@ -309,12 +309,12 @@ public class OfferService {
     }
 
     public void applyToOffer(String offerId, String studentId) {
-        String appId = studentId + "_app_" + offerId;
+        String appUri = "https://data.lod-school.ma/id/" + studentId + "_app_" + offerId;
         List<Map<String, String>> existing = sparqlClient.query(String.format("""
             SELECT ?s WHERE {
-                base:%s a lod:Application .
+                <%s> a lod:Application .
             } LIMIT 1
-            """, appId));
+            """, appUri));
         if (!existing.isEmpty()) {
             return;
         }
@@ -322,13 +322,13 @@ public class OfferService {
         String sparql = String.format("""
             INSERT DATA {
                 base:%s lod:appliedTo base:%s .
-                base:%s a lod:Application ;
+                <%s> a lod:Application ;
                     lod:applicant base:%s ;
                     lod:appliedOffer base:%s ;
                     lod:applicationDate "%s"^^xsd:date ;
                     lod:applicationStatus "En attente"@fr .
             }
-            """, studentId, offerId, appId, studentId, offerId, date);
+            """, studentId, offerId, appUri, studentId, offerId, date);
         sparqlClient.update(sparql);
     }
 
@@ -368,13 +368,13 @@ public class OfferService {
     }
 
     public void updateApplicationStatus(String offerId, String studentId, String newStatus) {
-        String appId = studentId + "_app_" + offerId;
+        String appUri = "https://data.lod-school.ma/id/" + studentId + "_app_" + offerId;
         String cleanStatus = newStatus.replace("é", "e").replace("É", "E");
         sparqlClient.update(String.format("""
-            DELETE { base:%s lod:applicationStatus ?old }
-            INSERT { base:%s lod:applicationStatus "%s"@fr }
-            WHERE { base:%s lod:applicationStatus ?old }
-            """, appId, appId, cleanStatus, appId));
+            DELETE { <%s> lod:applicationStatus ?old }
+            INSERT { <%s> lod:applicationStatus "%s"@fr }
+            WHERE { <%s> lod:applicationStatus ?old }
+            """, appUri, appUri, cleanStatus, appUri));
     }
 
     public Map<String, Object> getStudentApplications(String studentId) {
