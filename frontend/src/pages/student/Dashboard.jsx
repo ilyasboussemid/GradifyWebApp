@@ -44,9 +44,9 @@ export default function StudentDashboard() {
 
   if (loading) return <Loader text="Chargement de votre espace..." />;
 
-  const pending = applications.filter(a => !a.status || a.status === 'En attente').length;
-  const accepted = applications.filter(a => a.status === 'Acceptée').length;
-  const rejected = applications.filter(a => a.status === 'Refusée').length;
+  const pending = applications.filter(a => !a.status || a.status.includes('attente')).length;
+  const accepted = applications.filter(a => a.status && (a.status.includes('Accept') || a.status.includes('accept'))).length;
+  const rejected = applications.filter(a => a.status && (a.status.includes('Refus') || a.status.includes('refus'))).length;
 
   return (
     <div>
@@ -107,13 +107,13 @@ export default function StudentDashboard() {
               <div className="flex flex-col gap-1">
                 {applications.slice(0, 3).map((app, idx) => (
                   <Link key={idx} to={`/offres/${app.offerId}`} style={{ textDecoration: 'none' }}>
-                    <Card variant="flat" style={{ padding: '0.85rem', borderLeft: app.status === 'Acceptée' ? '3px solid var(--status-success)' : app.status === 'Refusée' ? '3px solid var(--status-error)' : 'none' }}>
+                    <Card variant="flat" style={{ padding: '0.85rem', borderLeft: app.status && app.status.includes('Accept') ? '3px solid var(--status-success)' : app.status && app.status.includes('Refus') ? '3px solid var(--status-error)' : 'none' }}>
                       <div className="flex items-center justify-between">
                         <div>
                           <span style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--text)' }}>{app.title || app.offerId}</span>
                           <span className="text-xs text-muted" style={{ display: 'block' }}>{app.company} · {app.city}</span>
                         </div>
-                        <StatusPill status={app.status === 'Acceptée' ? 'success' : app.status === 'Refusée' ? 'error' : 'warning'}>
+                        <StatusPill status={app.status && app.status.includes('Accept') ? 'success' : app.status && app.status.includes('Refus') ? 'error' : 'warning'}>
                           {app.status || 'En attente'}
                         </StatusPill>
                       </div>

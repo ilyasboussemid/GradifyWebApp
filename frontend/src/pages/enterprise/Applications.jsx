@@ -79,7 +79,7 @@ export default function Applications() {
                     <Badge size="sm">{app.level}</Badge>
                     <span className="text-xs text-muted flex items-center gap-1"><FiMapPin /> {app.city}</span>
                   </div>
-                  <StatusPill status={app.status === 'Acceptée' ? 'success' : app.status === 'Refusée' ? 'error' : 'warning'}>
+                  <StatusPill status={app.status && app.status.includes('Accept') ? 'success' : app.status && app.status.includes('Refus') ? 'error' : 'warning'}>
                     {app.status}
                   </StatusPill>
                 </div>
@@ -89,16 +89,16 @@ export default function Applications() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-muted">Candidature reçue le {app.appliedAt}</span>
-                  {app.status === 'En attente' && (
+                  {(!app.status || app.status.includes('attente')) && (
                     <div className="flex gap-1">
                       <Button variant="primary" size="sm" onClick={() => handleUpdateStatus(app.id, app.studentId, 'Acceptée')}>Accepter</Button>
                       <Button variant="ghost" size="sm" onClick={() => handleUpdateStatus(app.id, app.studentId, 'Refusée')} style={{ color: 'var(--status-error)' }}>Refuser</Button>
                     </div>
                   )}
-                  {app.status === 'Acceptée' && (
+                  {app.status && app.status.includes('Accept') && (
                     <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--status-success)' }}>✓ Candidat accepté</span>
                   )}
-                  {app.status === 'Refusée' && (
+                  {app.status && app.status.includes('Refus') && (
                     <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--status-error)' }}>✗ Candidat refusé</span>
                   )}
                 </div>

@@ -22,10 +22,10 @@ export default function Header() {
         if (res.ok) {
           const data = await res.json();
           const items = data.items || data;
-          const notifs = items.filter(a => a.status === 'Acceptée' || a.status === 'Refusée').map(a => ({
+          const notifs = items.filter(a => a.status && a.status.includes('Accept') || a.status && a.status.includes('Refus')).map(a => ({
             id: a.offerId,
-            message: a.status === 'Acceptée' ? `Votre candidature pour "${a.title || a.offerId}" a été acceptée !` : `Votre candidature pour "${a.title || a.offerId}" a été déclinée.`,
-            type: a.status === 'Acceptée' ? 'success' : 'error',
+            message: a.status && a.status.includes('Accept') ? `Votre candidature pour "${a.title || a.offerId}" a été acceptée !` : `Votre candidature pour "${a.title || a.offerId}" a été déclinée.`,
+            type: a.status && a.status.includes('Accept') ? 'success' : 'error',
           }));
           setNotifications(notifs);
         }

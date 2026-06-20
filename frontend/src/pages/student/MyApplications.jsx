@@ -29,9 +29,9 @@ export default function MyApplications() {
 
   if (loading) return <Loader text="Chargement de vos candidatures..." />;
 
-  const pending = applications.filter(a => !a.status || a.status === 'En attente');
-  const accepted = applications.filter(a => a.status === 'Acceptée');
-  const rejected = applications.filter(a => a.status === 'Refusée');
+  const pending = applications.filter(a => !a.status || a.status.includes('attente'));
+  const accepted = applications.filter(a => a.status && (a.status.includes('Accept') || a.status.includes('accept')));
+  const rejected = applications.filter(a => a.status && (a.status.includes('Refus') || a.status.includes('refus')));
 
   return (
     <div>
