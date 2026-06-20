@@ -19,6 +19,7 @@ import Applications from './pages/enterprise/Applications';
 import EnterpriseDashboard from './pages/enterprise/Dashboard';
 import StudentDashboard from './pages/student/Dashboard';
 import Bookmarks from './pages/student/Bookmarks';
+import MyApplications from './pages/student/MyApplications';
 
 function ProtectedRoute({ children, allowedRoles }) {
   const { user } = useAuth();
@@ -38,6 +39,7 @@ function AppRoutes() {
 
       <Route path="/mon-espace" element={<ProtectedRoute allowedRoles={['STUDENT']}><PageLayout><StudentDashboard /></PageLayout></ProtectedRoute>} />
       <Route path="/favoris" element={<ProtectedRoute allowedRoles={['STUDENT']}><PageLayout><Bookmarks /></PageLayout></ProtectedRoute>} />
+      <Route path="/mes-candidatures" element={<ProtectedRoute allowedRoles={['STUDENT']}><PageLayout><MyApplications /></PageLayout></ProtectedRoute>} />
       <Route path="/etudiants/:id" element={<ProtectedRoute allowedRoles={['STUDENT', 'ADMIN', 'ENTERPRISE']}><PageLayout><StudentProfile /></PageLayout></ProtectedRoute>} />
       <Route path="/profil/modifier" element={<ProtectedRoute allowedRoles={['STUDENT']}><PageLayout><EditProfile /></PageLayout></ProtectedRoute>} />
 

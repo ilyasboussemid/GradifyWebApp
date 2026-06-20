@@ -54,6 +54,7 @@ export default function Header() {
     navLinks = [
       { path: '/mon-espace', label: 'Mon espace' },
       { path: '/offres', label: 'Offres' },
+      { path: '/mes-candidatures', label: 'Mes candidatures' },
       { path: `/etudiants/${user.identifier}`, label: 'Mon profil' },
       { path: '/favoris', label: 'Favoris' },
     ];

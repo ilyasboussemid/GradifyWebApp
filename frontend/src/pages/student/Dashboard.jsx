@@ -94,73 +94,36 @@ export default function StudentDashboard() {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'start' }}>
           <div>
-            <h3 style={{ marginBottom: '1rem' }}>Mes candidatures</h3>
+            <div className="flex items-center justify-between" style={{ marginBottom: '1rem' }}>
+              <h3>Mes candidatures</h3>
+              {applications.length > 0 && <Link to="/mes-candidatures"><Button variant="ghost" size="sm">Voir tout →</Button></Link>}
+            </div>
             {applications.length === 0 ? (
               <Card variant="flat">
                 <p className="text-sm text-muted">Aucune candidature envoyée.</p>
                 <Link to="/offres"><Button variant="primary" size="sm" style={{ marginTop: '0.75rem' }}>Parcourir les offres</Button></Link>
               </Card>
             ) : (
-              <div className="flex flex-col gap-3">
-                {pending > 0 && (
-                  <div>
-                    <span className="text-xs text-muted" style={{ textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', marginBottom: '0.5rem' }}>En attente ({pending})</span>
-                    <div className="flex flex-col gap-1">
-                      {applications.filter(a => !a.status || a.status === 'En attente').map((app, idx) => (
-                        <Link key={idx} to={`/offres/${app.offerId}`} style={{ textDecoration: 'none' }}>
-                          <Card variant="flat" style={{ padding: '0.85rem' }}>
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <span style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--text)' }}>{app.title || app.offerId}</span>
-                                <span className="text-xs text-muted" style={{ display: 'block' }}>{app.company} · {app.city}</span>
-                              </div>
-                              <StatusPill status="warning">En attente</StatusPill>
-                            </div>
-                          </Card>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {accepted > 0 && (
-                  <div>
-                    <span className="text-xs" style={{ textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', marginBottom: '0.5rem', color: 'var(--status-success)', fontWeight: 600 }}>Acceptées ({accepted})</span>
-                    <div className="flex flex-col gap-1">
-                      {applications.filter(a => a.status === 'Acceptée').map((app, idx) => (
-                        <Link key={idx} to={`/offres/${app.offerId}`} style={{ textDecoration: 'none' }}>
-                          <Card variant="flat" style={{ padding: '0.85rem', borderLeft: '3px solid var(--status-success)' }}>
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <span style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--text)' }}>{app.title || app.offerId}</span>
-                                <span className="text-xs text-muted" style={{ display: 'block' }}>{app.company} · {app.city}</span>
-                              </div>
-                              <StatusPill status="success">Acceptée</StatusPill>
-                            </div>
-                          </Card>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {rejected > 0 && (
-                  <div>
-                    <span className="text-xs" style={{ textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', marginBottom: '0.5rem', color: 'var(--status-error)', fontWeight: 600 }}>Refusées ({rejected})</span>
-                    <div className="flex flex-col gap-1">
-                      {applications.filter(a => a.status === 'Refusée').map((app, idx) => (
-                        <Link key={idx} to={`/offres/${app.offerId}`} style={{ textDecoration: 'none' }}>
-                          <Card variant="flat" style={{ padding: '0.85rem', borderLeft: '3px solid var(--status-error)' }}>
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <span style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--text)' }}>{app.title || app.offerId}</span>
-                                <span className="text-xs text-muted" style={{ display: 'block' }}>{app.company} · {app.city}</span>
-                              </div>
-                              <StatusPill status="error">Refusée</StatusPill>
-                            </div>
-                          </Card>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+              <div className="flex flex-col gap-1">
+                {applications.slice(0, 3).map((app, idx) => (
+                  <Link key={idx} to={`/offres/${app.offerId}`} style={{ textDecoration: 'none' }}>
+                    <Card variant="flat" style={{ padding: '0.85rem', borderLeft: app.status === 'Acceptée' ? '3px solid var(--status-success)' : app.status === 'Refusée' ? '3px solid var(--status-error)' : 'none' }}>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <span style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--text)' }}>{app.title || app.offerId}</span>
+                          <span className="text-xs text-muted" style={{ display: 'block' }}>{app.company} · {app.city}</span>
+                        </div>
+                        <StatusPill status={app.status === 'Acceptée' ? 'success' : app.status === 'Refusée' ? 'error' : 'warning'}>
+                          {app.status || 'En attente'}
+                        </StatusPill>
+                      </div>
+                    </Card>
+                  </Link>
+                ))}
+                {applications.length > 3 && (
+                  <Link to="/mes-candidatures" className="text-sm" style={{ marginTop: '0.5rem', display: 'block', textAlign: 'center' }}>
+                    Voir les {applications.length} candidatures →
+                  </Link>
                 )}
               </div>
             )}
