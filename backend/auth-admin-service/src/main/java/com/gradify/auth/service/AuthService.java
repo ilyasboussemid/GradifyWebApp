@@ -78,6 +78,18 @@ public class AuthService {
                 if (identifier.equals(adminUsername)) {
                     throw new IllegalArgumentException("Cet identifiant est l'admin. Choisissez le rôle Admin.");
                 }
+                if (!identifier.startsWith("student-")) {
+                    List<Map<String, String>> compCheck = sparqlClient.query(String.format("""
+                        SELECT ?comp WHERE {
+                            ?comp a lod:Company ;
+                                  schema:name ?name .
+                            FILTER (LCASE(str(?name)) = LCASE("%s"))
+                        } LIMIT 1
+                        """, identifier));
+                    if (!compCheck.isEmpty()) {
+                        throw new IllegalArgumentException("'" + identifier + "' est une entreprise. Choisissez le rôle Entreprise.");
+                    }
+                }
                 String studentPwd = STUDENT_PASSWORDS.get(identifier);
                 if (studentPwd != null) {
                     if (!studentPwd.equals(password)) throw new IllegalArgumentException("Mot de passe invalide");
