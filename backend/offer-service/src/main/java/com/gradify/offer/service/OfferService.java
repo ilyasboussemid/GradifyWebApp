@@ -320,17 +320,17 @@ public class OfferService {
             return;
         }
         String date = java.time.LocalDate.now().toString();
-        String sparql = String.format("""
+        sparqlClient.update(String.format("""
             INSERT DATA {
                 <%s> lod:appliedTo <%s> .
                 <%s> a lod:Application ;
                     lod:applicant <%s> ;
                     lod:appliedOffer <%s> ;
-                    lod:applicationDate "%s"^^xsd:date ;
-                    lod:applicationStatus "En attente"@fr .
+                    lod:applicationDate "%s"^^xsd:date .
             }
-            """, studentUri, offerUri, appUri, studentUri, offerUri, date);
-        sparqlClient.update(sparql);
+            """, studentUri, offerUri, appUri, studentUri, offerUri, date));
+        sparqlClient.update(String.format(
+            "INSERT DATA { <%s> lod:applicationStatus 'En attente'@fr . }", appUri));
     }
 
     public Map<String, Object> getApplications(String offerId) {
@@ -373,11 +373,10 @@ public class OfferService {
     public void updateApplicationStatus(String offerId, String studentId, String newStatus) {
         String appUri = "https://data.lod-school.ma/id/" + studentId + "_app_" + offerId;
         String cleanStatus = newStatus.replace("é", "e").replace("É", "E");
-        sparqlClient.update(String.format("""
-            DELETE { <%s> lod:applicationStatus ?old }
-            INSERT { <%s> lod:applicationStatus "%s"@fr }
-            WHERE { <%s> lod:applicationStatus ?old }
-            """, appUri, appUri, cleanStatus, appUri));
+        sparqlClient.update(String.format(
+            "DELETE WHERE { <%s> lod:applicationStatus ?old . }", appUri));
+        sparqlClient.update(String.format(
+            "INSERT DATA { <%s> lod:applicationStatus '%s'@fr . }", appUri, cleanStatus));
     }
 
     public Map<String, Object> getStudentApplications(String studentId) {
