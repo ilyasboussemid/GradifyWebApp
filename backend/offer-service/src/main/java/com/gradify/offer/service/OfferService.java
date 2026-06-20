@@ -309,8 +309,16 @@ public class OfferService {
     }
 
     public void applyToOffer(String offerId, String studentId) {
-        String date = java.time.LocalDate.now().toString();
         String appId = studentId + "-app-" + offerId;
+        List<Map<String, String>> existing = sparqlClient.query(String.format("""
+            SELECT ?app WHERE {
+                base:%s a lod:Application .
+            } LIMIT 1
+            """, appId));
+        if (!existing.isEmpty()) {
+            return;
+        }
+        String date = java.time.LocalDate.now().toString();
         String sparql = String.format("""
             INSERT DATA {
                 base:%s lod:appliedTo base:%s .
@@ -326,7 +334,7 @@ public class OfferService {
 
     public Map<String, Object> getApplications(String offerId) {
         List<Map<String, String>> results = sparqlClient.query(String.format("""
-            SELECT ?studentId ?date ?status ?filiere ?niveau ?ville WHERE {
+            SELECT DISTINCT ?studentId ?date ?status ?filiere ?niveau ?ville WHERE {
                 ?app a lod:Application ;
                      lod:appliedOffer base:%s ;
                      lod:applicant ?student ;
@@ -343,7 +351,10 @@ public class OfferService {
             ORDER BY DESC(?date)
             """, offerId));
 
-        List<Map<String, Object>> items = results.stream().map(row -> {
+        java.util.Set<String> seen = new java.util.HashSet<>();
+        List<Map<String, Object>> items = results.stream()
+            .filter(row -> seen.add(row.get("studentId")))
+            .map(row -> {
             Map<String, Object> app = new HashMap<>(row);
             app.put("id", "app-" + row.get("studentId").hashCode());
             app.put("program", row.getOrDefault("filiere", ""));
