@@ -1,0 +1,66 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gradify-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: http://${AUTH_SERVICE_HOST:localhost}:8085
+          predicates:
+            - Path=/api/auth/**
+
+        - id: offer-service
+          uri: http://${OFFER_SERVICE_HOST:localhost}:8081
+          predicates:
+            - Path=/api/offers/**
+
+        - id: student-service
+          uri: http://${STUDENT_SERVICE_HOST:localhost}:8082
+          predicates:
+            - Path=/api/students/**
+
+        - id: matching-service
+          uri: http://${MATCHING_SERVICE_HOST:localhost}:8083
+          predicates:
+            - Path=/api/matching/**
+
+        - id: sparql-service
+          uri: http://${SPARQL_SERVICE_HOST:localhost}:8084
+          predicates:
+            - Path=/api/sparql/**
+
+        - id: admin-service
+          uri: http://${AUTH_SERVICE_HOST:localhost}:8085
+          predicates:
+            - Path=/api/admin/**
+          filters:
+            - JwtAuth
+
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"
+              - "http://localhost:80"
+              - "http://localhost"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+
+jwt:
+  secret: ${JWT_SECRET:gradify-secret-key-change-in-production-2024}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

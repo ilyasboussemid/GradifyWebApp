@@ -1,0 +1,3 @@
+com\gradify\sparql\SparqlExplorerApplication.class
+com\gradify\sparql\service\SparqlExecutionService.class
+com\gradify\sparql\controller\SparqlExplorerController.class

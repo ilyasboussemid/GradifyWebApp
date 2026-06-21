@@ -1,0 +1,24 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: auth-admin-service
+
+jwt:
+  secret: gradify-secret-key-change-in-production-2024
+  expiration: 86400000
+
+auth:
+  admin:
+    username: admin
+    password: admin123
+
+sparql:
+  endpoint: http://localhost:3030/lod/sparql
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

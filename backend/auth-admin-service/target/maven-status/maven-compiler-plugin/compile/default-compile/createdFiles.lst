@@ -1,0 +1,8 @@
+com\gradify\auth\controller\AdminController.class
+com\gradify\auth\dto\TokenResponse.class
+com\gradify\auth\service\AuthService.class
+com\gradify\auth\AuthAdminApplication.class
+com\gradify\auth\dto\LoginRequest.class
+com\gradify\auth\security\JwtUtil.class
+com\gradify\auth\sparql\SparqlClient.class
+com\gradify\auth\controller\AuthController.class

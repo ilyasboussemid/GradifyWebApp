@@ -1,0 +1,4 @@
+com\gradify\student\controller\StudentController.class
+com\gradify\student\StudentServiceApplication.class
+com\gradify\student\sparql\SparqlClient.class
+com\gradify\student\service\StudentService.class
