@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sparql-explorer-service
+  namespace: gradify
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sparql-explorer-service
+  template:
+    metadata:
+      labels:
+        app: sparql-explorer-service
+    spec:
+      containers:
+        - name: sparql-explorer-service
+          image: gradify/sparql-explorer-service:latest
+          ports:
+            - containerPort: 8084
+          env:
+            - name: SPARQL_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: gradify-config
+                  key: SPARQL_ENDPOINT
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8084
+            initialDelaySeconds: 30
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sparql-explorer-service
+  namespace: gradify
+spec:
+  selector:
+    app: sparql-explorer-service
+  ports:
+    - port: 8084
+      targetPort: 8084
+  type: ClusterIP

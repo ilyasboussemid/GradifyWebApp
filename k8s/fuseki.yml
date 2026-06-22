@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fuseki
+  namespace: gradify
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fuseki
+  template:
+    metadata:
+      labels:
+        app: fuseki
+    spec:
+      containers:
+        - name: fuseki
+          image: stain/jena-fuseki
+          ports:
+            - containerPort: 3030
+          env:
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: gradify-config
+                  key: FUSEKI_ADMIN_PASSWORD
+            - name: FUSEKI_DATASET_1
+              value: "lod"
+          volumeMounts:
+            - name: fuseki-data
+              mountPath: /fuseki
+      volumes:
+        - name: fuseki-data
+          persistentVolumeClaim:
+            claimName: fuseki-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fuseki
+  namespace: gradify
+spec:
+  selector:
+    app: fuseki
+  ports:
+    - port: 3030
+      targetPort: 3030
+  type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fuseki-pvc
+  namespace: gradify
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
