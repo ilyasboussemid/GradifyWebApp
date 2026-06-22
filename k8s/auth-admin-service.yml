@@ -16,6 +16,8 @@ spec:
       containers:
         - name: auth-admin-service
           image: gradify/auth-admin-service:latest
+          imagePullPolicy: Never
+          imagePullPolicy: Never
           ports:
             - containerPort: 8085
           env:

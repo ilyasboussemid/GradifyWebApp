@@ -16,6 +16,8 @@ spec:
       containers:
         - name: frontend
           image: gradify/frontend:latest
+          imagePullPolicy: Never
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
 ---

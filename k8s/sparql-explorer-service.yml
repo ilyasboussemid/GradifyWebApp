@@ -16,6 +16,8 @@ spec:
       containers:
         - name: sparql-explorer-service
           image: gradify/sparql-explorer-service:latest
+          imagePullPolicy: Never
+          imagePullPolicy: Never
           ports:
             - containerPort: 8084
           env:

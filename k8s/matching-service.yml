@@ -16,6 +16,8 @@ spec:
       containers:
         - name: matching-service
           image: gradify/matching-service:latest
+          imagePullPolicy: Never
+          imagePullPolicy: Never
           ports:
             - containerPort: 8083
           env:

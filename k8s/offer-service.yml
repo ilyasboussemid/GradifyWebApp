@@ -16,6 +16,8 @@ spec:
       containers:
         - name: offer-service
           image: gradify/offer-service:latest
+          imagePullPolicy: Never
+          imagePullPolicy: Never
           ports:
             - containerPort: 8081
           env:

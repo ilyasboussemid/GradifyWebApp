@@ -16,6 +16,8 @@ spec:
       containers:
         - name: student-service
           image: gradify/student-service:latest
+          imagePullPolicy: Never
+          imagePullPolicy: Never
           ports:
             - containerPort: 8082
           env:
