@@ -1,0 +1,5 @@
+com\gradify\gateway\GatewayApplication.class
+com\gradify\gateway\filter\JwtAuthGatewayFilterFactory.class
+com\gradify\gateway\config\RouteConfig.class
+com\gradify\gateway\filter\JwtAuthGatewayFilterFactory$Config.class
+com\gradify\gateway\filter\JwtUserIdFilter.class

@@ -1,0 +1,4 @@
+com\gradify\offer\sparql\SparqlClient.class
+com\gradify\offer\controller\OfferController.class
+com\gradify\offer\service\OfferService.class
+com\gradify\offer\OfferServiceApplication.class

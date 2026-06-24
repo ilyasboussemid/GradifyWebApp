@@ -1,0 +1,4 @@
+com\gradify\matching\MatchingServiceApplication.class
+com\gradify\matching\service\MatchingService.class
+com\gradify\matching\controller\MatchingController.class
+com\gradify\matching\sparql\SparqlClient.class
