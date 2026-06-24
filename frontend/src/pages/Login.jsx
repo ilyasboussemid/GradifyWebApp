@@ -120,23 +120,6 @@ export default function Login() {
               </div>
             ))}
           </div>
-          <div style={{
-            marginTop: '3rem',
-            padding: '1rem 1.25rem',
-            background: 'rgba(255,255,255,0.1)',
-            borderRadius: 'var(--radius-md)',
-            border: '1px solid rgba(255,255,255,0.15)',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <FiBookOpen style={{ fontSize: '0.9rem' }} />
-              <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                Projet Académique S4
-              </span>
-            </div>
-            <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>
-              Web Sémantique · Linked Open Data · Knowledge Graphs
-            </span>
-          </div>
         </div>
       </div>
       <div className="login-form-side">
